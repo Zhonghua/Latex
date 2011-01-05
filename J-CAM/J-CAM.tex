@@ -77,7 +77,6 @@
 
 % \biboptions{}
 
-
 \journal{Computational and Applied Mathematics}
 
 \begin{document}
@@ -95,17 +94,8 @@
 %% use the ead command for the email address,
 %% and the form \ead[url] for the home page:
 %%
-%% \title{Title\tnoteref{label1}}
-%% \tnotetext[label1]{}
-%% \author{Pavel Solin\corref{cor1}\fnref{label2}}
-%% \ead{solin@unr.edu}
-%% \ead[url]{http://hpfem.org/\tilde pavel}
-%%\fntext[label2]{}
-%% \cortext[cor1]{}
-%% \address{\fnref{label3}}
-%% \fntext[label3]{}
 
-\title{NIST Anisotropic Benchmark Problems\\ for Testing Adaptive Finite Element Methods}
+\title{A Set of difficulty Problems\\ for Testing Adaptive Finite Element Methods}
 
 %% use optional labels to link authors explicitly to addresses:
 \author[label1]{Zhonghua Ma}
@@ -119,16 +109,11 @@
 \address[label3]{University of Nevada, Reno, USA}
 
 \begin{abstract}
-In this paper we provide
-three benchmark problems with known exact solutions that can be used to
-assess the ability of adaptive finite element algorithms to handle
-anisotropically-behaved solutions. The first one is
-a Poisson equation with a smooth solution that only changes in one spatial direction.
-The second one is a singularly-perturbed linear elliptic equation whose solution exhibits
-a boundary layer, and the last one is a two-equation system that contains a boundary layer
-in one solution component only. In an appendix we show sample results obtained with the
+In this paper we provide a set of difficulties that can be used to
+testing the ability of adaptive finite element algorithms to handle
+a variety of types solutions. 
+In each example we show sample results obtained with the
 open source library {\sc Hermes}.\footnote{http://hpfem.org/hermes}
-
 \end{abstract}
 
 \begin{keyword}
@@ -153,7 +138,8 @@ The number of adaptive finite element libraries is growing
 -- let us mention (in alphabetical order) for example Alberta
 \cite{alberta}, DealII \cite{dealii}, FEniCS
 \cite{fenics}, FETK \cite{fetk}, Hermes \cite{hermes}, libMesh \cite{libmesh},
-Phaml \cite{phaml}, PHG \cite{phg}, 2dhp90 \cite{2dhp90} and there are many others.
+Phaml \cite{phaml}, PHG \cite{phg}, 2dhp90 \cite{2dhp90} and there are many others.\\
+
 A natural question that arises is how do they compare to each other?
 Unfortunately, comparison efforts are usually inhibited at the very beginning
 by diverse installation requirements, supporting libraries, input and output
@@ -167,13 +153,14 @@ for adaptive FEM \cite{mitchell-1}, but who also implemented
 and compared several $hp$-adaptive finite element algorithms by various
 authors \cite{mitchell-2}.
 
-This paper presents three benchmark problems with anisotropically-be\-ha\-ved
-solutions (not contained in \cite{mitchell-1}) that are
-designed to test the ability of adaptive algorithms to
-handle anisotropic refinements. The benchmark problems and their
-solutions are formulated in Sections \ref{sec:bench-1} - \ref{sec:bench-3}.
-In a separate second part of the paper (Appendix A) we show for illustration
-sample results obtained with the open source {\sc Hermes} library (http://hpfem.org/hermes).
+This paper presents twelve parametrized test problems with different behaved 
+solutions (contained in \cite{mitchell-1}) that are
+designed to test the ability of adaptive algorithms.
+
+The test problems and their
+solutions are formulated in Sections \ref{sec:bench-1} - \ref{sec:bench-12}.
+In each Section we show for illustration sample results obtained with the open
+ source {\sc Hermes} library (http://hpfem.org/hermes).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Benchmark NIST-1 "Analytic Solution"}
@@ -194,12 +181,15 @@ Here $p$ determines the degree of the polynomial solution.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[height=6cm]{nist/nist-1/solution.png}
+\includegraphics[height=5.5cm]{nist/nist-1/solution.png}
 \caption{The solution to NIST-1 benchmark problem.}
 \label{fig:sln-nist01}
 \end{figure}
-%\noindent
-
+\noindent
+The goal of the benchmark is to attain a relative error below
+$10^{-2}$~\% in the $H^1$-norm with as few degrees of freedom (DOF)
+as possible. Using 1D analysis \cite{sosedo}, one can show that the minimum
+number of DOF needed is 16.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Benchmark NIST-2 "Reentrant Corner"}
 \label{sec:bench-2}
