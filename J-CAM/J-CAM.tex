@@ -111,7 +111,7 @@
 \begin{abstract}
 In this paper we provide a set of difficulties that can be used to
 testing the ability of adaptive finite element algorithms to handle
-a variety of types solutions. 
+a variety of types solutions.
 In each example we show sample results obtained with the
 open source library {\sc Hermes}.\footnote{http://hpfem.org/hermes}
 \end{abstract}
@@ -150,7 +150,7 @@ At this point we would like to acknowledge the pioneering work of Dr. William Mi
 for adaptive FEM \cite{mitchell-1}, but who also implemented
 and compared several $hp$-adaptive finite element algorithms by various
 authors \cite{mitchell-2}.
-This paper presents twelve parametrized test problems with different behaved 
+This paper presents twelve parametrized test problems with different behaved
 solutions (contained in \cite{mitchell-1}) that are
 designed to test the ability of adaptive algorithms.
 The test problems and their
@@ -163,7 +163,6 @@ source {\sc Hermes} library (http://hpfem.org/hermes).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Benchmark NIST-1 "Analytic Solution"}
 \label{sec:bench-1}
-(NOTE:ALL figures in this paper will be update later!!)\\
 
 This is the first benchmark problem with a smooth solution
 that is used for testing how an adaptive algorithm behaves.
@@ -187,7 +186,7 @@ Here $p$ determines the degree of the polynomial solution.
 \noindent
 The goal of the benchmark is to attain a relative error below
 $10^{-2}$~\% in the $H^1$-norm with as few degrees of freedom (DOF)
-as possible. 
+as possible.
 We begin with adaptive $hp$-FEM with anisotropic refinements (adaptivity mode
 HP\_ANISO in {\sc Hermes}). The initial mesh is shown in Fig. \ref{fig:nist-1-hp-aniso} (left).
 In a few adaptivity steps, the polynomial degree of this element is increased
@@ -196,7 +195,7 @@ The resulting mesh with 793 DOF is shown in Fig. \ref{fig:nist-1-hp-aniso} (righ
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[height=5cm]{nist/nist-1/mesh_hp_anisoh.png}\ \
+\includegraphics[height=5cm]{nist/nist-1/mesh_hp_aniso_init.png}\ \
 \includegraphics[height=5cm]{nist/nist-1/mesh_hp_aniso.png}
 \vspace{-2mm}
 \caption{Initial mesh (left) and final mesh (right) for $hp$-FEM with anisotropic refinements.}
@@ -205,10 +204,10 @@ The resulting mesh with 793 DOF is shown in Fig. \ref{fig:nist-1-hp-aniso} (righ
 
 The final relative error estimate in $H^1$-norm was 4.07698e-03 \%
 and it was identical to the exact error in all printed digits.
-We also solved this benchmark with adaptive $h$-FEM 
+We also solved this benchmark with adaptive $h$-FEM
 with linear (left) and quadratic (right)
 elements, with anisotropic refinements enabled.
-Final meshes for the $h$-FEM computations are shown 
+Final meshes for the $h$-FEM computations are shown
 in Fig. \ref{fig:nist-1-h-aniso}.
 
 \begin{figure}[!ht]
