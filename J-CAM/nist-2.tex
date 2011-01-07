@@ -2,22 +2,22 @@
 \label{sec:bench-2}
 
 This is a standard benchmark for adaptive FEM algorithms.
-The exact solution is smooth but contains singular gradient in a reentrant corner.
-The equation solved is a Laplace equation
+The exact solution is smooth but contains singular gradient in the reentrant corner.
+The equation solved is the Laplace's equation.
 
 \begin{equation} \label{laplace}
--\Delta u = 0
+-\Delta u = 0,
 \end{equation}
-in the domain $\Omega = (-1, 1)^2$, with a section
-removed from the clockwise side of positive $x$ axis.
+in the domain $\Omega = (-1, 1)^2$, with a unit square section
+removed from the bottom part of positive $x$ axis.
 Equation (\ref{laplace}) equipped with Dirichlet
 boundary conditions given by the exact solution.
 
-The exact solution
+The exact solution:
 \begin{equation}\label{exact-nist-2}
-u(x, y) = r^{\alpha}\sin(\alpha \theta)
+u(x, y) = r^{\alpha}\sin(\alpha \theta),
 \end{equation}
-where $\alpha = \pi / \omega$, $r = \sqrt{x^2+y^2}$ and $\theta = tan^{-1}(y/x)$, here $\omega $ determines
+where $\alpha = \pi / \omega$, $r = \sqrt{x^2+y^2}$, and $\theta = tan^{-1}(y/x)$. Here $\omega $ determines
 the angle of the reentrant corner.
 The solution of NIST-2 with $\omega = 3 \pi / 2$  is shown in Fig. \ref{fig:sln-nist02}.
 

@@ -1,7 +1,7 @@
 \section{Benchmark NIST-3 "Linear Elasticity"}
 \label{sec:bench-3}
 
-This is a coupled system of two equations with a mixed
+This is a system of two coupled equations with a mixed
 derivative for linear elasticity in the coupling term.
 
 \begin{equation} \label{crack-u}
@@ -10,7 +10,7 @@ derivative for linear elasticity in the coupling term.
 \end{equation}
 \begin{equation} \label{crack-v}
 -E \frac{1-\nu^2}{2-2\nu} \frac{\partial^{2} v}{\partial x^{2}} - E\frac{1-\nu^2}{1-2\nu} \frac{\partial^{2} v}{\partial y^{2}}
--E \frac{1-\nu^2}{(1-2\nu)(2-2\nu)} \frac{\partial^{2} u}{\partial x \partial y} = F_{y}
+-E \frac{1-\nu^2}{(1-2\nu)(2-2\nu)} \frac{\partial^{2} u}{\partial x \partial y} = F_{y},
 \end{equation}
 where $F_{x} = F_{y} = 0$, $u$ and $v$ are the
 $x$ and $y$ displacements, $E$ is Young's Modulus,
@@ -19,7 +19,7 @@ and $\nu$ is Poisson's ratio.
 The domain is $\Omega = (0, 1)^2$, equipped with Dirichlet
 boundary conditions given by the exact solution.
 
-The exact solution
+The exact solution:
 \begin{equation}\label{exact-nist-3-u-1}
 u(x, y) = \frac{1}{2G} r^{\lambda}[(k - Q(\lambda + 1))cos(\lambda \theta) - \lambda cos((\lambda - 2) \theta)]
 \end{equation}

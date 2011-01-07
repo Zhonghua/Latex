@@ -2,18 +2,18 @@
 \label{sec:bench-8}
 
 This is a wave function that satisfies a Schrodinger equation model of two
-interacting atoms with highly oscillatory near the origin.
-The equation resolved is
+interacting atoms, highly oscillatory near the origin.
+The equation solved is
 
 \begin{equation} \label{oscillatory}
--\nabla^{2} u - \frac{1}{(\alpha + r)^{4}} u = f
+-\nabla^{2} u - \frac{1}{(\alpha + r)^{4}} u = f,
 \end{equation}
 in the domain $\Omega = (0, 1)^2$, equipped with Dirichlet boundary conditions
 given by the exact solution.
 
-The exact solution
+The exact solution:
 \begin{equation}\label{exact-nist-8}
-u(x,y) = sin(\frac{1}{\alpha + r})
+u(x,y) = sin(\frac{1}{\alpha + r}),
 \end{equation}
 where $r = \sqrt{x^{2} + y^{2}}$, $\alpha = \frac{1}{N \pi}$ determines the number of oscillations.
 The right-hand side $f$ is calculated by inserting (\ref{exact-nist-8}) into (\ref{oscillatory}).

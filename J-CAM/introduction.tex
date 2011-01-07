@@ -1,28 +1,17 @@
 \section{Introduction}
 \label{sec:intro}
 
-The number of adaptive finite element libraries is growing
--- let us mention (in alphabetical order) for example Alberta
+The number of adaptive Finite Element codes is growing.
+Let us mention (in alphabetical order): Alberta
 \cite{alberta}, DealII \cite{dealii}, FEniCS
 \cite{fenics}, FETK \cite{fetk}, Hermes \cite{hermes}, libMesh \cite{libmesh},
-Phaml \cite{phaml}, PHG \cite{phg}, 2dhp90 \cite{2dhp90} and there are many others.\\
-A natural question that arises is how do they compare to each other?
+Phaml \cite{phaml}, PHG \cite{phg}, 2dhp90 \cite{2dhp90} and many others.\\
+A natural question that arises is how they perform compared to each other?
 Unfortunately, comparison efforts are usually inhibited at the very beginning
-by diverse installation requirements, supporting libraries, input and output
-data formats, and different usage of various codes. And even if these problems
-could be overcome, not many benchmarks with known exact solutions are
-available to test various aspects of automatic adaptivity.
-At this point we would like to acknowledge the pioneering work of Dr. William Mitchell
-(NIST) who not only collected a suite of 12 benchmark problems
-for adaptive FEM \cite{mitchell-1}, but who also implemented
-and compared several $hp$-adaptive finite element algorithms by various
-authors \cite{mitchell-2}.
-This paper presents twelve parametrized test problems with different behaved
-solutions (contained in \cite{mitchell-1}) that are
-designed to test the ability of adaptive algorithms.
-The test problems and their
-solutions are formulated in Sections \ref{sec:bench-1} - \ref{sec:bench-12}.
-{\sc Hermes} is an open source C++ library for
-rapid development of adaptive $hp$-FEM and $hp$-DG solvers.
+by diverse installation requirements, number of supporting libraries, non-unified input and output data formats, and different usage of various codes. And even if these problems can be overcome, there is not many benchmarks with known exact solutions that are able to test various aspects of automatic adaptivity in the appropriate manner.
+At this point we would like to acknowledge the pioneering work of Dr. William Mitchell (NIST) who not only collected a suite of 12 benchmarks for adaptive FEM \cite{mitchell-1}, but who also implemented and compared several $hp$-adaptive Finite Element codes by various authors \cite{mitchell-2}.
+This paper presents twelve parametrized test problems with diverse solutions (contained in \cite{mitchell-1}) that are designed to test the ability of adaptive algorithms.
+The test problems and their solutions are formulated in Sections \ref{sec:bench-1} - \ref{sec:bench-12}. 
+{\sc Hermes} is an open source C++ library for rapid development of adaptive $hp$-FEM and $hp$-DG solvers.
 In each section we show for illustration sample results obtained with the open
 source {\sc Hermes} library (http://hpfem.org/hermes).

@@ -1,7 +1,7 @@
 \section{Benchmark NIST-6 "Boundary Layer"}
 \label{sec:bench-6}
 
-This problem has an boundary layer along the right and top sides of the domain.
+Solution of this problem has a boundary layer along the right and top sides of the domain.
 It is a convection-diffusion equation with first order terms.
 
 \begin{equation} \label{boundary-layer}
@@ -10,9 +10,9 @@ It is a convection-diffusion equation with first order terms.
 in the domain $\Omega = (-1, 1)^2$, equipped with Dirichlet boundary condition
 given by the exact solution.
 
-The exact solution
+The exact solution:
 \begin{equation}\label{exact-nist-6}
-u(x,y) = (1 - e^{-(1 - x) / \epsilon})(1 - e^{-(1 - y) / \epsilon})cos(\pi (x + y))
+u(x,y) = (1 - e^{-(1 - x) / \epsilon})(1 - e^{-(1 - y) / \epsilon})cos(\pi (x + y)),
 \end{equation}
 where $\epsilon$ determines the strength of the boundary layer.
 The right-hand side $f$ is calculated by inserting (\ref{exact-nist-6}) into (\ref{boundary-layer}).

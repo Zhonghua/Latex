@@ -2,22 +2,20 @@
 \label{sec:bench-10}
 
 This is another example with anisotropic solution that is suitable for testing
-anisotropic element refinements.
-The equation solved is a Poisson equation
+anisotropic element refinements. The equation solved is the Poisson's equation.
 
 \begin{equation} \label{interior}
--\Delta u = f
+-\Delta u = f,
 \end{equation}
 in the domain $\Omega = (-1, 1)^2$, equipped with a zero
-Neumann boundary condition on left edge, Dirichlet boundary conditions given by the
-exact solution on the rest of the boundary.
+Neumann boundary condition on left edge, Dirichlet boundary conditions given by the exact solution on the rest of the boundary.
 
-The exact solution
+The exact solution:
 \begin{equation}\label{exact-nist-10-1}
 u(x,y) = \cos(Ky)\ \ \ \mbox{for}\ x \le 0
 \end{equation}
 \begin{equation}\label{exact-nist-10-2}
-u(x,y) = \cos(Ky) + x^{\alpha}\ \ \ \mbox{for}\ x > 0
+u(x,y) = \cos(Ky) + x^{\alpha}\ \ \ \mbox{for}\ x > 0,
 \end{equation}
 where $K$ and $\alpha$ are real constants.
 The right-hand side $f$ is calculated by inserting

@@ -2,17 +2,17 @@
 \label{sec:bench-1}
 
 This is the first benchmark problem with a smooth solution
-that is used for testing how an adaptive algorithm behaves.
-The equation solved is a Poisson equation
+that is used for testing adaptive algorithms performance.
+The equation solved is the Poisson's equation.
 
 \begin{equation} \label{poisson}
--\Delta u = f
+-\Delta u = f,
 \end{equation}
 in the domain $\Omega = (0, 1)^2$, equipped with Dirichlet
 boundary condition given by the exact solution.
 The exact solution $u(x, y) = 2^{4p}x^{p}(1-x)^{p}y^{p}(1-y)^{p}$
-to this problem is shown in Fig. \ref{fig:sln-nist01}.
-Here $p$ determines the degree of the polynomial solution.
+of this problem is shown in Fig. \ref{fig:sln-nist01}.
+Here $p$ is a parameter, determining the polynomial degree of the exact solution.
 
 \begin{figure}[!ht]
 \centering
@@ -21,10 +21,10 @@ Here $p$ determines the degree of the polynomial solution.
 \label{fig:sln-nist01}
 \end{figure}
 \noindent
-The goal of the benchmark is to attain a relative error below
+The goal of the benchmark is to reach a relative error below
 $10^{-2}$~\% in the $H^1$-norm with as few degrees of freedom (DOF)
 as possible.
-We begin with adaptive $hp$-FEM with anisotropic refinements (adaptivity mode
+We begin with adaptive $hp$-FEM with possibly anisotropic refinements (adaptivity mode
 HP\_ANISO in {\sc Hermes}). The initial mesh is shown in Fig. \ref{fig:nist-1-hp-aniso} (left).
 In a few adaptivity steps, the polynomial degree of this element is increased
 anisotropically.
@@ -39,8 +39,7 @@ The resulting mesh with 793 DOF is shown in Fig. \ref{fig:nist-1-hp-aniso} (righ
 \label{fig:nist-1-hp-aniso}
 \end{figure}
 
-The final relative error estimate in $H^1$-norm was 4.07698e-03 \%
-and it was identical to the exact error in all printed digits.
+The final relative error estimate in $H^1$-norm was 4.07698e-03 \%, and it was identical to the exact error in all printed digits.
 We also solved this benchmark with adaptive $h$-FEM
 with linear (left) and quadratic (right)
 elements, with anisotropic refinements enabled.
@@ -57,7 +56,7 @@ in Fig. \ref{fig:nist-1-h-aniso}.
 \end{figure}
 
 Figs. \ref{fig:nist-1-conv} compare all
-three adaptivity modes from the point
+three approaches to automatic adaptivity  from the point
 of view of DOF and CPU convergence.
 
 \begin{figure}[!ht]

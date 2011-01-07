@@ -1,34 +1,32 @@
 \section{Benchmark NIST-12 "Multiple Difficulties"}
 \label{sec:bench-12}
 
-The solution to this elliptic problems contains four difficulties
-of different strengths into the same problem
-(nist-2, nist-4, nist-6 and nist-9).
-The equation solved is a Poisson equation
+The solution to this elliptic problem combines four difficulties seen in previous benchmarks (nist-2, nist-4, nist-6 and nist-9) in one problem.
+The equation solved is the Poisson's equation.
 
 \begin{equation} \label{multiple}
--\Delta u = f
+-\Delta u = f,
 \end{equation}
 in the L-shaped domain, equipped with Dirichlet boundary conditions
 given by the exact solution.
 
-The exact solution
+The exact solution:
 \begin{equation}\label{exact-nist-12}
 u(x,y) =  r^{\alpha_{C} }\sin(\alpha_{C} \theta)
 + e^{-\alpha_{P} ((x - x_{P})^{2} + (y - y_{P})^{2})}
 + tan^{-1}(\alpha_{W} (r_{W} - r_{0}))
-+ e^{-(1 - y) / \epsilon}
++ e^{-(1 - y) / \epsilon},
 \end{equation}
 where $\alpha_C = \pi / \omega_C$, $r = \sqrt{x^2+y^2}$
 and $\theta = tan^{-1}(y/x)$, here $\omega_C$ determines
 the angle of the re-entrant corner.
 $(x_{P}, y_{P})$ is the location of the peak, $\alpha$
-determines the strength of the peak.
+determines the strength of the peak. Furthermore
 $r_{W} = \sqrt{(x - x_{W})^{2} + (y - y_{W})^{2}}$,
-here $(x_{W}, y_{W})$ is the center of the circular wave front,
+where $(x_{W}, y_{W})$ is the center of the circular wave front,
 $r_{0}$ is the distance from the wave front to the
 center of the circle, and $\alpha_W$ gives
-the steepness of the wave front. $\epsilon$ determines the
+the steepness of the wave front. The parameter $\epsilon$ determines the
 strength of the boundary layer, the boundary layer was placed on $y = -1$.
 The right-hand side $f$ is calculated by inserting (\ref{exact-nist-12})
 into (\ref{multiple}). \\
