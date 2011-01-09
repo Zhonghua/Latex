@@ -6,7 +6,7 @@ Let us mention (in alphabetical order): Alberta
 \cite{alberta}, DealII \cite{dealii}, FEniCS
 \cite{fenics}, FETK \cite{fetk}, Hermes \cite{hermes}, 
 libMesh \cite{libmesh}, Phaml \cite{phaml}, PHG \cite{phg}, 
-2dhp90 \cite{2dhp90} and many other commercial softwares.
+2dhp90 \cite{2dhp90}, and others.
 %A natural question that arises is how they perform compared to each other?
 %Unfortunately, comparison efforts are usually inhibited at the very beginning
 %by diverse installation requirements, number of supporting libraries, non-unified
@@ -14,30 +14,21 @@ libMesh \cite{libmesh}, Phaml \cite{phaml}, PHG \cite{phg},
 %these problems can be overcome, there is not many benchmarks with known exact
 %solutions that are able to test various aspects of automatic adaptivity in
 %the appropriate manner.
-There is no common approach to test all kinds of adaptive 
-finite element algorithms by different application platforms, 
-different software environment settings, 
-different ways of loading physical model, different grid types, 
-different methods of establishing the boundary conditions, 
-different input/output formats as well as some empirical knowledge. 
-In addition, the use of adaptive finite element analysis in special 
-industries also limits the comparing of their accuracy and efficiency.
-For instance, MSC.NASTRAN is an universal finite element analysis software, 
-which is widely used in the aerospace industry, ANSYS, ABAQUS and ADINA are 
-mostly used in the civil engineering, and Ansoft is mainly used in electromagnetic 
-field analysis problem of electrical engineering and electronic engineering. 
-Therefore, in order to compare the obtained results or to select a appropriate 
-algorithm for one special problem, the evaluation of solving ability of finite 
-element algorithm under the various problems are required. For some classical 
-finite element problems, the pre-process methods of different software vary greatly. 
-As a result, the same algorithm may get different results and convergent tendency 
-for the same problem.
+There is no common approach to test all adaptive 
+Finite Element algorithms. The obstacle in developing such an approach is that the codes differ in application platforms, ways of loading physical model, grid formats, boundary conditions handling, input/output formats and the list could go on. 
 
-The criterion of performance for adaptive algorithms is to be
-evaluated in terms of accuracy as a function of the total number
+In addition, some Finite Element codes are specifically designed to be used for a narrow profile of problems, which also limits the possibility of comparing their performance.
+For instance, MSC.NASTRAN is a universal Finite Element analysis software, 
+which is widely used in the aerospace industry, ANSYS, ABAQUS and ADINA are 
+mostly used in civil engineering, and Ansoft is mainly used in electromagnetic 
+field analysis problems of electrical engineering and electronic engineering. 
+Therefore, in order to compare efficiency and robustness of the Finite Element codes, various test problems are required. 
+
+For some classical Finite Element problems, pre-processing needed for various codes differ greatly. As a result of the differences between the codes, the same algorithm may give different results and convergency development for the same problem.
+
+The criterion of performance for adaptive algorithms is the obtained accuracy as a function of the total number
 of DOF and CPU time. However, this is quite difficult to establish
-for CPU time because the various softwares were run on different
-computer platforms.
+for CPU time because the various codes were run on different hardware.
 It is common to compare different algorithms using a large test set
 with known exact solutions that are able to test various aspects of
 automatic adaptivity in the appropriate manner. 
@@ -45,18 +36,17 @@ At this point we would like to acknowledge the work of
 Dr. William Mitchell (NIST) who collected a suite of
 twelve benchmarks for adaptive FEM \cite{mitchell-1}. 
 
-In this paper, we presents a series of benchmarks problems 
+In this paper, we present a series of benchmark problems 
 with diverse solutions contained in \cite{mitchell-1}
 that are designed to test the ability to handle different 
-modes of singularities, near singularities and other difficulties
-of adaptive algorithms for different equations.
+types of singularities, and other problems an adaptive algorithm must be able to cope with for different equations.
+
 The test problems and their solutions are formulated in Sections
-\ref{sec:bench-1} - \ref{sec:bench-12} by using {\sc Hermes}
-library (http://hpfem.org/hermes). {\sc Hermes} is a multi-platform 
+\ref{sec:bench-1} - \ref{sec:bench-12}. We also present solutions obtained by {\sc Hermes} library (http://hpfem.org/hermes). {\sc Hermes} is a multi-platform 
 open source C++ library for rapid development of adaptive $hp$-FEM 
-and $hp$-DG solvers. In each section begins with a short description
+and $hp$-DG solvers. Each section begins with a short description
 of benchmark problem compared, then the numerical results are
 presented and discussed. Conclusion and outlooks are offered
-in the last section of this paper.
+in the last section of the paper.
 
 
