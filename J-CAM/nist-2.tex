@@ -2,7 +2,12 @@
 \label{sec:bench-2}
 
 This is a standard benchmark for adaptive FEM algorithms.
-The exact solution is smooth but contains singular gradient in the reentrant corner.
+A reentrant corner is nothing more than an internal or inside corner.
+The problem of reentrant corner happens very often, 
+because of the reentrant corner, the error estimate 
+of the domain does not get convergece or get slow convergence.
+The exact solution of this problem is smooth but contains 
+singular gradient in the reentrant corner.
 The equation solved is the Laplace's equation.
 
 \begin{equation} \label{laplace}
@@ -11,9 +16,8 @@ The equation solved is the Laplace's equation.
 in the domain $\Omega = (-1, 1)^2$, with a unit square section
 removed from the bottom part of positive $x$ axis.
 Equation (\ref{laplace}) equipped with Dirichlet
-boundary conditions given by the exact solution.
+boundary conditions given by the exact solution:
 
-The exact solution:
 \begin{equation}\label{exact-nist-2}
 u(x, y) = r^{\alpha}\sin(\alpha \theta),
 \end{equation}
