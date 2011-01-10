@@ -7,7 +7,7 @@ axis('equal')
 pylab.title("Error convergence")
 pylab.xlabel("Degrees of freedom")
 pylab.ylabel("Error [%]")
-data = numpy.loadtxt("conv_dof_est_hp_aniso.dat")
+data = numpy.loadtxt("conv_dof_est_hp_anisoh.dat")
 x = data[:, 0]
 y = data[:, 1]
 loglog(x, y, "-s", label="hp-FEM (aniso)")
@@ -31,7 +31,7 @@ axis('equal')
 pylab.title("Error convergence")
 pylab.xlabel("CPU time (s)")
 pylab.ylabel("Error [%]")
-data = numpy.loadtxt("conv_cpu_est_hp_aniso.dat")
+data = numpy.loadtxt("conv_cpu_est_hp_anisoh.dat")
 x = data[:, 0]
 y = data[:, 1]
 loglog(x, y, "-s", label="hp-FEM (aniso)")

@@ -2,7 +2,8 @@
 \label{sec:bench-1}
 
 This is the first benchmark problem with a smooth solution
-that is used for testing adaptive algorithms performance.
+that is used for testing adaptive algorithms performance 
+where adaptivity isn't really needed.
 The equation solved is the Poisson's equation.
 
 \begin{equation} \label{poisson}
@@ -28,7 +29,7 @@ We begin with adaptive $hp$-FEM with possibly anisotropic refinements (adaptivit
 HP\_ANISO in {\sc Hermes}). The initial mesh is shown in Fig. \ref{fig:nist-1-hp-aniso} (left).
 In a few adaptivity steps, the polynomial degree of this element is increased
 anisotropically.
-The resulting mesh with 793 DOF is shown in Fig. \ref{fig:nist-1-hp-aniso} (right).
+The resulting mesh with 769 DOF is shown in Fig. \ref{fig:nist-1-hp-aniso} (right).
 
 \begin{figure}[!ht]
 \centering
@@ -39,7 +40,8 @@ The resulting mesh with 793 DOF is shown in Fig. \ref{fig:nist-1-hp-aniso} (righ
 \label{fig:nist-1-hp-aniso}
 \end{figure}
 
-The final relative error estimate in $H^1$-norm was 4.07698e-03 \%, and it was identical to the exact error in all printed digits.
+The final relative error estimate in $H^1$-norm was 3.91108e-03 \%,
+and it was identical to the exact error in all printed digits.
 We also solved this benchmark with adaptive $h$-FEM
 with linear (left) and quadratic (right)
 elements, with anisotropic refinements enabled.
