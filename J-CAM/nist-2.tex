@@ -3,10 +3,8 @@
 
 This is a standard benchmark for adaptive FEM algorithms.
 A reentrant corner is nothing more than an internal or inside corner.
-The problem of reentrant corner happens very often,
-because of the reentrant corner, the error estimate
-of the domain does not get convergece or get slow convergence.
-The exact solution of this problem is smooth but contains
+It is a very frequent problem and it can cause the error of the solution calculated by an adaptive method to converge very slowly or not to converge at all.
+The exact solution of this problem is smooth but it contains
 singular gradient in the reentrant corner.
 The equation solved is the Laplace's equation.
 
@@ -14,7 +12,7 @@ The equation solved is the Laplace's equation.
 -\Delta u = 0,
 \end{equation}
 in the domain $\Omega = (-1, 1)^2$, with a unit square
-section removed from the bottom part of positive $x$ axis.
+section removed from the bottom part of the positive $x$ axis.
 Equation (\ref{laplace}) equipped with Dirichlet
 boundary conditions given by the exact solution:
 
@@ -38,9 +36,9 @@ is shown in Fig. \ref{fig:sln-nist02}.
 The goal of the benchmark is to reach a relative error below
 $10^{-1}$~\% in the $H^1$-norm with as few degrees of freedom (DOF)
 as possible.
-We begin with adaptive $hp$-FEM with possibly anisotropic refinements.
+We begin with adaptive $hp$-FEM with possible anisotropic refinements.
 The initial mesh is shown in Fig. \ref{fig:nist-2-hp-aniso} (left).
-In a few adaptivity steps, the polynomial degree of this domain is increased
+In a few adaptivity steps, the polynomial degree of elements is increased
 anisotropically.
 The resulting mesh with 622 DOF is shown in Fig. \ref{fig:nist-2-hp-aniso} (right).
 
