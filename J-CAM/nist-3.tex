@@ -1,6 +1,7 @@
 \section{Benchmark NIST-3 "Linear Elasticity"}
 \label{sec:bench-3}
 
+<<<<<<< HEAD
 Linear elasticity is used extensively in structural analysis
 and engineering design. Linear elasticity is a simplification
 of the general nonlinear theory of elasticity and is the mathematical
@@ -10,6 +11,17 @@ In this benchmark, we perform a standard system of two
 coupled equations with a mixed derivative for linear elasticity
 in the coupling term. This example employs the adaptive multi-mesh $hp$-FEM
 to solve equations of plane strain linear elasticity.
+=======
+Linear elasticity is used extensively in structural analysis
+and engineering. Linear elasticity is a simplification
+of the general nonlinear equations of elasticity and is the mathematical
+study of how solid objects deform and become internally
+stressed due to prescribed loading conditions.
+In this benchmark, we present a standard system of two
+coupled equations with mixed derivative for linear elasticity
+in the coupling term. This example employs the adaptive multimesh $hp$-FEM
+to solve the equations.
+>>>>>>> ffd1b778f9bfbda25af37eb517688bd7403baeba
 \begin{equation} \label{crack-u}
 -E \frac{1-\nu^2}{1-2\nu} \frac{\partial^{2} u}{\partial x^{2}} - E\frac{1-\nu^2}{2-2 \nu} \frac{\partial^{2} u}{\partial y^{2}}
 -E \frac{1-\nu^2}{(1-2\nu)(2-2\nu)} \frac{\partial^{2} v}{\partial x \partial y} = F_{x}
@@ -22,7 +34,7 @@ where $F_{x} = F_{y} = 0$, $u$ and $v$ are the
 $x$ and $y$ displacements, $E$ is Young's Modulus,
 and $\nu$ is Poisson's ratio.
 
-The domain is taken to be $\Omega = (-1, 1)^2$ with a slit,
+The domain in the example is $\Omega = (-1, 1)^2$ with a slit,
 equipped with Dirichlet boundary conditions given by the
 exact solution. The exact solution of (\ref{crack-u})
 and (\ref{crack-v}) in polar coordinates is given by
@@ -46,12 +58,11 @@ The solution of NIST-3 is shown in Fig. \ref{fig:sln-nist03}.
 \label{fig:sln-nist03}
 \end{figure}
 
-The goal of the benchmark is to reach a relative error below
-$10^{-1}$~\% in the $H^1$-norm with as few DOF 
-as possible.
+The goal of the benchmark is to reach a relative error below 
+$10^{-1}$~\% in the $H^1$-norm with as few DOFs as possible.
 We begin with adaptive $hp$-FEM with possibly anisotropic refinements.
 The initial mesh is shown in Fig. \ref{fig:nist-3-hp-aniso-init}.
-In a few adaptivity steps, the polynomial degree of this domain is increased
+In a few adaptivity steps, the polynomial degree of elements is increased
 anisotropically.
 
 \begin{figure}[!ht]
