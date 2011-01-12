@@ -1,14 +1,14 @@
 \section{Benchmark NIST-3 "Linear Elasticity"}
 \label{sec:bench-3}
 
-Linear elasticity is used extensively in structural analysis 
-and engineering design. Linear elasticity is a simplification 
-of the general nonlinear theory of elasticity and is the mathematical 
-study of how solid objects deform and become internally 
+Linear elasticity is used extensively in structural analysis
+and engineering design. Linear elasticity is a simplification
+of the general nonlinear theory of elasticity and is the mathematical
+study of how solid objects deform and become internally
 stressed due to prescribed loading conditions.
-In this benchmark, we perform a standard system of two 
-coupled equations with a mixed derivative for linear elasticity 
-in the coupling term. This example employs the adaptive multimesh $hp$-FEM
+In this benchmark, we perform a standard system of two
+coupled equations with a mixed derivative for linear elasticity
+in the coupling term. This example employs the adaptive multi-mesh $hp$-FEM
 to solve equations of plane strain linear elasticity.
 \begin{equation} \label{crack-u}
 -E \frac{1-\nu^2}{1-2\nu} \frac{\partial^{2} u}{\partial x^{2}} - E\frac{1-\nu^2}{2-2 \nu} \frac{\partial^{2} u}{\partial y^{2}}
@@ -47,7 +47,7 @@ The solution of NIST-3 is shown in Fig. \ref{fig:sln-nist03}.
 \end{figure}
 
 The goal of the benchmark is to reach a relative error below
-$10^{-1}$~\% in the $H^1$-norm with as few degrees of freedom (DOF)
+$10^{-1}$~\% in the $H^1$-norm with as few DOF 
 as possible.
 We begin with adaptive $hp$-FEM with possibly anisotropic refinements.
 The initial mesh is shown in Fig. \ref{fig:nist-3-hp-aniso-init}.
@@ -75,8 +75,7 @@ The resulting mesh with 3897 DOF is shown in Fig. \ref{fig:nist-3-hp-aniso}.
 The final relative error estimate in $H^1$-norm was 8.05635e-02 \%,
 and it was identical to the exact error in all printed digits.
 We also solved this benchmark with adaptive $h$-FEM
-with linear (left) and quadratic (right)
-elements, with anisotropic refinements enabled.
+with linear and quadratic elements, with anisotropic refinements enabled.
 Final meshes for the $h$-FEM computations are shown
 in Fig. \ref{fig:nist-3-h1-aniso} and Fig. \ref{fig:nist-3-h2-aniso}.
 
@@ -84,7 +83,7 @@ in Fig. \ref{fig:nist-3-h1-aniso} and Fig. \ref{fig:nist-3-h2-aniso}.
 \centering
 \includegraphics[height=5cm]{nist/nist-3/mesh_u_h1_aniso.png}\ \
 \includegraphics[height=5cm]{nist/nist-3/mesh_v_h1_aniso.png}
-\caption{Final mesh for $h$-FEM anisotropic refinements with linear elements.}
+\caption{Final meshs of $u$ and $v$ component for $h$-FEM anisotropic refinements with linear elements.}
 \label{fig:nist-3-h1-aniso}
 \end{figure}
 
@@ -92,7 +91,7 @@ in Fig. \ref{fig:nist-3-h1-aniso} and Fig. \ref{fig:nist-3-h2-aniso}.
 \centering
 \includegraphics[height=5cm]{nist/nist-3/mesh_u_h2_aniso.png}\ \
 \includegraphics[height=5cm]{nist/nist-3/mesh_v_h2_aniso.png}
-\caption{Final mesh for $h$-FEM anisotropic refinements with quadratic elements.}
+\caption{Final meshs of $u$ and $v$ component for $h$-FEM anisotropic refinements with quadratic elements.}
 \label{fig:nist-3-h2-aniso}
 \end{figure}
 
