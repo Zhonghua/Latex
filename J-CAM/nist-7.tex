@@ -24,3 +24,50 @@ The solution of NIST-7 with $\alpha = 0.6$ is shown in Fig. \ref{fig:sln-nist07}
 \caption{The solution to NIST-7 benchmark problem.}
 \label{fig:sln-nist07}
 \end{figure}
+
+The goal of the benchmark is to reach a relative error below
+$1.5$~\% in the $H^1$-norm with as few DOFs as possible.
+We begin with adaptive $hp$-FEM with possible anisotropic refinements.
+The initial mesh is shown in Fig. \ref{fig:nist-7-hp-aniso} (left).
+In a few adaptivity steps, the polynomial degree of elements is increased
+anisotropically.
+The resulting mesh with 88 DOF is shown in Fig. \ref{fig:nist-7-hp-aniso} (right).
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-7/mesh_hp_aniso_init.png}\ \
+\includegraphics[height=5cm]{nist/nist-7/mesh_hp_aniso.png}
+\vspace{-2mm}
+\caption{Initial mesh (left) and final mesh (right) for $hp$-FEM with anisotropic refinements.}
+\label{fig:nist-7-hp-aniso}
+\end{figure}
+
+The final relative error estimate in $H^1$-norm was 1.46348 \%,
+and it was identical to the exact error in all printed digits.
+We also solved this benchmark with adaptive $h$-FEM
+with linear (left) and quadratic (right)
+elements, with anisotropic refinements enabled.
+Final meshes for the $h$-FEM computations are shown
+in Fig. \ref{fig:nist-7-h-aniso}.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-7/mesh_h1_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-7/mesh_h2_aniso.png}
+\vspace{-2mm}
+\caption{Final mesh for $h$-FEM anisotropic refinements with linear and quadratic elements.}
+\label{fig:nist-7-h-aniso}
+\end{figure}
+
+Figs. \ref{fig:nist-7-conv} compare all
+three approaches to automatic adaptivity from the point
+of view of DOF and CPU convergence.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-7/conv_dof_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-7/conv_cpu_aniso.png}
+\caption{DOF and CPU time convergence graphs.}
+\label{fig:nist-7-conv}
+\end{figure}
+

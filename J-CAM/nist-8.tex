@@ -25,3 +25,49 @@ The solution of NIST-8 with $\alpha = \frac{1}{10 \pi}$ is shown in Fig. \ref{fi
 \caption{The solution to NIST-8 benchmark problem.}
 \label{fig:sln-nist08}
 \end{figure}
+
+The goal of the benchmark is to reach a relative error below
+$10^{-2}$~\% in the $H^1$-norm with as few DOFs as possible.
+We begin with adaptive $hp$-FEM with possible anisotropic refinements.
+The initial mesh is shown in Fig. \ref{fig:nist-8-hp-aniso} (left).
+In a few adaptivity steps, the polynomial degree of elements is increased
+anisotropically.
+The resulting mesh with 1160 DOF is shown in Fig. \ref{fig:nist-8-hp-aniso} (right).
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-8/mesh_hp_aniso_init.png}\ \
+\includegraphics[height=5cm]{nist/nist-8/mesh_hp_aniso.png}
+\vspace{-2mm}
+\caption{Initial mesh (left) and final mesh (right) for $hp$-FEM with anisotropic refinements.}
+\label{fig:nist-8-hp-aniso}
+\end{figure}
+
+The final relative error estimate in $H^1$-norm was 9.09848e-02 \%,
+and it was identical to the exact error in all printed digits.
+We also solved this benchmark with adaptive $h$-FEM
+with linear (left) and quadratic (right)
+elements, with anisotropic refinements enabled.
+Final meshes for the $h$-FEM computations are shown
+in Fig. \ref{fig:nist-8-h-aniso}.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-8/mesh_h1_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-8/mesh_h2_aniso.png}
+\vspace{-2mm}
+\caption{Final mesh for $h$-FEM anisotropic refinements with linear and quadratic elements.}
+\label{fig:nist-8-h-aniso}
+\end{figure}
+
+Figs. \ref{fig:nist-8-conv} compare all
+three approaches to automatic adaptivity from the point
+of view of DOF and CPU convergence.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-8/conv_dof_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-8/conv_cpu_aniso.png}
+\caption{DOF and CPU time convergence graphs.}
+\label{fig:nist-8-conv}
+\end{figure}

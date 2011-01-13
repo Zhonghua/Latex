@@ -10,7 +10,7 @@ The equation solved in this benchmark problem is the Poisson's equation.
 in the domain $\Omega = (0, 1)^2$, equipped with Dirichlet
 boundary conditions given by the exact solution.
 
-The exact solution is 
+The exact solution is
 \begin{equation}\label{exact-nist-4}
 u(x,y) = e^{-\alpha ((x - x_{loc})^{2} + (y - y_{loc})^{2})},
 \end{equation}
@@ -27,9 +27,9 @@ The solution of NIST-4 with $\alpha = 1000$, $(x_{loc}, y_{loc}) = (0.5, 0.5)$ i
 
 The goal of the benchmark is to reach a relative error below
 $10^{-2}$~\% in the $H^1$-norm with as few DOFs as possible.
-We begin with adaptive $hp$-FEM with possibly anisotropic refinements.
+We begin with adaptive $hp$-FEM with possible anisotropic refinements.
 The initial mesh is shown in Fig. \ref{fig:nist-4-hp-aniso} (left).
-In a few adaptivity steps, the polynomial degree of this domain is increased
+In a few adaptivity steps, the polynomial degree of elements is increased
 anisotropically.
 The resulting mesh with 1561 DOF is shown in Fig. \ref{fig:nist-4-hp-aniso} (right).
 
