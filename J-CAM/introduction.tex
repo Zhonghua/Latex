@@ -14,38 +14,32 @@ libMesh \cite{libmesh}, Phaml \cite{phaml}, PHG \cite{phg},
 %these problems can be overcome, there is not many benchmarks with known exact
 %solutions that are able to test various aspects of automatic adaptivity in
 %the appropriate manner.
-There is no common approach to test all adaptive 
-Finite Element algorithms. The obstacle in developing such an approach is that the codes differ in application platforms, ways of loading physical model, grid formats, boundary conditions handling, input/output formats and the list could go on. 
+There is no common approach to test adaptive 
+Finite Element algorithms. The obstacle in developing such an approach is that the codes differ in application platforms, ways of loading the physical model, grid formats, boundary conditions handling, input/output formats and the list could go on.
 
-In addition, some Finite Element codes are specifically designed to be used for a narrow profile of problems, which also limits the possibility of comparing their performance.
-For instance, MSC.NASTRAN is a universal Finite Element analysis software, 
+Moreover, some Finite Element codes are specifically designed to be used for a narrow profile of problems, which also limits the possibility of comparing their performance on a single problem.
+For instance, MSC.NASTRAN is a Finite Element analysis software, 
 which is widely used in the aerospace industry, ANSYS, ABAQUS and ADINA are 
 mostly used in civil engineering, and Ansoft is mainly used in electromagnetic 
-field analysis problems of electrical engineering and electronic engineering. 
-Therefore, in order to compare efficiency and robustness of the Finite Element codes, various test problems are required. 
+field analysis, problems of electrical engineering and electronic engineering. 
+Therefore, in order to compare efficiency and robustness of the Finite Element codes, various test problems are required.
 
-For some classical Finite Element problems, pre-processing needed for various codes differ greatly. As a result of the differences between the codes, the same algorithm may give different results and convergency development for the same problem.
+For some classical Finite Element problems, pre-processing needed for various codes differs greatly. As a result of the differences between the codes, the same algorithm may give different results and convergency behavior for the same problem.
 
 The criterion of performance for adaptive algorithms is the obtained accuracy as a function of the total number
-of DOF (degrees of freedom) and CPU time. However, this is quite difficult to establish
-for CPU time because the various codes were run on different hardware.
-It is common to compare different algorithms using a large test set
-with known exact solutions that are able to test various aspects of
-automatic adaptivity in the appropriate manner. 
+of DOFs (Degrees Of Freedom) and CPU time. However, this is quite difficult to establish for CPU time because the various codes may run on different hardware.
+
 At this point we would like to acknowledge the work of
 Dr. William Mitchell (NIST) who collected a suite of
-twelve benchmarks for adaptive FEM \cite{mitchell-1}. 
+twelve benchmarks for adaptive FEM \cite{mitchell-1}. The aim of these is to compare different algorithms using a test set of problems
+with known exact solutions that are able to test various aspects of
+automatic adaptivity in the appropriate manner.
 
-In this paper, we present a series of benchmark problems 
-with diverse solutions contained in \cite{mitchell-1}
-that are designed to test the ability to handle different 
-types of singularities, and other problems an adaptive algorithm must be able to cope with for different equations.
-
-The test problems and their solutions are formulated in Sections
+In this paper, we present the twelve benchmarks. The test problems and their exact solutions are formulated in Sections
 \ref{sec:bench-1} - \ref{sec:bench-12}. We also present solutions obtained by {\sc Hermes} library (http://hpfem.org/hermes). {\sc Hermes} is a multi-platform 
 open source C++ library for rapid development of adaptive $hp$-FEM 
-and $hp$-DG solvers. Each section begins with a short description
-of benchmark problem compared, then the numerical results are
+and $hp$-DG solvers. Each section also contains a short description
+of the benchmark problem, then the numerical results are
 presented and discussed. Conclusion and outlooks are offered
 in the last section of the paper.
 
