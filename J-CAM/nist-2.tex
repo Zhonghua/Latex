@@ -3,7 +3,7 @@
 
 This is a standard benchmark for adaptive FEM algorithms.
 A reentrant corner is nothing more than an internal or inside corner.
-It is a very frequent problem and it can cause the error of the solution 
+It is a very frequent problem and it can cause the error of the solution
 calculated by an adaptive method to converge very slowly or not to converge at all.
 The exact solution of this problem is smooth but it contains
 singular gradient in the reentrant corner.
@@ -20,6 +20,7 @@ boundary conditions given by the exact solution:
 \begin{equation}\label{exact-nist-2}
 u(x, y) = r^{\alpha}\sin(\alpha \theta),
 \end{equation}
+
 where $\alpha = \pi / \omega$, $r = \sqrt{x^2+y^2}$,
 and $\theta = tan^{-1}(y/x)$. Here $\omega $ determines
 the angle of the reentrant corner.
