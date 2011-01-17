@@ -14,8 +14,22 @@
 \address[label3]{University of Nevada, Reno, USA}
 
 \begin{abstract}
+Adaptive grid refinement is a critical component of algorithms for the numerical solution of partial differential equations (PDEs).
+The development of new algorithms and computer
+codes for the solution of PDEs usually involves the use of proof-of-concept test problems.
+
+It is common to compare different algorithms using a large test set, to evaluate the algorithm's overall quality, which lies in the ability to handle all kinds of problems, and also to determine the algorithm's strengths and weaknesses.
+
 In this paper we present a set of benchmarks that was designed to
-test and compare capabilities of handling diverse problems of adaptive Finite Element Method implementations. Each of the 12 benchmark is introduced, together with its exact solution. Then the solution obtained with the use of the multi-platform open source C++ library for rapid development of adaptive $hp$-FEM and $hp$-DG solvers {\sc Hermes}\footnote{http://hpfem.org/hermes} is shown, complemented with convergence graphs and comparison of the fully anisotropic hp-FEM to low-order FEM in terms of convergence.
+test and compare capabilities of handling diverse problems of
+adaptive Finite Element Method implementations.
+The problems exhibit various types of singularities, disruptions, and oscillations.
+
+Each of the benchmark problem is introduced, together with its exact solution.
+Then the solution obtained with the use of the multi-platform open source
+C++ library for rapid development of adaptive $hp$-FEM and $hp$-DG solvers {\sc Hermes}\footnote{http://hpfem.org/hermes} is shown,
+complemented with convergence graphs and comparison of the fully anisotropic
+$hp$-FEM to low-order FEM in terms of convergence.
 Overview of Hermes is given in the appendix.
 \end{abstract}
 
