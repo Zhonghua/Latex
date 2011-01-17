@@ -2,17 +2,17 @@
 \label{sec:bench-9}
 
 This is a standard benchmark for adaptive FEM algorithms. The exact solution is smooth but contains singular gradient in the re-entrant corner.
-The equation solved is the Poisson's equation.
+The equation solved is the Poisson's equation. (Note: we need more description...)
 
 \begin{equation} \label{wave-front}
--\Delta u = f,
+-\Delta u = f 
 \end{equation}
 in the domain $\Omega = (0, 1)^2$, equipped with Dirichlet boundary conditions
 given by the exact solution.
 
 The exact solution:
 \begin{equation}\label{exact-nist-9}
-u(x, y) = tan^{-1}(\alpha (r - r_{0})),
+u(x, y) = tan^{-1}(\alpha (r - r_{0})) 
 \end{equation}
 where $r = \sqrt{(x - x_{loc})^{2} + (y - y_{loc})^{2}}$.
 Here $(x_{loc}, y_{loc})$ is the center of the circular wave front,

@@ -2,21 +2,22 @@
 \label{sec:bench-12}
 
 The solution to this elliptic problem combines four difficulties seen in previous benchmarks (nist-2, nist-4, nist-6 and nist-9) in one problem.
-The equation solved is the Poisson's equation.
+The equation solved is the Poisson's equation. (Note: we need more description...)
 
 \begin{equation} \label{multiple}
--\Delta u = f,
+-\Delta u = f 
 \end{equation}
 in the L-shaped domain, equipped with Dirichlet boundary conditions
 given by the exact solution.
-
 The exact solution:
+
 \begin{equation}\label{exact-nist-12}
 u(x,y) =  r^{\alpha_{C} }\sin(\alpha_{C} \theta)
 + e^{-\alpha_{P} ((x - x_{P})^{2} + (y - y_{P})^{2})}
 + tan^{-1}(\alpha_{W} (r_{W} - r_{0}))
-+ e^{-(1 - y) / \epsilon},
++ e^{-(1 - y) / \epsilon}
 \end{equation}
+
 where $\alpha_C = \pi / \omega_C$, $r = \sqrt{x^2+y^2}$
 and $\theta = tan^{-1}(y/x)$, here $\omega_C$ determines
 the angle of the re-entrant corner.

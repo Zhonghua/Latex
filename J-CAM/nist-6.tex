@@ -2,7 +2,7 @@
 \label{sec:bench-6}
 
 Solution of this problem has a boundary layer along the right and top sides of the domain.
-It is a convection-diffusion equation with first order terms.
+It is a convection-diffusion equation with first order terms. (Note: we need more description...)
 
 \begin{equation} \label{boundary-layer}
 -\epsilon \nabla^{2} u + 2\frac{\partial u}{\partial x} + \frac{\partial u}{\partial y}= f
@@ -12,7 +12,7 @@ given by the exact solution.
 
 The exact solution:
 \begin{equation}\label{exact-nist-6}
-u(x,y) = (1 - e^{-(1 - x) / \epsilon})(1 - e^{-(1 - y) / \epsilon})cos(\pi (x + y)),
+u(x,y) = (1 - e^{-(1 - x) / \epsilon})(1 - e^{-(1 - y) / \epsilon})cos(\pi (x + y))
 \end{equation}
 where $\epsilon$ determines the strength of the boundary layer.
 The right-hand side $f$ is calculated by inserting (\ref{exact-nist-6}) into (\ref{boundary-layer}).
@@ -37,7 +37,6 @@ The resulting mesh with 591 DOF is shown in Fig. \ref{fig:nist-6-hp-aniso} (righ
 \centering
 \includegraphics[height=5cm]{nist/nist-6/mesh_hp_aniso_init.png}\ \
 \includegraphics[height=5cm]{nist/nist-6/mesh_hp_aniso.png}
-\vspace{-2mm}
 \caption{Initial mesh (left) and final mesh (right) for $hp$-FEM with anisotropic refinements.}
 \label{fig:nist-6-hp-aniso}
 \end{figure}
@@ -54,7 +53,6 @@ in Fig. \ref{fig:nist-6-h-aniso}.
 \centering
 \includegraphics[height=5cm]{nist/nist-6/mesh_h1_aniso.png}\ \
 \includegraphics[height=5cm]{nist/nist-6/mesh_h2_aniso.png}
-\vspace{-2mm}
 \caption{Final mesh for $h$-FEM anisotropic refinements with linear and quadratic elements.}
 \label{fig:nist-6-h-aniso}
 \end{figure}

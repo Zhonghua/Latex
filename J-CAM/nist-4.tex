@@ -2,11 +2,11 @@
 \label{sec:bench-4}
 
 This problem has an exponential peak in the interior of the domain.
-The equation solved in this benchmark problem is the Poisson's equation. 
+The equation solved in this benchmark problem is the Poisson's equation.
 (Note: we need more description...)
 
 \begin{equation} \label{poisson-peak}
--\Delta u = f,
+-\Delta u = f 
 \end{equation}
 
 in the domain $\Omega = (0, 1)^2$, equipped with Dirichlet
@@ -14,13 +14,13 @@ boundary conditions given by the exact solution.
 The exact solution is
 
 \begin{equation}\label{exact-nist-4}
-u(x,y) = e^{-\alpha ((x - x_{loc})^{2} + (y - y_{loc})^{2})},
+u(x,y) = e^{-\alpha ((x - x_{loc})^{2} + (y - y_{loc})^{2})}
 \end{equation}
 
-where $(x_{loc}, y_{loc})$ is the location of the peak, 
+where $(x_{loc}, y_{loc})$ is the location of the peak,
 and $\alpha$ determines the strength of the peak.
 The right-hand side $f$ is calculated by inserting (\ref{exact-nist-4}) into (\ref{poisson-peak}).
-The solution of NIST-4 with $\alpha = 1000$, 
+The solution of NIST-4 with $\alpha = 1000$,
 $(x_{loc}, y_{loc}) = (0.5, 0.5)$ is shown in Fig. \ref{fig:sln-nist04}.
 
 \begin{figure}[!ht]
@@ -32,9 +32,9 @@ $(x_{loc}, y_{loc}) = (0.5, 0.5)$ is shown in Fig. \ref{fig:sln-nist04}.
 
 The goal of the benchmark is to reach a relative error below
 $10^{-2}$~\% in the $H^1$-norm with as few DOFs as possible.
-We begin with adaptive $hp$-FEM, 
+We begin with adaptive $hp$-FEM,
 the initial mesh is shown in Fig. \ref{fig:nist-4-hp-aniso} (left).
-After 12 adaptivity steps, the resulting mesh with 1561 DOF is shown 
+After 12 adaptivity steps, the resulting mesh with 1561 DOF is shown
 in Fig. \ref{fig:nist-4-hp-aniso} (right).
 
 \begin{figure}[!ht]

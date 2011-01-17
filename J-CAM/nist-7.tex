@@ -2,17 +2,17 @@
 \label{sec:bench-7}
 
 This is a singularity problem with the solution that is singular along the left part of the boundary.
-The equation solved in this problem is the Poisson's equation.
+The equation solved in this problem is the Poisson's equation. (Note: we need more description...)
 
 \begin{equation} \label{boundary-line-singularity}
--\Delta u = f,
+-\Delta u = f 
 \end{equation}
 in the domain $\Omega = (0, 1)^2$, equipped with Dirichlet boundary conditions
 given by the exact solution.
 
 The exact solution:
 \begin{equation}\label{exact-nist-7}
-u(x,y) = x^{\alpha},
+u(x,y) = x^{\alpha} 
 \end{equation}
 where $\alpha \geq 0.5$ determines the strength of the singularity.
 The right-hand side $f$ is calculated by inserting (\ref{exact-nist-7}) into (\ref{boundary-line-singularity}).
