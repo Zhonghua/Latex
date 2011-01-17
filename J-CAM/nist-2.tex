@@ -12,6 +12,7 @@ The equation solved is the Laplace's equation.
 \begin{equation} \label{laplace}
 -\Delta u = 0,
 \end{equation}
+
 in the domain $\Omega = (-1, 1)^2$, with a unit square
 section removed from the bottom part of the positive $x$ axis.
 Equation (\ref{laplace}) equipped with Dirichlet
@@ -33,15 +34,13 @@ is shown in Fig. \ref{fig:sln-nist02}.
 \caption{The solution to NIST-2 benchmark problem.}
 \label{fig:sln-nist02}
 \end{figure}
-\noindent
 
 The goal of the benchmark is to reach a relative error below
 $10^{-1}$~\% in the $H^1$-norm with as few DOFs as possible.
-We begin with adaptive $hp$-FEM with possible anisotropic refinements.
-The initial mesh is shown in Fig. \ref{fig:nist-2-hp-aniso} (left).
-In a few adaptivity steps, the polynomial degree of elements is increased
-anisotropically.
-The resulting mesh with 622 DOF is shown in Fig. \ref{fig:nist-2-hp-aniso} (right).
+We begin with adaptive $hp$-FEM, 
+the initial mesh is shown in Fig. \ref{fig:nist-2-hp-aniso} (left).
+After 13 adaptivity steps, the resulting mesh with 622 DOF is shown 
+in Fig. \ref{fig:nist-2-hp-aniso} (right).
 
 \begin{figure}[!ht]
 \centering
@@ -69,7 +68,7 @@ in Fig. \ref{fig:nist-2-h-aniso}.
 \label{fig:nist-2-h-aniso}
 \end{figure}
 
-Figs. \ref{fig:nist-2-conv} compare all
+Finally, Figs. \ref{fig:nist-2-conv} compare all
 three approaches to automatic adaptivity from the point
 of view of DOF and CPU convergence.
 
