@@ -21,16 +21,12 @@ Here $p$ is a parameter, determining the polynomial degree of the exact solution
 \caption{The solution to NIST-1 benchmark problem.}
 \label{fig:sln-nist01}
 \end{figure}
-\noindent
 
 The goal of the benchmark is to reach a relative error below
-$10^{-2}$~\% in the $H^1$-norm with as few degrees of freedom (DOF)
-as possible.
+$10^{-2}$~\% in the $H^1$-norm with as few degrees of freedom (DOF) as possible.
 We begin with the adaptive $hp$-FEM with possible anisotropic refinements (adaptivity mode
 HP\_ANISO\_H in {\sc Hermes}). The initial mesh is shown in Fig. \ref{fig:nist-1-hp-aniso} (left).
-In a few adaptivity steps, the polynomial degree of elements is increased
-anisotropically.
-The resulting mesh with 769 DOF is shown in Fig. \ref{fig:nist-1-hp-aniso} (right).
+After 11 adaptivity steps, the resulting mesh with 769 DOF is shown in Fig. \ref{fig:nist-1-hp-aniso} (right).
 
 \begin{figure}[!ht]
 \centering
@@ -41,7 +37,7 @@ The resulting mesh with 769 DOF is shown in Fig. \ref{fig:nist-1-hp-aniso} (righ
 \label{fig:nist-1-hp-aniso}
 \end{figure}
 
-The final relative error estimate in $H^1$-norm was 3.91108e-03 \%,
+The final relative error estimate in $H^1$-norm was 4.69543e-03 \%,
 and it was identical to the exact error in all printed digits.
 We also solved this benchmark with adaptive $h$-FEM
 with linear (left) and quadratic (right)
@@ -58,8 +54,8 @@ in Fig. \ref{fig:nist-1-h-aniso}.
 \label{fig:nist-1-h-aniso}
 \end{figure}
 
-Figs. \ref{fig:nist-1-conv} compare all
-three approaches to automatic adaptivity  from the point
+Finally, Figs. \ref{fig:nist-1-conv} compare all
+three approaches to automatic adaptivity from the point
 of view of DOF and CPU convergence.
 
 \begin{figure}[!ht]
