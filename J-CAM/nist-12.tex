@@ -5,8 +5,9 @@ The solution to this elliptic problem combines four difficulties seen in previou
 The equation solved is the Poisson's equation. (Note: we need more description...)
 
 \begin{equation} \label{multiple}
--\Delta u = f 
+-\Delta u = f
 \end{equation}
+
 in the L-shaped domain, equipped with Dirichlet boundary conditions
 given by the exact solution.
 The exact solution:
@@ -30,8 +31,7 @@ center of the circle, and $\alpha_W$ gives
 the steepness of the wave front. The parameter $\epsilon$ determines the
 strength of the boundary layer, the boundary layer was placed on $y = -1$.
 The right-hand side $f$ is calculated by inserting (\ref{exact-nist-12})
-into (\ref{multiple}). \\
-
+into (\ref{multiple}). 
 The solution of NIST-12 with $\omega_C = 3 \pi /2$,
 $(x_{W}, y_{W}) = (0, -3/4)$, $r_{0} = 3/4$, $\alpha_{W} = 200$,
 $(x_{P}, y_{P}) = (\sqrt{5} / 4, -1/4)$,
@@ -46,17 +46,15 @@ $\epsilon = 1/100$ is shown in Fig. \ref{fig:sln-nist12}.
 
 The goal of the benchmark is to reach a relative error below
 $10^{-1}$~\% in the $H^1$-norm with as few DOFs as possible.
-We begin with adaptive $hp$-FEM with possible anisotropic refinements.
-The initial mesh is shown in Fig. \ref{fig:nist-12-hp-aniso} (left).
-In a few adaptivity steps, the polynomial degree of elements is increased
-anisotropically.
-The resulting mesh with 4438 DOF is shown in Fig. \ref{fig:nist-12-hp-aniso} (right).
+We begin with adaptive $hp$-FEM, 
+the initial mesh is shown in Fig. \ref{fig:nist-12-hp-aniso} (left).
+After 26 adaptivity steps, the resulting mesh with 4438 DOF is shown 
+in Fig. \ref{fig:nist-12-hp-aniso} (right).
 
 \begin{figure}[!ht]
 \centering
 \includegraphics[height=5cm]{nist/nist-12/mesh_hp_aniso_init.png}\ \
 \includegraphics[height=5cm]{nist/nist-12/mesh_hp_aniso.png}
-\vspace{-2mm}
 \caption{Initial mesh (left) and final mesh (right) for $hp$-FEM with anisotropic refinements.}
 \label{fig:nist-12-hp-aniso}
 \end{figure}
@@ -73,12 +71,11 @@ in Fig. \ref{fig:nist-12-h-aniso}.
 \centering
 \includegraphics[height=5cm]{nist/nist-12/mesh_h1_aniso.png}\ \
 \includegraphics[height=5cm]{nist/nist-12/mesh_h2_aniso.png}
-\vspace{-2mm}
 \caption{Final mesh for $h$-FEM anisotropic refinements with linear and quadratic elements.}
 \label{fig:nist-12-h-aniso}
 \end{figure}
 
-Figs. \ref{fig:nist-12-conv} compare all
+Finally, Figs. \ref{fig:nist-12-conv} compare all
 three approaches to automatic adaptivity from the point
 of view of DOF and CPU convergence.
 

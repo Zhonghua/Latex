@@ -7,13 +7,14 @@ It is a convection-diffusion equation with first order terms. (Note: we need mor
 \begin{equation} \label{boundary-layer}
 -\epsilon \nabla^{2} u + 2\frac{\partial u}{\partial x} + \frac{\partial u}{\partial y}= f
 \end{equation}
-in the domain $\Omega = (-1, 1)^2$, equipped with Dirichlet boundary condition
-given by the exact solution.
 
-The exact solution:
+in the domain $\Omega = (-1, 1)^2$, equipped with Dirichlet boundary condition
+given by the exact solution. The exact solution:
+
 \begin{equation}\label{exact-nist-6}
 u(x,y) = (1 - e^{-(1 - x) / \epsilon})(1 - e^{-(1 - y) / \epsilon})cos(\pi (x + y))
 \end{equation}
+
 where $\epsilon$ determines the strength of the boundary layer.
 The right-hand side $f$ is calculated by inserting (\ref{exact-nist-6}) into (\ref{boundary-layer}).
 The solution of NIST-6 with $\epsilon = 10^{-1}$ is shown in Fig. \ref{fig:sln-nist06}.
@@ -27,11 +28,10 @@ The solution of NIST-6 with $\epsilon = 10^{-1}$ is shown in Fig. \ref{fig:sln-n
 
 The goal of the benchmark is to reach a relative error below
 $10^{-3}$~\% in the $H^1$-norm with as few DOFs as possible.
-We begin with adaptive $hp$-FEM with possible anisotropic refinements.
-The initial mesh is shown in Fig. \ref{fig:nist-6-hp-aniso} (left).
-In a few adaptivity steps, the polynomial degree of elements is increased
-anisotropically.
-The resulting mesh with 591 DOF is shown in Fig. \ref{fig:nist-6-hp-aniso} (right).
+We begin with adaptive $hp$-FEM, 
+the initial mesh is shown in Fig. \ref{fig:nist-6-hp-aniso} (left).
+After 18 adaptivity steps, the resulting mesh with 591 DOF is shown 
+in Fig. \ref{fig:nist-6-hp-aniso} (right).
 
 \begin{figure}[!ht]
 \centering
@@ -57,7 +57,7 @@ in Fig. \ref{fig:nist-6-h-aniso}.
 \label{fig:nist-6-h-aniso}
 \end{figure}
 
-Figs. \ref{fig:nist-6-conv} compare all
+Finally, Figs. \ref{fig:nist-6-conv} compare all
 three approaches to automatic adaptivity from the point
 of view of DOF and CPU convergence.
 

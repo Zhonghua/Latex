@@ -8,19 +8,25 @@ anisotropic element refinements. The equation solved is the Poisson's equation.
 \begin{equation} \label{interior}
 -\Delta u = f
 \end{equation}
-in the domain $\Omega = (-1, 1)^2$, equipped with a zero
-Neumann boundary condition on left edge, Dirichlet boundary conditions given by the exact solution on the rest of the boundary.
 
+in the domain $\Omega = (-1, 1)^2$, equipped with a zero
+Neumann boundary condition on left edge, Dirichlet boundary 
+conditions given by the exact solution on the rest of the boundary.
 The exact solution:
-\begin{equation}\label{exact-nist-10-1}
-u(x,y) = \cos(Ky)\ \ \ \mbox{for}\ x \le 0
-\end{equation}
-\begin{equation}\label{exact-nist-10-2}
+
+\begin{equation}\label{exact-nist-10}
+\left\{
+\begin{array}{l}
+\displaystyle
+u(x,y) = \cos(Ky)\ \ \ \mbox{for}\ x \le 0 \\
 u(x,y) = \cos(Ky) + x^{\alpha}\ \ \ \mbox{for}\ x > 0
+\end{array}
+\right.
 \end{equation}
+
 where $K$ and $\alpha$ are real constants.
 The right-hand side $f$ is calculated by inserting
-(\ref{exact-nist-10-1}) and (\ref{exact-nist-10-2}) into (\ref{wave-front}).
+(\ref{exact-nist-10}) into (\ref{interior}).
 The solution of NIST-10 with $K = \pi/2$ and
 $\alpha = 2.01$ is shown in Fig. \ref{fig:sln-nist10}.
 
@@ -33,11 +39,10 @@ $\alpha = 2.01$ is shown in Fig. \ref{fig:sln-nist10}.
 
 The goal of the benchmark is to reach a relative error below
 $10^{-4}$~\% in the $H^1$-norm with as few DOFs as possible.
-We begin with adaptive $hp$-FEM with possible anisotropic refinements.
-The initial mesh is shown in Fig. \ref{fig:nist-10-hp-aniso} (left).
-In a few adaptivity steps, the polynomial degree of elements is increased
-anisotropically.
-The resulting mesh with 381 DOF is shown in Fig. \ref{fig:nist-10-hp-aniso} (right).
+We begin with adaptive $hp$-FEM, 
+the initial mesh is shown in Fig. \ref{fig:nist-10-hp-aniso} (left).
+After 14 adaptivity steps, the resulting mesh with 381 DOF is shown 
+in Fig. \ref{fig:nist-10-hp-aniso} (right).
 
 \begin{figure}[!ht]
 \centering
@@ -65,7 +70,7 @@ in Fig. \ref{fig:nist-10-h-aniso}.
 \label{fig:nist-10-h-aniso}
 \end{figure}
 
-Figs. \ref{fig:nist-10-conv} compare all
+Finally, Figs. \ref{fig:nist-10-conv} compare all
 three approaches to automatic adaptivity from the point
 of view of DOF and CPU convergence.
 

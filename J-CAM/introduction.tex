@@ -4,43 +4,53 @@
 The number of adaptive Finite Element codes is growing.
 Let us mention (in alphabetical order): Alberta
 \cite{alberta}, DealII \cite{dealii}, FEniCS
-\cite{fenics}, FETK \cite{fetk}, Hermes \cite{hermes}, 
-libMesh \cite{libmesh}, Phaml \cite{phaml}, PHG \cite{phg}, 
+\cite{fenics}, FETK \cite{fetk}, Hermes \cite{hermes},
+libMesh \cite{libmesh}, Phaml \cite{phaml}, PHG \cite{phg},
 2dhp90 \cite{2dhp90}, and others.
-%A natural question that arises is how they perform compared to each other?
-%Unfortunately, comparison efforts are usually inhibited at the very beginning
-%by diverse installation requirements, number of supporting libraries, non-unified
-%input and output data formats, and different usage of various codes. And even if
-%these problems can be overcome, there is not many benchmarks with known exact
-%solutions that are able to test various aspects of automatic adaptivity in
-%the appropriate manner.
-There is no common approach to test adaptive 
-Finite Element algorithms. The obstacle in developing such an approach is that the codes differ in application platforms, ways of loading the physical model, grid formats, boundary conditions handling, input/output formats and the list could go on.
+There is no common approach to test adaptive
+Finite Element algorithms. The obstacle in developing such an approach is that 
+the codes differ in application platforms, ways of loading the physical model, 
+grid formats, boundary conditions handling, input/output formats and the list could go on.
 
-Moreover, some Finite Element codes are specifically designed to be used for a narrow profile of problems, which also limits the possibility of comparing their performance on a single problem.
-For instance, MSC.NASTRAN is a Finite Element analysis software, 
-which is widely used in the aerospace industry, ANSYS, ABAQUS and ADINA are 
-mostly used in civil engineering, and Ansoft is mainly used in electromagnetic 
-field analysis, problems of electrical engineering and electronic engineering. 
-Therefore, in order to compare efficiency and robustness of the Finite Element codes, various test problems are required.
+Moreover, some Finite Element codes are specifically designed to be used for 
+a narrow profile of problems, which also limits the possibility of comparing 
+their performance on a single problem.
+For instance, MSC.NASTRAN is a Finite Element analysis software,
+which is widely used in the aerospace industry, ANSYS, ABAQUS and ADINA are
+mostly used in civil engineering, and Ansoft is mainly used in electromagnetic
+field analysis, problems of electrical engineering and electronic engineering.
+Therefore, in order to compare efficiency and robustness of the Finite Element 
+codes, various test problems are required.
 
-For some classical Finite Element problems, pre-processing needed for various codes differs greatly. As a result of the differences between the codes, the same algorithm may give different results and convergency behavior for the same problem.
+For some classical Finite Element problems, pre-processing 
+needed for various codes differs greatly. 
+As a result of the differences between the codes, 
+the same algorithm may give different results and convergency 
+behavior for the same problem.
 
-The criterion of performance for adaptive algorithms is the obtained accuracy as a function of the total number
-of DOFs (Degrees Of Freedom) and CPU time. However, this is quite difficult to establish for CPU time because the various codes may run on different hardware.
+The criterion of performance for adaptive algorithms 
+is the obtained accuracy as a function of the total number
+of DOFs (Degrees Of Freedom) and CPU time. However, 
+this is quite difficult to establish for CPU time because 
+the various codes may run on different hardware.
 
 At this point we would like to acknowledge the work of
 Dr. William Mitchell (NIST) who collected a suite of
-twelve benchmarks for adaptive FEM \cite{mitchell-1}. The aim of these is to compare different algorithms using a test set of problems
-with known exact solutions that are able to test various aspects of
-automatic adaptivity in the appropriate manner.
+twelve benchmarks for adaptive FEM \cite{mitchell-1}. 
+The aim of these is to compare different algorithms 
+using a test set of problems with known exact solutions 
+that are able to test various aspects of automatic 
+adaptivity in the appropriate manner.
 
-In this paper, we present the twelve benchmarks. The test problems and their exact solutions are formulated in Sections
-\ref{sec:bench-1} - \ref{sec:bench-12}. We also present solutions obtained by {\sc Hermes} library (http://hpfem.org/hermes). {\sc Hermes} is a multi-platform 
-open source C++ library for rapid development of adaptive $hp$-FEM 
-and $hp$-DG solvers. Each section also contains a short description
-of the benchmark problem, then the numerical results are
-presented and discussed. Conclusion and outlooks are offered
-in the last section of the paper.
+In this paper, we solve the twelve benchmarks. 
+The test problems and their exact solutions are 
+formulated in Sections \ref{sec:bench-1} - \ref{sec:bench-12}. 
+We also present solutions obtained by {\sc Hermes} library (http://hpfem.org/hermes). 
+{\sc Hermes} is a multi-platform open source C++ 
+library for rapid development of adaptive $hp$-FEM
+and $hp$-DG solvers. Each section also contains a short 
+description of the benchmark problem, then the numerical 
+results are presented and discussed. Conclusion and outlooks 
+are offered in the last section of the paper.
 
 
