@@ -29,7 +29,7 @@ conditions on the rest of the boundary:
 \right.
 \end{equation}
 
-where $p(x, y)$, $q(x, y)$, $c(x, y)$, $g(x, y)$, and the right hand 
+where $p(x, y)$, $q(x, y)$, $c(x, y)$, $g(x, y)$, and the right hand
 side $f$ are constant functions (different in respective materials).
 The solution of NIST-5 is shown in Fig. \ref{fig:sln-nist05}.
 
@@ -41,10 +41,10 @@ The solution of NIST-5 is shown in Fig. \ref{fig:sln-nist05}.
 \end{figure}
 
 The goal of the benchmark is to reach a relative error below
-$10^{-1}$~\% in the $H^1$-norm with as few DOFs as possible.
+$1.5e-02$~\% in the $H^1$-norm with as few DOFs as possible.
 We begin with adaptive $hp$-FEM,
 the initial mesh is shown in Fig. \ref{fig:nist-5-hp-aniso} (left).
-After 28 adaptivity steps, the resulting mesh with 2711 DOF is shown
+After 32 adaptivity steps, the resulting mesh with 7450 DOF is shown
 in Fig. \ref{fig:nist-5-hp-aniso} (right).
 
 \begin{figure}[!ht]
@@ -56,7 +56,7 @@ in Fig. \ref{fig:nist-5-hp-aniso} (right).
 \label{fig:nist-5-hp-aniso}
 \end{figure}
 
-The final relative error estimate in $H^1$-norm was 9.17542e-02 \%.
+The final relative error estimate in $H^1$-norm was 1.46775e-02 \%.
 We also solved this benchmark with adaptive $h$-FEM
 with linear (left) and quadratic (right)
 elements, with anisotropic refinements enabled.
