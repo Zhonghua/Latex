@@ -1,15 +1,18 @@
 \section{Benchmark NIST-9 "Wave Front"}
 \label{sec:bench-9}
 
-This is a standard benchmark for adaptive FEM algorithms. The exact solution is smooth but contains singular gradient in the re-entrant corner.
-The equation solved is the Poisson's equation. (Note: we need more description...)
+This is a commonly used example for testing the performance of
+adaptive refinement algorithms on the wave front and the singularity \cite{mitchell-1, mitchell-2}.
+The solution has a sharp circular wave front in the interior of the
+domain, with a singularity at the center of the circle.
+The equation solved is the Poisson's equation.
 
 \begin{equation} \label{wave-front}
 -\Delta u = f
 \end{equation}
 
 in the domain $\Omega = (0, 1)^2$, equipped with Dirichlet boundary conditions
-given by the exact solution. The exact solution: 
+given by the exact solution. The exact solution:
 
 \begin{equation}\label{exact-nist-9}
 u(x, y) = tan^{-1}(\alpha (r - r_{0}))
@@ -32,9 +35,9 @@ $r_{0} = 0.25$ is shown in Fig. \ref{fig:sln-nist09}.
 
 The goal of the benchmark is to reach a relative error below
 $10^{-1}$~\% in the $H^1$-norm with as few DOFs as possible.
-We begin with adaptive $hp$-FEM, 
+We begin with adaptive $hp$-FEM,
 the initial mesh is shown in Fig. \ref{fig:nist-9-hp-aniso} (left).
-After 13 adaptivity steps, the resulting mesh with 1465 DOF is shown 
+After 13 adaptivity steps, the resulting mesh with 1465 DOF is shown
 in Fig. \ref{fig:nist-9-hp-aniso} (right).
 
 \begin{figure}[!ht]

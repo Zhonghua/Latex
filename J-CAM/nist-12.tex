@@ -1,8 +1,13 @@
 \section{Benchmark NIST-12 "Multiple Difficulties"}
 \label{sec:bench-12}
 
-The solution to this elliptic problem combines four difficulties seen in previous benchmarks (nist-2, nist-4, nist-6 and nist-9) in one problem.
-The equation solved is the Poisson's equation. (Note: we need more description...)
+The solution to this problem combines four types of benchmarks 
+seen in previous sections into the same problem, 
+where the wave front intersects the boundary
+layer and corner singularity, and the peak is centered on the wave front.
+%It contains a point singularity due to a reentrant corner, a circular wave front (which might
+%include a singularity at the center of the circle), a sharp peak, and a boundary layer.
+The equation solved is the Poisson's equation. 
 
 \begin{equation} \label{multiple}
 -\Delta u = f
@@ -31,7 +36,7 @@ center of the circle, and $\alpha_W$ gives
 the steepness of the wave front. The parameter $\epsilon$ determines the
 strength of the boundary layer, the boundary layer was placed on $y = -1$.
 The right-hand side $f$ is calculated by inserting (\ref{exact-nist-12})
-into (\ref{multiple}). 
+into (\ref{multiple}).
 The solution of NIST-12 with $\omega_C = 3 \pi /2$,
 $(x_{W}, y_{W}) = (0, -3/4)$, $r_{0} = 3/4$, $\alpha_{W} = 200$,
 $(x_{P}, y_{P}) = (\sqrt{5} / 4, -1/4)$,
@@ -46,9 +51,9 @@ $\epsilon = 1/100$ is shown in Fig. \ref{fig:sln-nist12}.
 
 The goal of the benchmark is to reach a relative error below
 $10^{-1}$~\% in the $H^1$-norm with as few DOFs as possible.
-We begin with adaptive $hp$-FEM, 
+We begin with adaptive $hp$-FEM,
 the initial mesh is shown in Fig. \ref{fig:nist-12-hp-aniso} (left).
-After 26 adaptivity steps, the resulting mesh with 4438 DOF is shown 
+After 26 adaptivity steps, the resulting mesh with 4438 DOF is shown
 in Fig. \ref{fig:nist-12-hp-aniso} (right).
 
 \begin{figure}[!ht]

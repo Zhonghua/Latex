@@ -1,25 +1,30 @@
 \section{Benchmark NIST-11 "Intersecting Interfaces"}
 \label{sec:bench-11}
 
-The solution to this elliptic problem contains a severe
+This is a Poisson problem with intersecting interfaces, 
+divide the plane into four regions. 
+The solution to this problem contains a severe
 singularity that poses a challenge to adaptive methods.
-The equation solved is given by (Note: we need more description...)
+The equation solved is given by 
 
 \begin{equation} \label{intersecting}
 -\nabla \cdot (a(x,y) \nabla u) = 0
 \end{equation}
 
 where the parameter $a$ is piecewise-constant,
-$a(x,y) = R$ in the first and third quadrants,
+$a(x,y) = 161.4476387975881$ in the first and third quadrants,
 and $a(x,y) = 1$ in the remaining two quadrants.
 The domain of this problem is $\Omega = (-1, 1)^2$, equipped with
 Dirichlet boundary conditions given by the exact solution.
-The exact solution: 
+The exact solution:
 
 \begin{equation}\label{exact-nist-11}
-u(x,y) = r^{a} \mu
+u(x,y) = r^{a_1} \mu (\theta)
 \end{equation}
 
+where $a_1$ and $\mu (\theta)$ is given in \cite{mitchell-1}.
+The right-hand side $f$ is calculated by inserting
+(\ref{exact-nist-11}) into (\ref{intersecting}).
 The solution of NIST-11 is shown in Fig. \ref{fig:sln-nist11}.
 
 \begin{figure}[!ht]
@@ -31,10 +36,10 @@ The solution of NIST-11 is shown in Fig. \ref{fig:sln-nist11}.
 
 The goal of the benchmark is to reach a relative error below
 $0.5$~\% in the $H^1$-norm with as few DOFs as possible.
-We begin with adaptive $hp$-FEM, 
+We begin with adaptive $hp$-FEM,
 the initial mesh is shown in Fig. \ref{fig:nist-11-hp-aniso} (left).
-After 46 adaptivity steps, the resulting mesh with 591 DOF is shown 
-in Fig. \ref{fig:nist-11-hp-aniso} (right). 
+After 46 adaptivity steps, the resulting mesh with 591 DOF is shown
+in Fig. \ref{fig:nist-11-hp-aniso} (right).
 
 \begin{figure}[!ht]
 \centering

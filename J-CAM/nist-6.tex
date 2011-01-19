@@ -1,8 +1,9 @@
 \section{Benchmark NIST-6 "Boundary Layer"}
 \label{sec:bench-6}
 
-Solution of this problem has a boundary layer along the right and top sides of the domain.
-It is a convection-diffusion equation with first order terms. (Note: we need more description...)
+This example is a singularly perturbed problem with known exact solution that exhibits
+a boundary layer along the right and top sides of the domain.
+It is a convection-diffusion equation with first order terms.
 
 \begin{equation} \label{boundary-layer}
 -\epsilon \nabla^{2} u + 2\frac{\partial u}{\partial x} + \frac{\partial u}{\partial y}= f
@@ -17,7 +18,8 @@ u(x,y) = (1 - e^{-(1 - x) / \epsilon})(1 - e^{-(1 - y) / \epsilon})cos(\pi (x + 
 
 where $\epsilon$ determines the strength of the boundary layer.
 The right-hand side $f$ is calculated by inserting (\ref{exact-nist-6}) into (\ref{boundary-layer}).
-The solution of NIST-6 with $\epsilon = 10^{-1}$ is shown in Fig. \ref{fig:sln-nist06}.
+The solution of NIST-6 containing a boundary layer
+with $\epsilon = 10^{-1}$ is shown in Fig. \ref{fig:sln-nist06}.
 
 \begin{figure}[!ht]
 \centering
@@ -28,9 +30,9 @@ The solution of NIST-6 with $\epsilon = 10^{-1}$ is shown in Fig. \ref{fig:sln-n
 
 The goal of the benchmark is to reach a relative error below
 $10^{-3}$~\% in the $H^1$-norm with as few DOFs as possible.
-We begin with adaptive $hp$-FEM, 
+We begin with adaptive $hp$-FEM,
 the initial mesh is shown in Fig. \ref{fig:nist-6-hp-aniso} (left).
-After 18 adaptivity steps, the resulting mesh with 591 DOF is shown 
+After 18 adaptivity steps, the resulting mesh with 591 DOF is shown
 in Fig. \ref{fig:nist-6-hp-aniso} (right).
 
 \begin{figure}[!ht]

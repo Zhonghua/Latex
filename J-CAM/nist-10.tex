@@ -3,14 +3,13 @@
 
 This is another example with anisotropic solution that is suitable for testing
 anisotropic element refinements. The equation solved is the Poisson's equation.
-(Note: we need more description...)
 
 \begin{equation} \label{interior}
 -\Delta u = f
 \end{equation}
 
 in the domain $\Omega = (-1, 1)^2$, equipped with a zero
-Neumann boundary condition on left edge, Dirichlet boundary 
+Neumann boundary condition on left edge, Dirichlet boundary
 conditions given by the exact solution on the rest of the boundary.
 The exact solution:
 
@@ -24,24 +23,24 @@ u(x,y) = \cos(Ky) + x^{\alpha}\ \ \ \mbox{for}\ x > 0
 \right.
 \end{equation}
 
-where $K$ and $\alpha$ are real constants.
+where $K$ and $\alpha$ are real constants. 
 The right-hand side $f$ is calculated by inserting
 (\ref{exact-nist-10}) into (\ref{interior}).
-The solution of NIST-10 with $K = \pi/2$ and
+The solution of NIST-10 containing a line singularity with $K = \pi/2$ and
 $\alpha = 2.01$ is shown in Fig. \ref{fig:sln-nist10}.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[height=6cm]{nist/nist-10/solution.png}
+\includegraphics[height=5cm]{nist/nist-10/solution.png}
 \caption{The solution to NIST-10 benchmark problem.}
 \label{fig:sln-nist10}
 \end{figure}
 
 The goal of the benchmark is to reach a relative error below
 $10^{-4}$~\% in the $H^1$-norm with as few DOFs as possible.
-We begin with adaptive $hp$-FEM, 
+We begin with adaptive $hp$-FEM,
 the initial mesh is shown in Fig. \ref{fig:nist-10-hp-aniso} (left).
-After 14 adaptivity steps, the resulting mesh with 381 DOF is shown 
+After 14 adaptivity steps, the resulting mesh with 381 DOF is shown
 in Fig. \ref{fig:nist-10-hp-aniso} (right).
 
 \begin{figure}[!ht]

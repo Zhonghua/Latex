@@ -2,14 +2,14 @@
 \label{sec:bench-7}
 
 This is a singularity problem with the solution that is singular along the left part of the boundary.
-The equation solved in this problem is the Poisson's equation. (Note: we need more description...)
+The equation solved in this problem is the Poisson's equation. 
 
 \begin{equation} \label{boundary-line-singularity}
 -\Delta u = f
 \end{equation}
 
 in the domain $\Omega = (0, 1)^2$, equipped with Dirichlet boundary conditions
-given by the exact solution. The exact solution: 
+given by the exact solution. The exact solution:
 
 \begin{equation}\label{exact-nist-7}
 u(x,y) = x^{\alpha}
@@ -28,9 +28,9 @@ The solution of NIST-7 with $\alpha = 0.6$ is shown in Fig. \ref{fig:sln-nist07}
 
 The goal of the benchmark is to reach a relative error below
 $1.5$~\% in the $H^1$-norm with as few DOFs as possible.
-We begin with adaptive $hp$-FEM, 
+We begin with adaptive $hp$-FEM,
 the initial mesh is shown in Fig. \ref{fig:nist-7-hp-aniso} (left).
-After 43 adaptivity steps, the resulting mesh with 88 DOF is shown 
+After 43 adaptivity steps, the resulting mesh with 88 DOF is shown
 in Fig. \ref{fig:nist-7-hp-aniso} (right).
 
 \begin{figure}[!ht]
