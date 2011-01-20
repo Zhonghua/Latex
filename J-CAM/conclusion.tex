@@ -1,26 +1,19 @@
 \section{Conclusion and Outlook}
 \label{sec:conclusion}
 
-A set of benchmarks that can be used to assess the
-ability of adaptive FEM codes to handle for diverse
-problems have been presented in this paper.
-Numerical results with twelve test problems demonstrate
-that ......
+A challenging set of benchmarks aimed at testing adaptive Finite Element Method implementations in terms of handling diverse problems, and diverse obstacles in their solution, has been presented in this paper. 
 
-So far we have just solved linear PDE problems where $u$
-was a continuous approximation in the $H^1$ space.
-Hermes can also solve equations whose solutions lie in the space
-$Hcurl$, $Hdiv$ or $L^2$ and one can combine these spaces for PDE systems.
+The solutions and convergence rates obtained by the use of Hermes exemplify that modern adaptive FEM codes can handle a wide range of problems with relative ease. 
 
-The computations were performed on an Intel Core i3 based laptop PC
-operating under the 32 bit VMware Fedora 12 distribution
-of Linux with kernel 2.6.31.5-127.fc12.i686.PAE
-on Windows XP professional(1GB memory for VMware Workstation). 
+Hermes also allowed for the comparison of anisotropic hp-FEM to low order (anisotropic) h-FEM. Results of this comparison furnish evidence that hp-FEM consistently outperforms simple h- adaptivity on all kinds of problems, and that hp-FEM can achieve truly exponential convergence.
 
-The obtained rate confirms the theoretical estimates. 
-Notice that the hp strategy consistently outperforms the h adaptivity.
+The numerical results are given in such a way to make it possible to compare them to results obtained with another implementation of adaptive Finite Element Method. 
 
-The purpose of this papaer is to ......(coming soon.)
+In this paper we only solved linear PDE problems where the approximate solution $u$ was a continuous function from the $H^1$ space.
+Hermes can also solve equations whose solutions lie in spaces
+$Hcurl$, $Hdiv$ or $L^2$, and one can combine these spaces for systems of PFEs.
+
+The computations were performed on a standard laptop, with average performance.
 
 \section{Acknowledgment}
 
