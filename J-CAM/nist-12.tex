@@ -1,16 +1,14 @@
 \section{Benchmark NIST-12 "Multiple Difficulties"}
 \label{sec:bench-12}
 
-The solution to this problem combines four types of benchmarks 
-seen in previous sections into the same problem, 
-where the wave front intersects the boundary
+This problem combines four aspects of benchmarks 
+seen in previous sections (nist-2, nist-4, nist-6 and nist-9) into one problem. 
+The wave front intersects the boundary
 layer and corner singularity, and the peak is centered on the wave front.
-%It contains a point singularity due to a reentrant corner, a circular wave front (which might
-%include a singularity at the center of the circle), a sharp peak, and a boundary layer.
 The equation solved is the Poisson's equation. 
 
 \begin{equation} \label{multiple}
--\Delta u = f
+-\Delta u = f,
 \end{equation}
 
 in the L-shaped domain, equipped with Dirichlet boundary conditions
@@ -21,7 +19,7 @@ The exact solution:
 u(x,y) =  r^{\alpha_{C} }\sin(\alpha_{C} \theta)
 + e^{-\alpha_{P} ((x - x_{P})^{2} + (y - y_{P})^{2})}
 + tan^{-1}(\alpha_{W} (r_{W} - r_{0}))
-+ e^{-(1 - y) / \epsilon}
++ e^{-(1 - y) / \epsilon},
 \end{equation}
 
 where $\alpha_C = \pi / \omega_C$, $r = \sqrt{x^2+y^2}$

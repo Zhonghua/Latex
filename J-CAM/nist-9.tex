@@ -2,20 +2,20 @@
 \label{sec:bench-9}
 
 This is a commonly used example for testing the performance of
-adaptive refinement algorithms on the wave front and the singularity \cite{mitchell-1, mitchell-2}.
+adaptive refinement algorithms using a wave front and a singularity \cite{mitchell-1, mitchell-2}.
 The solution has a sharp circular wave front in the interior of the
 domain, with a singularity at the center of the circle.
 The equation solved is the Poisson's equation.
 
 \begin{equation} \label{wave-front}
--\Delta u = f
+-\Delta u = f,
 \end{equation}
 
 in the domain $\Omega = (0, 1)^2$, equipped with Dirichlet boundary conditions
 given by the exact solution. The exact solution:
 
 \begin{equation}\label{exact-nist-9}
-u(x, y) = tan^{-1}(\alpha (r - r_{0}))
+u(x, y) = tan^{-1}(\alpha (r - r_{0})),
 \end{equation}
 
 where $r = \sqrt{(x - x_{loc})^{2} + (y - y_{loc})^{2}}$.

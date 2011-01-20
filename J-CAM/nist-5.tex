@@ -2,21 +2,19 @@
 \label{sec:bench-5}
 
 This is a heat conduction problem in a nonhomogeneous material.
-It comes with an anisotropic solution with strong internal boundary
-layers and multiple singularities.
+It comes with an anisotropic solution with strong internal disruption
+layers and singularities.
 The solution has multiple point singularities in the interior at which
-more than three different materials meet which are stronger than those
+more than three different materials meet. These singularities are stronger than those
 corresponding to reentrant corners \cite{demkowicz-1}.
 The equation solved is given by
 
 \begin{equation} \label{heat-conduction}
 -\frac{\partial }{\partial x}\left(p(x, y)\frac{\partial u}{\partial x}\right)
--\frac{\partial }{\partial y}\left(q(x, y)\frac{\partial u}{\partial y}\right) = f
+-\frac{\partial }{\partial y}\left(q(x, y)\frac{\partial u}{\partial y}\right) = f,
 \end{equation}
 
-in the domain $\Omega = (0, 8.4) \times (0, 24)$, equipped with
-zero Neumann boundary condition on the left edge, Natural boundary
-conditions on the rest of the boundary:
+in the domain $\Omega = (0, 8.4) \times (0, 24)$. Boundary conditions are zero Neumann on left edge, Newton on the rest of the boundary:
 
 \begin{equation}
 \left\{
@@ -24,7 +22,7 @@ conditions on the rest of the boundary:
 \displaystyle p(x, y)\frac{\partial u}{\partial x}\nu_1 + q(x, y)\frac{\partial u}{\partial y}\nu_2 = g_{left}(x, y) \ \mbox{on} \  \Gamma_{left} \\
 \displaystyle p(x, y)\frac{\partial u}{\partial x}\nu_1 + q(x, y)\frac{\partial u}{\partial y}\nu_2 + c(x, y)u = g_{right}(x, y) \ \mbox{on} \ \Gamma_{right} \\
 \displaystyle p(x, y)\frac{\partial u}{\partial x}\nu_1 + q(x, y)\frac{\partial u}{\partial y}\nu_2 + c(x, y)u = g_{top}(x, y) \ \mbox{on} \ \Gamma_{top} \\
-\displaystyle p(x, y)\frac{\partial u}{\partial x}\nu_1 + q(x, y)\frac{\partial u}{\partial y}\nu_2 + c(x, y)u = g_{bottom}(x, y) \ \mbox{on} \ \Gamma_{bottom}
+\displaystyle p(x, y)\frac{\partial u}{\partial x}\nu_1 + q(x, y)\frac{\partial u}{\partial y}\nu_2 + c(x, y)u = g_{bottom}(x, y) \ \mbox{on} \ \Gamma_{bottom},
 \end{array}
 \right.
 \end{equation}
