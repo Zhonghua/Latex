@@ -109,15 +109,26 @@
 \address[label3]{University of Nevada, Reno, USA}
 
 \begin{abstract}
-In this paper we provide a set of difficulties that can be used to
-testing the ability of adaptive finite element algorithms to handle
-a variety of types solutions.
-In each example we show sample results obtained with the
-open source library {\sc Hermes}.\footnote{http://hpfem.org/hermes}
+Adaptive grid refinement is a critical component of algorithms for the numerical solution of partial differential equations (PDEs).
+The development of new algorithms and computer
+codes for the solution of PDEs usually involves the use of proof-of-concept test problems.
+
+It is common to compare different algorithms using a large test set, to evaluate the algorithm's overall quality, which lies in the ability to handle all kinds of problems, and also to determine the algorithm's strengths and weaknesses.
+
+In this paper we solve a set of benchmark problems devised by
+W. Mitchel at NIST \cite{mitchell-1}.
+The problems exhibit various types of singularities, disruptions, and oscillations.
+
+Each of the benchmark problem is introduced, together with its exact solution.
+Then the solution obtained with the use of the multi-platform open source
+C++ library for rapid development of adaptive $hp$-FEM and $hp$-DG solvers {\sc Hermes}\footnote{http://hpfem.org/hermes} is shown,
+complemented with convergence graphs and comparison of the fully anisotropic
+$hp$-FEM to low-order FEM in terms of convergence.
+Overview of Hermes is given in the appendix.
 \end{abstract}
 
 \begin{keyword}
-Benchmark problem \sep Anisotropic solution \sep Test problems \sep $hp$-Finite element method
+$hp$-FEM \sep FEM benchmark \sep anisotropic solution \sep test problems \sep finite element method \sep Hermes \sep Hermes2D
 %% keywords here, in the form: keyword \sep keyword
 %% MSC codes here, in the form: \MSC code \sep code
 %% or \MSC[2008] code \sep code (2000 is the default)
@@ -134,39 +145,67 @@ Benchmark problem \sep Anisotropic solution \sep Test problems \sep $hp$-Finite 
 \section{Introduction}
 \label{sec:intro}
 
-The number of adaptive finite element libraries is growing
--- let us mention (in alphabetical order) for example Alberta
+The number of adaptive Finite Element codes is growing.
+Let us mention (in alphabetical order): Alberta
 \cite{alberta}, DealII \cite{dealii}, FEniCS
-\cite{fenics}, FETK \cite{fetk}, Hermes \cite{hermes}, libMesh \cite{libmesh},
-Phaml \cite{phaml}, PHG \cite{phg}, 2dhp90 \cite{2dhp90} and there are many others.\\
-A natural question that arises is how do they compare to each other?
-Unfortunately, comparison efforts are usually inhibited at the very beginning
-by diverse installation requirements, supporting libraries, input and output
-data formats, and different usage of various codes. And even if these problems
-could be overcome, not many benchmarks with known exact solutions are
-available to test various aspects of automatic adaptivity.
-At this point we would like to acknowledge the pioneering work of Dr. William Mitchell
-(NIST) who not only collected a suite of 12 benchmark problems
-for adaptive FEM \cite{mitchell-1}, but who also implemented
-and compared several $hp$-adaptive finite element algorithms by various
-authors \cite{mitchell-2}.
-This paper presents twelve parametrized test problems with different behaved
-solutions (contained in \cite{mitchell-1}) that are
-designed to test the ability of adaptive algorithms.
-The test problems and their
-solutions are formulated in Sections \ref{sec:bench-1} - \ref{sec:bench-12}.
-{\sc Hermes} is an open source C++ library for
-rapid development of adaptive $hp$-FEM and $hp$-DG solvers.
-In each section we show for illustration sample results obtained with the open
-source {\sc Hermes} library (http://hpfem.org/hermes).
+\cite{fenics}, FETK \cite{fetk}, Hermes \cite{hermes},
+libMesh \cite{libmesh}, Phaml \cite{phaml}, PHG \cite{phg},
+2dhp90 \cite{2dhp90}, and others.
+There is no common approach to test adaptive
+Finite Element algorithms. The obstacle in developing such an approach is that
+the codes differ in application platforms, ways of loading the physical model,
+grid formats, boundary conditions handling, input/output formats and the list could go on.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Moreover, some Finite Element codes are specifically designed to be used for
+a narrow profile of problems, which also limits the possibility of comparing
+their performance on a single problem.
+For instance, MSC.NASTRAN is a Finite Element analysis software,
+which is widely used in the aerospace industry, ANSYS, ABAQUS and ADINA are
+mostly used in civil engineering, and Ansoft is mainly used in electromagnetic
+field analysis, problems of electrical engineering and electronic engineering.
+Therefore, in order to compare efficiency and robustness of the Finite Element
+codes, various test problems are required.
+
+For some classical Finite Element problems, pre-processing
+needed for various codes differs greatly.
+As a result of the differences between the codes,
+the same algorithm may give different results and convergency
+behavior for the same problem.
+
+The criterion of performance for adaptive algorithms
+is the obtained accuracy as a function of the total number
+of DOFs (Degrees Of Freedom) and CPU time. However,
+this is quite difficult to establish for CPU time because
+the various codes may run on different hardware.
+
+At this point we would like to acknowledge the work of
+Dr. William Mitchell (NIST) who collected a suite of
+twelve benchmarks for adaptive FEM \cite{mitchell-1}.
+The aim of these is to compare different algorithms
+using a test set of problems with known exact solutions
+that are able to test various aspects of automatic
+adaptivity in the appropriate manner.
+
+In this paper, we solve the twelve benchmarks.
+The test problems and their exact solutions are
+formulated in Sections \ref{sec:bench-1} - \ref{sec:bench-12}.
+We also present solutions obtained by {\sc Hermes} library (http://hpfem.org/hermes).
+{\sc Hermes} is a multi-platform open source C++
+library for rapid development of adaptive $hp$-FEM
+and $hp$-DG solvers. Each section also contains a short
+description of the benchmark problem, then the numerical
+results are presented and discussed. Conclusion and outlooks
+are offered in the last section of the paper.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Benchmark NIST-1 "Analytic Solution"}
 \label{sec:bench-1}
 
 This is the first benchmark problem with a smooth solution
-that is used for testing how an adaptive algorithm behaves.
-The equation solved is a Poisson equation
+that is used for testing adaptive algorithms performance
+where adaptivity isn't really needed.
+The equation solved is the Poisson's equation.
 
 \begin{equation} \label{poisson}
 -\Delta u = f
@@ -174,35 +213,32 @@ The equation solved is a Poisson equation
 in the domain $\Omega = (0, 1)^2$, equipped with Dirichlet
 boundary condition given by the exact solution.
 The exact solution $u(x, y) = 2^{4p}x^{p}(1-x)^{p}y^{p}(1-y)^{p}$
-to this problem is shown in Fig. \ref{fig:sln-nist01}.
-Here $p$ determines the degree of the polynomial solution.
+of this problem is shown in Fig. \ref{fig:sln-nist01}.
+Here $p$ is a parameter, determining the polynomial degree of the exact solution.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[height=5.5cm]{nist/nist-1/solution.png}
+\includegraphics[height=5cm]{nist/nist-1/solution.png}
 \caption{The solution to NIST-1 benchmark problem.}
 \label{fig:sln-nist01}
 \end{figure}
-\noindent
-The goal of the benchmark is to attain a relative error below
-$10^{-2}$~\% in the $H^1$-norm with as few degrees of freedom (DOF)
-as possible.
-We begin with adaptive $hp$-FEM with anisotropic refinements (adaptivity mode
-HP\_ANISO in {\sc Hermes}). The initial mesh is shown in Fig. \ref{fig:nist-1-hp-aniso} (left).
-In a few adaptivity steps, the polynomial degree of this element is increased
-anisotropically.
-The resulting mesh with 793 DOF is shown in Fig. \ref{fig:nist-1-hp-aniso} (right).
+
+The goal of the benchmark is to reach a relative error below
+$10^{-2}$~\% in the $H^1$-norm with as few degrees of freedom (DOF) as possible.
+We begin with the adaptive $hp$-FEM with possible anisotropic refinements (adaptivity mode
+HP\_ANISO\_H in {\sc Hermes}). The initial mesh is shown in Fig. \ref{fig:nist-1-hp-aniso} (left).
+After 11 adaptivity steps, the resulting mesh with 769 DOF is shown in Fig. \ref{fig:nist-1-hp-aniso} (right).
 
 \begin{figure}[!ht]
 \centering
 \includegraphics[height=5cm]{nist/nist-1/mesh_hp_aniso_init.png}\ \
 \includegraphics[height=5cm]{nist/nist-1/mesh_hp_aniso.png}
-\vspace{-2mm}
+%\vspace{-2mm}
 \caption{Initial mesh (left) and final mesh (right) for $hp$-FEM with anisotropic refinements.}
 \label{fig:nist-1-hp-aniso}
 \end{figure}
 
-The final relative error estimate in $H^1$-norm was 4.07698e-03 \%
+The final relative error estimate in $H^1$-norm was 4.69543e-03 \%,
 and it was identical to the exact error in all printed digits.
 We also solved this benchmark with adaptive $h$-FEM
 with linear (left) and quadratic (right)
@@ -214,231 +250,481 @@ in Fig. \ref{fig:nist-1-h-aniso}.
 \centering
 \includegraphics[height=5cm]{nist/nist-1/mesh_h1_aniso.png}\ \
 \includegraphics[height=5cm]{nist/nist-1/mesh_h2_aniso.png}
-\vspace{-2mm}
+%\vspace{-2mm}
 \caption{Final mesh for $h$-FEM anisotropic refinements with linear and quadratic elements.}
 \label{fig:nist-1-h-aniso}
 \end{figure}
-%\newpage
 
-Figs. \ref{fig:nist-1-dof} and \ref{fig:nist-1-cpu} compare all
-three adaptivity modes from the point
+Finally, Figs. \ref{fig:nist-1-conv} compare all
+three approaches to automatic adaptivity from the point
 of view of DOF and CPU convergence.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[height=5cm]{nist/nist-1/conv_dof_aniso.png}
-\vspace{-2mm}
-\caption{DOF convergence graphs.}
-\label{fig:nist-1-dof}
-\end{figure}
-
-\begin{figure}[!ht]
-\centering
+\includegraphics[height=5cm]{nist/nist-1/conv_dof_aniso.png}\ \
 \includegraphics[height=5cm]{nist/nist-1/conv_cpu_aniso.png}
-\vspace{-2mm}
-\caption{CPU time convergence graphs.}
-\label{fig:nist-1-cpu}
+%\vspace{-2mm}
+\caption{DOF and CPU time convergence graphs.}
+\label{fig:nist-1-conv}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Benchmark NIST-2 "Reentrant Corner"}
 \label{sec:bench-2}
 
 This is a standard benchmark for adaptive FEM algorithms.
-The exact solution is smooth but contains singular gradient in a reentrant corner.
-The equation solved is a Laplace equation
+A reentrant corner is nothing more than an internal or inside corner.
+It is a very frequent problem and it can cause the error of the solution
+calculated by an adaptive method to converge very slowly or not to converge at all.
+The exact solution of this problem is smooth but it contains
+singular gradient in the reentrant corner.
+The equation solved is the Laplace's equation.
 
 \begin{equation} \label{laplace}
 -\Delta u = 0
 \end{equation}
-in the domain $\Omega = (-1, 1)^2$, with a section
-removed from the clockwise side of positive $x$ axis.
-Equation (\ref{laplace}) equipped with Dirichlet
-boundary conditions given by the exact solution.
 
-The exact solution
+in the domain $\Omega = (-1, 1)^2$, with a unit square
+section removed from the bottom part of the positive $x$ axis.
+Equation (\ref{laplace}) equipped with Dirichlet
+boundary conditions given by the exact solution:
+
 \begin{equation}\label{exact-nist-2}
 u(x, y) = r^{\alpha}\sin(\alpha \theta)
 \end{equation}
-where $\alpha = \pi / \omega$, $r = \sqrt{x^2+y^2}$ and $\theta = tan^{-1}(y/x)$, here $\omega $ determines
+
+where $\alpha = \pi / \omega$, $r = \sqrt{x^2+y^2}$,
+and $\theta = tan^{-1}(y/x)$. Here $\omega $ determines
 the angle of the reentrant corner.
-The solution of NIST-2 with $\omega = 3 \pi / 2$  is shown in Fig. \ref{fig:sln-nist02}.
+The solution of NIST-2 with $\omega = 3 \pi / 2$
+is shown in Fig. \ref{fig:sln-nist02}.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[height=6cm]{nist/nist-2/solution.png}
+\includegraphics[height=5cm]{nist/nist-2/solution.png}
 \caption{The solution to NIST-2 benchmark problem.}
 \label{fig:sln-nist02}
 \end{figure}
 
-As in the previous section, also here the goal is to attain a relative
-error less or equal to $10^{-2}$ \% in the $H^1$-norm with as few degrees
-of freedom (DOF) as possible.
+The goal of the benchmark is to reach a relative error below
+$10^{-1}$~\% in the $H^1$-norm with as few DOFs as possible.
+We begin with adaptive $hp$-FEM,
+the initial mesh is shown in Fig. \ref{fig:nist-2-hp-aniso} (left).
+After 13 adaptivity steps, the resulting mesh with 622 DOF is shown
+in Fig. \ref{fig:nist-2-hp-aniso} (right).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-2/mesh_hp_aniso_init.png}\ \
+\includegraphics[height=5cm]{nist/nist-2/mesh_hp_aniso.png}
+\caption{Initial mesh (left) and final mesh (right) for $hp$-FEM with anisotropic refinements.}
+\label{fig:nist-2-hp-aniso}
+\end{figure}
+
+The final relative error estimate in $H^1$-norm was 8.15289e-02 \%,
+and it was identical to the exact error in all printed digits.
+We also solved this benchmark with adaptive $h$-FEM
+with linear (left) and quadratic (right)
+elements, with anisotropic refinements enabled.
+Final meshes for the $h$-FEM computations are shown
+in Fig. \ref{fig:nist-2-h-aniso}.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-2/mesh_h1_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-2/mesh_h2_aniso.png}
+\caption{Final mesh for $h$-FEM anisotropic refinements with linear and quadratic elements.}
+\label{fig:nist-2-h-aniso}
+\end{figure}
+
+Finally, Figs. \ref{fig:nist-2-conv} compare all
+three approaches to automatic adaptivity from the point
+of view of DOF and CPU convergence.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-2/conv_dof_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-2/conv_cpu_aniso.png}
+\caption{DOF and CPU time convergence graphs.}
+\label{fig:nist-2-conv}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Benchmark NIST-3 "Linear Elasticity"}
 \label{sec:bench-3}
 
-This is a coupled system of two equations with a mixed
-derivative for linear elasticity in the coupling term.
+Linear elasticity is used extensively in structural analysis
+and engineering. Linear elasticity is a simplification
+of the general nonlinear equations of elasticity and is the mathematical
+study of how solid objects deform and become internally
+stressed due to prescribed loading conditions.
+In this benchmark, we present a standard system of two
+coupled equations with mixed derivative for linear elasticity
+in the coupling term. This example employs the adaptive multimesh $hp$-FEM
+to solve the equations.
 
-\begin{equation} \label{crack-u}
+\begin{equation}\label{crack}
+\left\{
+\begin{array}{l}
+\displaystyle
 -E \frac{1-\nu^2}{1-2\nu} \frac{\partial^{2} u}{\partial x^{2}} - E\frac{1-\nu^2}{2-2 \nu} \frac{\partial^{2} u}{\partial y^{2}}
--E \frac{1-\nu^2}{(1-2\nu)(2-2\nu)} \frac{\partial^{2} v}{\partial x \partial y} = F_{x}
-\end{equation}
-\begin{equation} \label{crack-v}
+-E \frac{1-\nu^2}{(1-2\nu)(2-2\nu)} \frac{\partial^{2} v}{\partial x \partial y} = F_{x} \\
+\displaystyle
 -E \frac{1-\nu^2}{2-2\nu} \frac{\partial^{2} v}{\partial x^{2}} - E\frac{1-\nu^2}{1-2\nu} \frac{\partial^{2} v}{\partial y^{2}}
 -E \frac{1-\nu^2}{(1-2\nu)(2-2\nu)} \frac{\partial^{2} u}{\partial x \partial y} = F_{y}
+\end{array}
+\right.
 \end{equation}
+
 where $F_{x} = F_{y} = 0$, $u$ and $v$ are the
 $x$ and $y$ displacements, $E$ is Young's Modulus,
 and $\nu$ is Poisson's ratio.
 
-The domain is $\Omega = (0, 1)^2$, equipped with Dirichlet
-boundary conditions given by the exact solution.
+The domain in the example is $\Omega = (-1, 1)^2$ with a slit,
+equipped with Dirichlet boundary conditions given by the
+exact solution. The exact solution of (\ref{crack}) in polar coordinates is given by
 
-The exact solution
-\begin{equation}\label{exact-nist-3-u-1}
-u(x, y) = \frac{1}{2G} r^{\lambda}[(k - Q(\lambda + 1))cos(\lambda \theta) - \lambda cos((\lambda - 2) \theta)]
-\end{equation}
-\begin{equation}\label{exact-nist-3-v-1}
+\begin{equation}\label{exact-nist-3}
+\left\{
+\begin{array}{l}
+\displaystyle
+u(x, y) = \frac{1}{2G} r^{\lambda}[(k - Q(\lambda + 1))cos(\lambda \theta) - \lambda cos((\lambda - 2) \theta)] \\
+\displaystyle
 v(x, y) = \frac{1}{2G} r^{\lambda}[(k + Q(\lambda + 1))sin(\lambda \theta) + \lambda sin((\lambda - 2) \theta)]
+\end{array}
+\right.
 \end{equation}
+
 here $\lambda = 0.5444837367825$, $Q = 0.5430755788367$,
 $k = 3 - 4 \nu$ and $G = E / (2(1 + \nu))$.
-
-The solution of NIST-3 is shown in Fig. \ref{fig:sln-nist03-u} and Fig. \ref{fig:sln-nist03-v}.
+The solution of NIST-3 is shown in Fig. \ref{fig:sln-nist03}.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[height=6cm]{nist/nist-3/solution-u.png}
-\caption{The $u$ component to NIST-3 benchmark problem.}
-\label{fig:sln-nist03-u}
+\includegraphics[height=40mm]{nist/nist-3/solution-u.png}\ \
+\includegraphics[height=40mm]{nist/nist-3/solution-v.png}
+%\vspace{-2mm}
+\caption{The $u$ (left) and $v$ (right) component to NIST-3 benchmark problem.}
+\label{fig:sln-nist03}
+\end{figure}
+
+The goal of the benchmark is to reach a relative error below
+$10^{-1}$~\% in the $H^1$-norm with as few DOFs as possible.
+We begin with adaptive $hp$-FEM,
+the initial mesh is shown in Fig. \ref{fig:nist-3-hp-aniso-init}.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-3/mesh_hp_aniso_init.png}
+\caption{Initial mesh.}
+\label{fig:nist-3-hp-aniso-init}
+\end{figure}
+
+After 40 adaptivity steps,
+the resulting mesh with 3897 DOF is shown in Fig. \ref{fig:nist-3-hp-aniso}.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-3/mesh_u_hp_anisoh.png}\ \
+\includegraphics[height=5cm]{nist/nist-3/mesh_v_hp_anisoh.png}
+\caption{Final meshs of $u$ (left) and $v$ (right) component for $hp$-FEM with anisotropic refinements.}
+\label{fig:nist-3-hp-aniso}
+\end{figure}
+
+The final relative error estimate in $H^1$-norm was 8.05635e-02 \%,
+and it was identical to the exact error in all printed digits.
+We also solved this benchmark with adaptive $h$-FEM
+with linear and quadratic elements, with anisotropic refinements enabled.
+Final meshes for the $h$-FEM computations are shown
+in Fig. \ref{fig:nist-3-h1-aniso} and Fig. \ref{fig:nist-3-h2-aniso}.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-3/mesh_u_h1_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-3/mesh_v_h1_aniso.png}
+\caption{Final meshs of $u$ (left) and $v$ (right) component for $h$-FEM anisotropic refinements with linear elements.}
+\label{fig:nist-3-h1-aniso}
 \end{figure}
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[height=6cm]{nist/nist-3/solution-v.png}
-\caption{The $v$ component to NIST-3 benchmark problem.}
-\label{fig:sln-nist03-v}
+\includegraphics[height=5cm]{nist/nist-3/mesh_u_h2_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-3/mesh_v_h2_aniso.png}
+\caption{Final meshs of $u$ (left) and $v$ (right) component for $h$-FEM anisotropic refinements with quadratic elements.}
+\label{fig:nist-3-h2-aniso}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Finally, Figs. \ref{fig:nist-3-conv} compare all
+three approaches to automatic adaptivity from the point
+of view of DOF and CPU convergence.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-3/conv_dof_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-3/conv_cpu_aniso.png}
+\caption{DOF and CPU time convergence graphs.}
+\label{fig:nist-3-conv}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Benchmark NIST-4 "Peak"}
 \label{sec:bench-4}
 
 This problem has an exponential peak in the interior of the domain.
-The equation for this benchmark example is a Poisson equation
+The equation solved in this benchmark problem is the Poisson's equation.
 
 \begin{equation} \label{poisson-peak}
 -\Delta u = f
 \end{equation}
+
 in the domain $\Omega = (0, 1)^2$, equipped with Dirichlet
 boundary conditions given by the exact solution.
+The exact solution is
 
-The exact solution
 \begin{equation}\label{exact-nist-4}
 u(x,y) = e^{-\alpha ((x - x_{loc})^{2} + (y - y_{loc})^{2})}
 \end{equation}
+
 where $(x_{loc}, y_{loc})$ is the location of the peak,
-$\alpha$ determines the strength of the peak.
+and $\alpha$ determines the strength of the peak.
 The right-hand side $f$ is calculated by inserting (\ref{exact-nist-4}) into (\ref{poisson-peak}).
-The solution of NIST-4 with $\alpha = 1000$, $(x_{loc}, y_{loc}) = (0.5, 0.5)$ is shown in Fig. \ref{fig:sln-nist04}.
+The solution of NIST-4 with $\alpha = 1000$,
+$(x_{loc}, y_{loc}) = (0.5, 0.5)$ is shown in Fig. \ref{fig:sln-nist04}.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[height=6cm]{nist/nist-4/solution.png}
+\includegraphics[height=5cm]{nist/nist-4/solution.png}
 \caption{The solution to NIST-4 benchmark problem.}
 \label{fig:sln-nist04}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The goal of the benchmark is to reach a relative error below
+$10^{-2}$~\% in the $H^1$-norm with as few DOFs as possible.
+We begin with adaptive $hp$-FEM,
+the initial mesh is shown in Fig. \ref{fig:nist-4-hp-aniso} (left).
+After 12 adaptivity steps, the resulting mesh with 1561 DOF is shown
+in Fig. \ref{fig:nist-4-hp-aniso} (right).
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-4/mesh_hp_aniso_init.png}\ \
+\includegraphics[height=5cm]{nist/nist-4/mesh_hp_aniso.png}
+\caption{Initial mesh (left) and final mesh (right) for $hp$-FEM with anisotropic refinements.}
+\label{fig:nist-4-hp-aniso}
+\end{figure}
+
+The final relative error estimate in $H^1$-norm was 7.02865e-03 \%,
+and it was identical to the exact error in all printed digits.
+We also solved this benchmark with adaptive $h$-FEM
+with linear (left) and quadratic (right)
+elements, with anisotropic refinements enabled.
+Final meshes for the $h$-FEM computations are shown
+in Fig. \ref{fig:nist-4-h-aniso}.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-4/mesh_h1_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-4/mesh_h2_aniso.png}
+\caption{Final mesh for $h$-FEM anisotropic refinements with linear and quadratic elements.}
+\label{fig:nist-4-h-aniso}
+\end{figure}
+
+Finally, Figs. \ref{fig:nist-4-conv} compare all
+three approaches to automatic adaptivity from the point
+of view of DOF and CPU convergence.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-4/conv_dof_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-4/conv_cpu_aniso.png}
+\caption{DOF and CPU time convergence graphs.}
+\label{fig:nist-4-conv}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Benchmark NIST-5 "Battery"}
 \label{sec:bench-5}
 
-This is a heat conduction problem in a nonhomogeneous material. It comes with an anisotropic solution and
-multiple singularities. The solution has multiple point singularities in the interior of the domain.
-The equation is given below
+This is a heat conduction problem in a nonhomogeneous material.
+It comes with an anisotropic solution with strong internal boundary
+layers and multiple singularities.
+The solution has multiple point singularities in the interior at which
+more than three different materials meet which are stronger than those
+corresponding to reentrant corners \cite{demkowicz-1}.
+The equation solved is given by
 
 \begin{equation} \label{heat-conduction}
 -\frac{\partial }{\partial x}\left(p(x, y)\frac{\partial u}{\partial x}\right)
 -\frac{\partial }{\partial y}\left(q(x, y)\frac{\partial u}{\partial y}\right) = f
 \end{equation}
+
 in the domain $\Omega = (0, 8.4) \times (0, 24)$, equipped with
-a zero Neumann boundary condition on left edge, Natural boundary conditions on the rest of the boundary.
+zero Neumann boundary condition on the left edge, Natural boundary
+conditions on the rest of the boundary:
 
 \begin{equation}
-p(x, y)\frac{\partial u}{\partial x}\nu_1 + q(x, y)\frac{\partial u}{\partial y}\nu_2 = g_{left}(x, y) \ \mbox{on} \  \Gamma_{left}
+\left\{
+\begin{array}{l}
+\displaystyle p(x, y)\frac{\partial u}{\partial x}\nu_1 + q(x, y)\frac{\partial u}{\partial y}\nu_2 = g_{left}(x, y) \ \mbox{on} \  \Gamma_{left} \\
+\displaystyle p(x, y)\frac{\partial u}{\partial x}\nu_1 + q(x, y)\frac{\partial u}{\partial y}\nu_2 + c(x, y)u = g_{right}(x, y) \ \mbox{on} \ \Gamma_{right} \\
+\displaystyle p(x, y)\frac{\partial u}{\partial x}\nu_1 + q(x, y)\frac{\partial u}{\partial y}\nu_2 + c(x, y)u = g_{top}(x, y) \ \mbox{on} \ \Gamma_{top} \\
+\displaystyle p(x, y)\frac{\partial u}{\partial x}\nu_1 + q(x, y)\frac{\partial u}{\partial y}\nu_2 + c(x, y)u = g_{bottom}(x, y) \ \mbox{on} \ \Gamma_{bottom}
+\end{array}
+\right.
 \end{equation}
 
-\begin{equation}
-p(x, y)\frac{\partial u}{\partial x}\nu_1 + q(x, y)\frac{\partial u}{\partial y}\nu_2 + c(x, y)u = g_{right}(x, y) \ \mbox{on} \ \Gamma_{right}
-\end{equation}
-
-\begin{equation}
-p(x, y)\frac{\partial u}{\partial x}\nu_1 + q(x, y)\frac{\partial u}{\partial y}\nu_2 + c(x, y)u = g_{top}(x, y) \ \mbox{on} \ \Gamma_{top}
-\end{equation}
-
-\begin{equation}
-p(x, y)\frac{\partial u}{\partial x}\nu_1 + q(x, y)\frac{\partial u}{\partial y}\nu_2 + c(x, y)u = g_{bottom}(x, y) \ \mbox{on} \ \Gamma_{bottom}
-\end{equation}
-where $p(x, y)$, $q(x, y)$, $c(x, y)$, $g(x, y)$
-and the right hand side $f$ are constant coefficient
-functions in different materials.
-
+where $p(x, y)$, $q(x, y)$, $c(x, y)$, $g(x, y)$, and the right hand
+side $f$ are constant functions (different in respective materials).
 The solution of NIST-5 is shown in Fig. \ref{fig:sln-nist05}.
+
 \begin{figure}[!ht]
 \centering
-\includegraphics[height=6cm]{nist/nist-5/solution-3d.png}
+\includegraphics[height=5cm]{nist/nist-5/solution.png}
 \caption{The solution to NIST-5 benchmark problem.}
 \label{fig:sln-nist05}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The goal of the benchmark is to reach a relative error below
+$1.5e-02$~\% in the $H^1$-norm with as few DOFs as possible.
+We begin with adaptive $hp$-FEM,
+the initial mesh is shown in Fig. \ref{fig:nist-5-hp-aniso} (left).
+After 32 adaptivity steps, the resulting mesh with 7450 DOF is shown
+in Fig. \ref{fig:nist-5-hp-aniso} (right).
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-5/mesh_hp_aniso_init.png}\ \
+\includegraphics[height=5cm]{nist/nist-5/mesh_hp_aniso.png}
+\vspace{-2mm}
+\caption{Initial mesh (left) and final mesh (right) for $hp$-FEM with anisotropic refinements.}
+\label{fig:nist-5-hp-aniso}
+\end{figure}
+
+The final relative error estimate in $H^1$-norm was 1.46775e-02 \%.
+We also solved this benchmark with adaptive $h$-FEM
+with linear (left) and quadratic (right)
+elements, with anisotropic refinements enabled.
+Final meshes for the $h$-FEM computations are shown
+in Fig. \ref{fig:nist-5-h-aniso}.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-5/mesh_h1_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-5/mesh_h2_aniso.png}
+\caption{Final mesh for $h$-FEM anisotropic refinements with linear and quadratic elements.}
+\label{fig:nist-5-h-aniso}
+\end{figure}
+
+Finally, Figs. \ref{fig:nist-5-conv} compare all
+three approaches to automatic adaptivity from the point
+of view of DOF and CPU convergence.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-5/conv_dof_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-5/conv_cpu_aniso.png}
+\caption{DOF and CPU time convergence graphs.}
+\label{fig:nist-5-conv}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Benchmark NIST-6 "Boundary Layer"}
 \label{sec:bench-6}
 
-This problem has an boundary layer along the right and top sides of the domain.
+This example is a singularly perturbed problem with known exact solution that exhibits
+a boundary layer along the right and top sides of the domain.
 It is a convection-diffusion equation with first order terms.
 
 \begin{equation} \label{boundary-layer}
 -\epsilon \nabla^{2} u + 2\frac{\partial u}{\partial x} + \frac{\partial u}{\partial y}= f
 \end{equation}
-in the domain $\Omega = (-1, 1)^2$, equipped with Dirichlet boundary condition
-given by the exact solution.
 
-The exact solution
+in the domain $\Omega = (-1, 1)^2$, equipped with Dirichlet boundary condition
+given by the exact solution. The exact solution:
+
 \begin{equation}\label{exact-nist-6}
 u(x,y) = (1 - e^{-(1 - x) / \epsilon})(1 - e^{-(1 - y) / \epsilon})cos(\pi (x + y))
 \end{equation}
+
 where $\epsilon$ determines the strength of the boundary layer.
 The right-hand side $f$ is calculated by inserting (\ref{exact-nist-6}) into (\ref{boundary-layer}).
-The solution of NIST-6 with $\epsilon = 10^{-1}$ is shown in Fig. \ref{fig:sln-nist06}.
+The solution of NIST-6 containing a boundary layer
+with $\epsilon = 10^{-1}$ is shown in Fig. \ref{fig:sln-nist06}.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[height=6cm]{nist/nist-6/solution.png}
+\includegraphics[height=5cm]{nist/nist-6/solution.png}
 \caption{The solution to NIST-6 benchmark problem.}
 \label{fig:sln-nist06}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The goal of the benchmark is to reach a relative error below
+$10^{-3}$~\% in the $H^1$-norm with as few DOFs as possible.
+We begin with adaptive $hp$-FEM,
+the initial mesh is shown in Fig. \ref{fig:nist-6-hp-aniso} (left).
+After 18 adaptivity steps, the resulting mesh with 591 DOF is shown
+in Fig. \ref{fig:nist-6-hp-aniso} (right).
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-6/mesh_hp_aniso_init.png}\ \
+\includegraphics[height=5cm]{nist/nist-6/mesh_hp_aniso.png}
+\caption{Initial mesh (left) and final mesh (right) for $hp$-FEM with anisotropic refinements.}
+\label{fig:nist-6-hp-aniso}
+\end{figure}
+
+The final relative error estimate in $H^1$-norm was 6.23458e-04 \%,
+and it was identical to the exact error in all printed digits.
+We also solved this benchmark with adaptive $h$-FEM
+with linear (left) and quadratic (right)
+elements, with anisotropic refinements enabled.
+Final meshes for the $h$-FEM computations are shown
+in Fig. \ref{fig:nist-6-h-aniso}.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-6/mesh_h1_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-6/mesh_h2_aniso.png}
+\caption{Final mesh for $h$-FEM anisotropic refinements with linear and quadratic elements.}
+\label{fig:nist-6-h-aniso}
+\end{figure}
+
+Finally, Figs. \ref{fig:nist-6-conv} compare all
+three approaches to automatic adaptivity from the point
+of view of DOF and CPU convergence.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-6/conv_dof_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-6/conv_cpu_aniso.png}
+\caption{DOF and CPU time convergence graphs.}
+\label{fig:nist-6-conv}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Benchmark NIST-7 "Boundary Line Singularity"}
 \label{sec:bench-7}
 
-This is a singularity problem with a solution that is singular along the left boundary.
-The equation of this problem is Poisson equation
+This is a singularity problem with the solution that is singular along the left part of the boundary.
+The equation solved in this problem is the Poisson's equation.
 
 \begin{equation} \label{boundary-line-singularity}
 -\Delta u = f
 \end{equation}
-in the domain $\Omega = (0, 1)^2$, equipped with Dirichlet boundary conditions
-given by the exact solution.
 
-The exact solution
+in the domain $\Omega = (0, 1)^2$, equipped with Dirichlet boundary conditions
+given by the exact solution. The exact solution:
+
 \begin{equation}\label{exact-nist-7}
 u(x,y) = x^{\alpha}
 \end{equation}
+
 where $\alpha \geq 0.5$ determines the strength of the singularity.
 The right-hand side $f$ is calculated by inserting (\ref{exact-nist-7}) into (\ref{boundary-line-singularity}).
 The solution of NIST-7 with $\alpha = 0.6$ is shown in Fig. \ref{fig:sln-nist07}.
@@ -450,24 +736,69 @@ The solution of NIST-7 with $\alpha = 0.6$ is shown in Fig. \ref{fig:sln-nist07}
 \label{fig:sln-nist07}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The goal of the benchmark is to reach a relative error below
+$1.5$~\% in the $H^1$-norm with as few DOFs as possible.
+We begin with adaptive $hp$-FEM,
+the initial mesh is shown in Fig. \ref{fig:nist-7-hp-aniso} (left).
+After 43 adaptivity steps, the resulting mesh with 88 DOF is shown
+in Fig. \ref{fig:nist-7-hp-aniso} (right).
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-7/mesh_hp_aniso_init.png}\ \
+\includegraphics[height=5cm]{nist/nist-7/mesh_hp_aniso.png}
+\caption{Initial mesh (left) and final mesh (right) for $hp$-FEM with anisotropic refinements.}
+\label{fig:nist-7-hp-aniso}
+\end{figure}
+
+The final relative error estimate in $H^1$-norm was 1.46348 \%,
+and it was identical to the exact error in all printed digits.
+We also solved this benchmark with adaptive $h$-FEM
+with linear (left) and quadratic (right)
+elements, with anisotropic refinements enabled.
+Final meshes for the $h$-FEM computations are shown
+in Fig. \ref{fig:nist-7-h-aniso}.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-7/mesh_h1_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-7/mesh_h2_aniso.png}
+\caption{Final mesh for $h$-FEM anisotropic refinements with linear and quadratic elements.}
+\label{fig:nist-7-h-aniso}
+\end{figure}
+
+Finally, Figs. \ref{fig:nist-7-conv} compare all
+three approaches to automatic adaptivity from the point
+of view of DOF and CPU convergence.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-7/conv_dof_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-7/conv_cpu_aniso.png}
+\caption{DOF and CPU time convergence graphs.}
+\label{fig:nist-7-conv}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Benchmark NIST-8 "Oscillatory"}
 \label{sec:bench-8}
 
-This is a wave function that satisfies a Schrodinger equation model of two
-interacting atoms with highly oscillatory near the origin.
-The equation resolved is
+This is a wave function that satisfies the Schr\"{o}dinger's equation model of two
+interacting atoms, highly oscillatory near the origin.
+The equation solved in this problem is Helmholtz equation.
 
 \begin{equation} \label{oscillatory}
 -\nabla^{2} u - \frac{1}{(\alpha + r)^{4}} u = f
 \end{equation}
-in the domain $\Omega = (0, 1)^2$, equipped with Dirichlet boundary conditions
-given by the exact solution.
 
-The exact solution
+in the domain $\Omega = (0, 1)^2$, equipped with Dirichlet boundary conditions
+given by the exact solution. The exact solution:
+
 \begin{equation}\label{exact-nist-8}
 u(x,y) = sin(\frac{1}{\alpha + r})
 \end{equation}
+
 where $r = \sqrt{x^{2} + y^{2}}$, $\alpha = \frac{1}{N \pi}$ determines the number of oscillations.
 The right-hand side $f$ is calculated by inserting (\ref{exact-nist-8}) into (\ref{oscillatory}).
 The solution of NIST-8 with $\alpha = \frac{1}{10 \pi}$ is shown in Fig. \ref{fig:sln-nist08}.
@@ -479,26 +810,75 @@ The solution of NIST-8 with $\alpha = \frac{1}{10 \pi}$ is shown in Fig. \ref{fi
 \label{fig:sln-nist08}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The goal of the benchmark is to reach a relative error below
+$10^{-2}$~\% in the $H^1$-norm with as few DOFs as possible.
+We begin with adaptive $hp$-FEM,
+the initial mesh is shown in Fig. \ref{fig:nist-8-hp-aniso} (left).
+After 28 adaptivity steps, the resulting mesh with 1160 DOF is shown
+in Fig. \ref{fig:nist-8-hp-aniso} (right).
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-8/mesh_hp_aniso_init.png}\ \
+\includegraphics[height=5cm]{nist/nist-8/mesh_hp_aniso.png}
+\vspace{-2mm}
+\caption{Initial mesh (left) and final mesh (right) for $hp$-FEM with anisotropic refinements.}
+\label{fig:nist-8-hp-aniso}
+\end{figure}
+
+The final relative error estimate in $H^1$-norm was 9.09848e-02 \%,
+and it was identical to the exact error in all printed digits.
+We also solved this benchmark with adaptive $h$-FEM
+with linear (left) and quadratic (right)
+elements, with anisotropic refinements enabled.
+Final meshes for the $h$-FEM computations are shown
+in Fig. \ref{fig:nist-8-h-aniso}.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-8/mesh_h1_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-8/mesh_h2_aniso.png}
+\vspace{-2mm}
+\caption{Final mesh for $h$-FEM anisotropic refinements with linear and quadratic elements.}
+\label{fig:nist-8-h-aniso}
+\end{figure}
+
+Finally, Figs. \ref{fig:nist-8-conv} compare all
+three approaches to automatic adaptivity from the point
+of view of DOF and CPU convergence.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-8/conv_dof_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-8/conv_cpu_aniso.png}
+\caption{DOF and CPU time convergence graphs.}
+\label{fig:nist-8-conv}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Benchmark NIST-9 "Wave Front"}
 \label{sec:bench-9}
 
-This is a standard benchmark for adaptive FEM algorithms.The exact solution is smooth
-but contains singular gradient in a re-entrant corner.
-The equation solved is a Poisson equation
+This is a commonly used example for testing the performance of
+adaptive refinement algorithms on the wave front and the singularity \cite{mitchell-1, mitchell-2}.
+The solution has a sharp circular wave front in the interior of the
+domain, with a singularity at the center of the circle.
+The equation solved is the Poisson's equation.
 
 \begin{equation} \label{wave-front}
 -\Delta u = f
 \end{equation}
-in the domain $\Omega = (0, 1)^2$, equipped with Dirichlet boundary conditions
-given by the exact solution.
 
-The exact solution
+in the domain $\Omega = (0, 1)^2$, equipped with Dirichlet boundary conditions
+given by the exact solution. The exact solution:
+
 \begin{equation}\label{exact-nist-9}
 u(x, y) = tan^{-1}(\alpha (r - r_{0}))
 \end{equation}
-where $r = \sqrt{(x - x_{loc})^{2} + (y - y_{loc})^{2}}$,
-here $(x_{loc}, y_{loc})$ is the center of the circular wave front,
+
+where $r = \sqrt{(x - x_{loc})^{2} + (y - y_{loc})^{2}}$.
+Here $(x_{loc}, y_{loc})$ is the center of the circular wave front,
 $r_{0}$ is the distance from the wave front to the center of the circle,
 and $\alpha$ gives the steepness of the wave front.
 The right-hand side $f$ is calculated by inserting (\ref{exact-nist-9}) into (\ref{wave-front}).
@@ -512,109 +892,256 @@ $r_{0} = 0.25$ is shown in Fig. \ref{fig:sln-nist09}.
 \label{fig:sln-nist09}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The goal of the benchmark is to reach a relative error below
+$10^{-1}$~\% in the $H^1$-norm with as few DOFs as possible.
+We begin with adaptive $hp$-FEM,
+the initial mesh is shown in Fig. \ref{fig:nist-9-hp-aniso} (left).
+After 13 adaptivity steps, the resulting mesh with 1465 DOF is shown
+in Fig. \ref{fig:nist-9-hp-aniso} (right).
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-9/mesh_hp_aniso_init.png}\ \
+\includegraphics[height=5cm]{nist/nist-9/mesh_hp_aniso.png}
+\caption{Initial mesh (left) and final mesh (right) for $hp$-FEM with anisotropic refinements.}
+\label{fig:nist-9-hp-aniso}
+\end{figure}
+
+The final relative error estimate in $H^1$-norm was 8.67667e-01 \%,
+and it was identical to the exact error in all printed digits.
+We also solved this benchmark with adaptive $h$-FEM
+with linear (left) and quadratic (right)
+elements, with anisotropic refinements enabled.
+Final meshes for the $h$-FEM computations are shown
+in Fig. \ref{fig:nist-9-h-aniso}.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-9/mesh_h1_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-9/mesh_h2_aniso.png}
+\caption{Final mesh for $h$-FEM anisotropic refinements with linear and quadratic elements.}
+\label{fig:nist-9-h-aniso}
+\end{figure}
+
+Finally, Figs. \ref{fig:nist-9-conv} compare all
+three approaches to automatic adaptivity from the point
+of view of DOF and CPU convergence.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-9/conv_dof_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-9/conv_cpu_aniso.png}
+\caption{DOF and CPU time convergence graphs.}
+\label{fig:nist-9-conv}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Benchmark NIST-10 "Interior Line Singularity"}
 \label{sec:bench-10}
 
 This is another example with anisotropic solution that is suitable for testing
-anisotropic element refinements.
-The equation solved is a Poisson equation
+anisotropic element refinements. The equation solved is the Poisson's equation.
 
 \begin{equation} \label{interior}
 -\Delta u = f
 \end{equation}
-in the domain $\Omega = (-1, 1)^2$, equipped with a zero
-Neumann boundary condition on left edge, Dirichlet boundary conditions given by the
-exact solution on the rest of the boundary.
 
-The exact solution
-\begin{equation}\label{exact-nist-10-1}
-u(x,y) = \cos(Ky)\ \ \ \mbox{for}\ x \le 0
-\end{equation}
-\begin{equation}\label{exact-nist-10-2}
+in the domain $\Omega = (-1, 1)^2$, equipped with a zero
+Neumann boundary condition on left edge, Dirichlet boundary
+conditions given by the exact solution on the rest of the boundary.
+The exact solution:
+
+\begin{equation}\label{exact-nist-10}
+\left\{
+\begin{array}{l}
+\displaystyle
+u(x,y) = \cos(Ky)\ \ \ \mbox{for}\ x \le 0 \\
 u(x,y) = \cos(Ky) + x^{\alpha}\ \ \ \mbox{for}\ x > 0
+\end{array}
+\right.
 \end{equation}
+
 where $K$ and $\alpha$ are real constants.
 The right-hand side $f$ is calculated by inserting
-(\ref{exact-nist-10-1}) and (\ref{exact-nist-10-2}) into (\ref{wave-front}).
-The solution of NIST-10 with $K = \pi/2$ and
+(\ref{exact-nist-10}) into (\ref{interior}).
+The solution of NIST-10 containing a line singularity with $K = \pi/2$ and
 $\alpha = 2.01$ is shown in Fig. \ref{fig:sln-nist10}.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[height=6cm]{nist/nist-10/solution.png}
+\includegraphics[height=5cm]{nist/nist-10/solution.png}
 \caption{The solution to NIST-10 benchmark problem.}
 \label{fig:sln-nist10}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The goal of the benchmark is to reach a relative error below
+$10^{-4}$~\% in the $H^1$-norm with as few DOFs as possible.
+We begin with adaptive $hp$-FEM,
+the initial mesh is shown in Fig. \ref{fig:nist-10-hp-aniso} (left).
+After 14 adaptivity steps, the resulting mesh with 381 DOF is shown
+in Fig. \ref{fig:nist-10-hp-aniso} (right).
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-10/mesh_hp_aniso_init.png}\ \
+\includegraphics[height=5cm]{nist/nist-10/mesh_hp_aniso.png}
+\vspace{-2mm}
+\caption{Initial mesh (left) and final mesh (right) for $hp$-FEM with anisotropic refinements.}
+\label{fig:nist-10-hp-aniso}
+\end{figure}
+
+The final relative error estimate in $H^1$-norm was 8.68994e-05 \%,
+and it was identical to the exact error in all printed digits.
+We also solved this benchmark with adaptive $h$-FEM
+with linear (left) and quadratic (right)
+elements, with anisotropic refinements enabled.
+Final meshes for the $h$-FEM computations are shown
+in Fig. \ref{fig:nist-10-h-aniso}.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-10/mesh_h1_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-10/mesh_h2_aniso.png}
+\vspace{-2mm}
+\caption{Final mesh for $h$-FEM anisotropic refinements with linear and quadratic elements.}
+\label{fig:nist-10-h-aniso}
+\end{figure}
+
+Finally, Figs. \ref{fig:nist-10-conv} compare all
+three approaches to automatic adaptivity from the point
+of view of DOF and CPU convergence.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-10/conv_dof_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-10/conv_cpu_aniso.png}
+\caption{DOF and CPU time convergence graphs.}
+\label{fig:nist-10-conv}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Benchmark NIST-11 "Intersecting Interfaces"}
 \label{sec:bench-11}
 
-The solution to this elliptic problems contains a severe
+This is a Poisson problem with intersecting interfaces,
+divide the plane into four regions.
+The solution to this problem contains a severe
 singularity that poses a challenge to adaptive methods.
-The equation is given as below
+The equation solved is given by
 
 \begin{equation} \label{intersecting}
 -\nabla \cdot (a(x,y) \nabla u) = 0
 \end{equation}
+
 where the parameter $a$ is piecewise-constant,
-$a(x,y) = R$ in the first and third quadrants
+$a(x,y) = 161.4476387975881$ in the first and third quadrants,
 and $a(x,y) = 1$ in the remaining two quadrants.
 The domain of this problem is $\Omega = (-1, 1)^2$, equipped with
 Dirichlet boundary conditions given by the exact solution.
+The exact solution:
 
-The exact solution
 \begin{equation}\label{exact-nist-11}
-u(x,y) = r^{a} \mu
+u(x,y) = r^{a_1} \mu (\theta)
 \end{equation}
 
+where $a_1$ and $\mu (\theta)$ is given in \cite{mitchell-1}.
+The right-hand side $f$ is calculated by inserting
+(\ref{exact-nist-11}) into (\ref{intersecting}).
 The solution of NIST-11 is shown in Fig. \ref{fig:sln-nist11}.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[height=6cm]{nist/nist-11/solution.png}
+\includegraphics[height=5cm]{nist/nist-11/solution.png}
 \caption{The solution to NIST-11 benchmark problem.}
 \label{fig:sln-nist11}
 \end{figure}
 
+The goal of the benchmark is to reach a relative error below
+$0.5$~\% in the $H^1$-norm with as few DOFs as possible.
+We begin with adaptive $hp$-FEM,
+the initial mesh is shown in Fig. \ref{fig:nist-11-hp-aniso} (left).
+After 46 adaptivity steps, the resulting mesh with 591 DOF is shown
+in Fig. \ref{fig:nist-11-hp-aniso} (right).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-11/mesh_hp_aniso_init.png}\ \
+\includegraphics[height=5cm]{nist/nist-11/mesh_hp_aniso.png}
+\caption{Initial mesh (left) and final mesh (right) for $hp$-FEM with anisotropic refinements.}
+\label{fig:nist-11-hp-aniso}
+\end{figure}
+
+The final relative error estimate in $H^1$-norm was 4.7087e-01 \%,
+and it was identical to the exact error in all printed digits.
+We also solved this benchmark with adaptive $h$-FEM
+with linear (left) and quadratic (right)
+elements, with anisotropic refinements enabled.
+Final meshes for the $h$-FEM computations are shown
+in Fig. \ref{fig:nist-11-h-aniso}.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-11/mesh_h1_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-11/mesh_h2_aniso.png}
+\caption{Final mesh for $h$-FEM anisotropic refinements with linear and quadratic elements.}
+\label{fig:nist-11-h-aniso}
+\end{figure}
+
+Finally, Figs. \ref{fig:nist-11-conv} compare all
+three approaches to automatic adaptivity from the point
+of view of DOF and CPU convergence.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-11/conv_dof_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-11/conv_cpu_aniso.png}
+\caption{DOF and CPU time convergence graphs.}
+\label{fig:nist-11-conv}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Benchmark NIST-12 "Multiple Difficulties"}
 \label{sec:bench-12}
 
-The solution to this elliptic problems contains four difficulties
-of different strengths into the same problem
-(nist-2, nist-4, nist-6 and nist-9).
-The equation solved is a Poisson equation
+The solution to this problem combines four types of benchmarks
+seen in previous sections into the same problem,
+where the wave front intersects the boundary
+layer and corner singularity, and the peak is centered on the wave front.
+%It contains a point singularity due to a reentrant corner, a circular wave front (which might
+%include a singularity at the center of the circle), a sharp peak, and a boundary layer.
+The equation solved is the Poisson's equation.
 
 \begin{equation} \label{multiple}
 -\Delta u = f
 \end{equation}
+
 in the L-shaped domain, equipped with Dirichlet boundary conditions
 given by the exact solution.
+The exact solution:
 
-The exact solution
 \begin{equation}\label{exact-nist-12}
 u(x,y) =  r^{\alpha_{C} }\sin(\alpha_{C} \theta)
 + e^{-\alpha_{P} ((x - x_{P})^{2} + (y - y_{P})^{2})}
 + tan^{-1}(\alpha_{W} (r_{W} - r_{0}))
 + e^{-(1 - y) / \epsilon}
 \end{equation}
+
 where $\alpha_C = \pi / \omega_C$, $r = \sqrt{x^2+y^2}$
 and $\theta = tan^{-1}(y/x)$, here $\omega_C$ determines
 the angle of the re-entrant corner.
 $(x_{P}, y_{P})$ is the location of the peak, $\alpha$
-determines the strength of the peak.
+determines the strength of the peak. Furthermore
 $r_{W} = \sqrt{(x - x_{W})^{2} + (y - y_{W})^{2}}$,
-here $(x_{W}, y_{W})$ is the center of the circular wave front,
+where $(x_{W}, y_{W})$ is the center of the circular wave front,
 $r_{0}$ is the distance from the wave front to the
 center of the circle, and $\alpha_W$ gives
-the steepness of the wave front. $\epsilon$ determines the
+the steepness of the wave front. The parameter $\epsilon$ determines the
 strength of the boundary layer, the boundary layer was placed on $y = -1$.
 The right-hand side $f$ is calculated by inserting (\ref{exact-nist-12})
-into (\ref{multiple}). \\
-
+into (\ref{multiple}).
 The solution of NIST-12 with $\omega_C = 3 \pi /2$,
 $(x_{W}, y_{W}) = (0, -3/4)$, $r_{0} = 3/4$, $\alpha_{W} = 200$,
 $(x_{P}, y_{P}) = (\sqrt{5} / 4, -1/4)$,
@@ -622,20 +1149,78 @@ $\epsilon = 1/100$ is shown in Fig. \ref{fig:sln-nist12}.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[height=6cm]{nist/nist-12/solution.png}
+\includegraphics[height=5cm]{nist/nist-12/solution.png}
 \caption{The solution to NIST-12 benchmark problem.}
 \label{fig:sln-nist12}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The goal of the benchmark is to reach a relative error below
+$10^{-1}$~\% in the $H^1$-norm with as few DOFs as possible.
+We begin with adaptive $hp$-FEM,
+the initial mesh is shown in Fig. \ref{fig:nist-12-hp-aniso} (left).
+After 26 adaptivity steps, the resulting mesh with 4438 DOF is shown
+in Fig. \ref{fig:nist-12-hp-aniso} (right).
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-12/mesh_hp_aniso_init.png}\ \
+\includegraphics[height=5cm]{nist/nist-12/mesh_hp_aniso.png}
+\caption{Initial mesh (left) and final mesh (right) for $hp$-FEM with anisotropic refinements.}
+\label{fig:nist-12-hp-aniso}
+\end{figure}
+
+The final relative error estimate in $H^1$-norm was 9.85118e-01 \%,
+and it was identical to the exact error in all printed digits.
+We also solved this benchmark with adaptive $h$-FEM
+with linear (left) and quadratic (right)
+elements, with anisotropic refinements enabled.
+Final meshes for the $h$-FEM computations are shown
+in Fig. \ref{fig:nist-12-h-aniso}.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-12/mesh_h1_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-12/mesh_h2_aniso.png}
+\caption{Final mesh for $h$-FEM anisotropic refinements with linear and quadratic elements.}
+\label{fig:nist-12-h-aniso}
+\end{figure}
+
+Finally, Figs. \ref{fig:nist-12-conv} compare all
+three approaches to automatic adaptivity from the point
+of view of DOF and CPU convergence.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{nist/nist-12/conv_dof_aniso.png}\ \
+\includegraphics[height=5cm]{nist/nist-12/conv_cpu_aniso.png}
+\caption{DOF and CPU time convergence graphs.}
+\label{fig:nist-12-conv}
+\end{figure}
+
+
 \section{Conclusion and Outlook}
 \label{sec:conclusion}
 
-%We have presented three new benchmark problems with known exact solutions
-%that can be used to assess the ability of adaptive FEM codes to handle
-%anisotropic refinements. Since for adaptive FEM codes the resulting mesh
-%should be observed as part of the final solution, we are currently expanding
-%our research of optimal meshes.
+A set of benchmarks that can be used to assess the
+ability of adaptive FEM codes to handle for diverse
+problems have been presented in this paper.
+Numerical results with twelve test problems demonstrate
+that ......
+
+So far we have just solved linear PDE problems where $u$
+was a continuous approximation in the $H^1$ space.
+Hermes can also solve equations whose solutions lie in the space
+$Hcurl$, $Hdiv$ or $L^2$ and one can combine these spaces for PDE systems.
+
+The computations were performed on an Intel Core i3 based laptop PC
+operating under the 32 bit VMware Fedora 12 distribution
+of Linux with kernel 2.6.31.5-127.fc12.i686.PAE
+on Windows XP professional(1GB memory for VMware Workstation).
+
+The obtained rate confirms the theoretical estimates.
+Notice that the hp strategy consistently outperforms the h adaptivity.
+
+The purpose of this papaer is to ......(coming soon.)
 
 \section{Acknowledgment}
 
@@ -646,283 +1231,19 @@ of Sciences of the Czech Republic. The first autor was partly
 supported by the National Natural Science Foundation
 of China under Projects No. 41074099.
 
-%
-%
-%\appendix
-%\section{Sample Results Obtained with {\sc Hermes}}\label{sec:app}
-%
-%In the second part of this paper we provide sample solutions to
-%the above benchmark problems using the {\sc Hermes} library.
-%The results are provided for illustration purposes only and they
-%should not be used as reference values.
-%
-%
-%\subsection*{Brief Description of the {\sc Hermes} Library}
-%{\sc Hermes} is an open source C++ library for
-%rapid development of adaptive $hp$-FEM and $hp$-DG solvers. The library is
-%developed by the $hp$-FEM group at the University of Nevada, Reno
-%(http://hpfem.org) and it is available under the GPL license.
-%
-%{\sc Hermes} offers eight different modes of automatic adaptivity:
-%\begin{enumerate}
-%\item H\_ISO ($h$-adaptivity with isotropic refinements),
-%\item H\_ANISO ($h$-adaptivity with possibly anisotropic refinements),
-%\item P\_ISO ($p$-adaptivity with isotropic polynomial degrees in elements),
-%\item P\_ANISO ($p$-adaptivity with possibly anisotropic polynomial degrees in elements),
-%\item HP\_ISO ($hp$-adaptivity with isotropic polynomial degrees in elements and isotropic spatial refinements),
-%\item HP\_ANISO\_H ($hp$-adaptivity with isotropic polynomial degrees in elements and possibly anisotropic spatial refinements),
-%\item HP\_ANISO\_P ($hp$-adaptivity with possibly anisotropic polynomial degrees in elements and isotropic spatial refinements),
-%\item HP\_ANISO ($hp$-adaptivity with possibly anisotropic polynomial degrees in elements and possibly anisotropic spatial refinements).
-%\end{enumerate}
-%
-%\subsection*{Main Idea of the Adaptivity Algorithm}
-%
-%In each adaptivity step the algorithm performs a global $hp$ mesh refinement,
-%calculates an approximate (reference) solution $u_{ref}$ on the refined mesh, obtains its
-%closest representant $u_{coarse}$ on the original coarse mesh via an orthogonal projection,
-%and evaluates the approximate error function
-%$$
-%e_{h,p} = u_{ref} - u_{coarse}.
-%$$
-%In fact, $u_{coarse}$ is the low-order part of $u_{ref}$ and so $e_{h,p}$
-%is an excellent indicator where $u_{coarse}$ needs to be improved.
-%Next, the algorithm identifies elements with the largest error norm,
-%and selects them for refinement. Last, in a loop over all selected
-%elements $K$, the algorithm projects $u_{ref}$ locally on all refinement
-%candidates on $K$. Here is where the various adaptivity modes differ --
-%the simplest one is H\_ISO with just one refinement option (a 4-split) and mode
-%8 is the most general with around 100 options. This looks like lots of
-%CPU time, but in reality the projections are extremely
-%fast since each refinement candidate comes with a local orthonormal basis.
-%Among all considered refinements of $K$, the algorithm select the one
-%which yields the smallest projection error (weighted with the number of
-%new degrees of freedom that the candidate adds to the discrete problem).
-%
-%The algorithm is completely PDE-independent, it does not contain
-%any tuning parameters, and in contrast to various popular gradient-based techniques
-%it works equally well for low-order and high-order elements. Thanks to its
-%robustness and simplicity, the algorithm works
-%very well for multiphysics PDE systems where it is used in combination
-%with multimesh $hp$-FEM \cite{thermoel}.
-%
-%\subsection*{Benchmark No. 1}
-%
-%We begin with adaptive $hp$-FEM with anisotropic refinements (adaptivity mode
-%HP\_ANISO in {\sc Hermes}), starting from a mesh that contains only one bilinear
-%element. The initial mesh is shown in Fig. \ref{fig:1-hp-aniso} (left).
-%In a few adaptivity steps, the polynomial degree of this element is increased
-%anisotropically and the element is never refined in space.
-%The resulting single-element mesh with 16 DOF is shown in Fig. \ref{fig:1-hp-aniso} (right). The diagonal pattern
-%indicates different polynomial degrees ($8$ in the $x$-direction and $1$ in the $y$-direction).
-%
-%\newpage
-%
-%\begin{figure}[!ht]
-%\centering
-%\includegraphics[height=5cm]{solinfig5.eps}\ \
-%\includegraphics[height=5cm]{solinfig6.eps}
-%\caption{Initial mesh (left) and final mesh (right) for $hp$-FEM with anisotropic refinements.}
-%\label{fig:1-hp-aniso}
-%\end{figure}
-%
-%The final relative error estimate in $H^1$-norm was 3.6796e-05 \%
-%and it was identical to the exact error in all printed digits.
-%
-%We also solved this benchmark with adaptive $h$-FEM with quadratic
-%elements, with anisotropic refinements enabled and disabled
-%(adaptivity modes H\_ANISO and H\_ISO in {\sc Hermes}, respectively).
-%Final meshes for the $h$-FEM computations are not shown here --
-%they were so fine that they appeared as black squares. The $h$-FEM
-%with isotropic refinements was stopped after reaching 100,000 DOF.
-%Figs. \ref{fig:1-graph-1} and \ref{fig:1-graph-2} compare all
-%three adaptivity modes from the point
-%of view of DOF and CPU convergence.
-%
-%\begin{figure}[!ht]
-%\centering
-%\includegraphics[height=7cm]{solinfig7.eps}
-%\vspace{-2mm}
-%\caption{DOF convergence graphs.}
-%\label{fig:1-graph-1}
-%\vspace{-1cm}
-%\end{figure}
-%\newpage
-%
-%\begin{figure}[!ht]
-%\centering
-%\includegraphics[height=7cm]{solinfig8.eps}
-%\vspace{-2mm}
-%\caption{CPU time convergence graphs.}
-%\label{fig:1-graph-2}
-%\end{figure}
-%
-%
-%\subsection*{Benchmark No. 2}
-%
-%First we employ $hp$-FEM with anisotropic refinements (HP\_ANISO mode in {\sc Hermes})
-%and start from a 100-element
-%mesh that was obtained through several consecutive refinements towards
-%the boundary. Note that herewith we use some a-priori knowledge of the
-%solution. The initial mesh and the final mesh with 3,913 DOF
-%are shown in the left and right part of Fig. \ref{fig:2-hp-aniso}, respectively.
-%
-%\begin{figure}[!ht]
-%\centering
-%\includegraphics[height=5cm]{solinfig9.eps}\ \
-%\includegraphics[height=5cm]{solinfig10.eps}
-%\caption{Initial mesh (left) and final mesh (right) for $hp$-FEM with anisotropic refinements.}
-%\label{fig:2-hp-aniso}
-%\end{figure}
-%\noindent
-%
-%We also solved this benchmark using adaptive $h$-FEM with quadratic
-%elements, with anisotropic refinements enabled and disabled (adaptivity
-%modes H\_ANISO and H\_ISO in {\sc Hermes}, respectively). The
-%corresponding final meshes are shown in Fig. \ref{fig:2-h2}.
-%
-%\begin{figure}[!ht]
-%\centering
-%\includegraphics[height=5cm]{solinfig11.eps}\ \
-%\includegraphics[height=5cm]{solinfig12.eps}
-%\caption{Resulting meshes for $h$-FEM with quadratic elements. Anisotropic
-%   refinements enabled (left) and disabled (right).}
-%\label{fig:2-h2}
-%\end{figure}
-%\noindent
-%
-%Again, computations were stopped when the number of DOF exceeded 100,000.
-%Figs. \ref{fig:2-graph-1} and  \ref{fig:2-graph-2} compare all
-%three adaptivity modes from the point of view of DOF and CPU time convergence.
-%
-%\begin{figure}[!ht]
-%\centering
-%\includegraphics[height=7cm]{solinfig13.eps}
-%\vspace{-2mm}
-%\caption{DOF convergence graphs. }
-%\label{fig:2-graph-1}
-%\end{figure}
-%
-%\newpage
-%
-%\begin{figure}[!ht]
-%\centering
-%\includegraphics[height=7cm]{solinfig14.eps}
-%\vspace{-2mm}
-%\caption{CPU time convergence graphs.}
-%\label{fig:2-graph-2}
-%\vspace{-0.5cm}
-%\end{figure}
-%
-%\subsection*{Benchmark No. 3}
-%
-%As in the previous two cases, we begin with $hp$-FEM with anisotropic refinements
-%(HP\_ANISO mode in {\sc Hermes}). The initial mesh for the first solution component
-%is just one quadratic element and the initial mesh for the second component
-%has 100 quadratic elements, as shown in Fig. \ref{fig:3-init}
-%
-%\begin{figure}[!ht]
-%\centering
-%\includegraphics[height=5cm]{solinfig15.eps}\ \
-%\includegraphics[height=5cm]{solinfig16.eps}
-%\caption{Initial meshes for the two solution components.}
-%\label{fig:3-init}
-%\end{figure}
-%\noindent
-%
-%The final meshes for the first and second solution components
-%are shown in Fig. \ref{fig:3-hp-aniso}. They contain 49 and
-%1,809 DOF, respectively (total of 1,858 DOF).
-%
-%\begin{figure}[!ht]
-%\centering
-%\includegraphics[height=5cm]{solinfig17.eps}\ \
-%\includegraphics[height=5cm]{solinfig18.eps}
-%\caption{Final meshes for both solution components, $hp$-FEM with
-%         anisotropic refinements.}
-%\label{fig:3-hp-aniso}
-%\end{figure}
-%\noindent
-%
-%Again we also solved this benchmark using adaptive $h$-FEM with quadratic
-%elements, with anisotropic refinements enabled and disabled (adaptivity
-%modes H\_ANISO and H\_ISO in {\sc Hermes}, respectively). The
-%corresponding final meshes for the anisotropic case are shown in
-%Fig. \ref{fig:3-h2-aniso}. They contain 4,961 DOF and 49,873 DOF
-%(total of 54,834 DOF).
-%
-%\begin{figure}[!ht]
-%\centering
-%\includegraphics[height=5cm]{solinfig19.eps}\ \
-%\includegraphics[height=5cm]{solinfig20.eps}
-%\caption{Final meshes for both solution components, $h$-FEM with
-%         quadratic elements and anisotropic refinements enabled.}
-%\label{fig:3-h2-aniso}
-%\end{figure}
-%
-%\clearpage
-%
-%\noindent
-%The final meshes for the isotropic case are shown in Fig.
-%\ref{fig:3-h2-iso}. They contain 961 DOF and 81,185, DOF
-%(total of 82,146, DOF).
-%
-%\begin{figure}[!ht]
-%\centering
-%\includegraphics[height=5cm]{solinfig21.eps}\ \
-%\includegraphics[height=5cm]{solinfig22.eps}
-%\caption{Final meshes for both solution components, $h$-FEM with
-%         quadratic elements and isotropic refinements.}
-%\label{fig:3-h2-iso}
-%\end{figure}
-%
-%
-%Also in this case computations were stopped when the number of DOF exceeded 100,000.
-%Figs. \ref{fig:3-graph-1} and  \ref{fig:3-graph-2} compare all
-%three adaptivity modes from the point of view of DOF and CPU time convergence.
-%
-%\begin{figure}[!ht]
-%\centering
-%\includegraphics[height=7cm]{solinfig23.eps}
-%\vspace{-2mm}
-%\caption{DOF convergence graphs. }
-%\label{fig:3-graph-1}
-%\end{figure}
-%
-%
-%\begin{figure}[!ht]
-%\centering
-%\includegraphics[height=7cm]{solinfig24.eps}
-%\vspace{-2mm}
-%\caption{CPU time convergence graphs.}
-%\label{fig:3-graph-2}
-%\end{figure}
-%
-%
-
-
-
-
-
-
 
 \begin{thebibliography}{[KLR73]}
-%
-% and use \bibitem to create references.
-%
-% Use the following syntax and markup for your references
-%
-% Monographs
 
-\bibitem{label1}
-D. Estep, G. Carey, V. Ginting, S. Tavener, T. Wildey:
-A Posteriori Error Analysis of Multiscale Operator
-Decomposition Methods for Multiphysics Models, SciDAC 2008,
-Journal of Physics: Conference Series 125 (2008) 12 - 75.
-
-\bibitem{fitzhugh}
-R. Fitzhugh: Mathematical Models of Excitation and Propagation in Nerve.
-Chapter 1, pp. 1-85 in H.P. Schwan, ed. Biological Engineering,
-McGraw-Hill Book Co., N.Y. (1969).
+%\bibitem{label1}
+%D. Estep, G. Carey, V. Ginting, S. Tavener, T. Wildey:
+%A Posteriori Error Analysis of Multiscale Operator
+%Decomposition Methods for Multiphysics Models, SciDAC 2008,
+%Journal of Physics: Conference Series 125 (2008) 12 - 75.
+%
+%\bibitem{fitzhugh}
+%R. Fitzhugh: Mathematical Models of Excitation and Propagation in Nerve.
+%Chapter 1, pp. 1-85 in H.P. Schwan, ed. Biological Engineering,
+%McGraw-Hill Book Co., N.Y. (1969).
 
 \bibitem{mitchell-1}
 W. Mitchell: A Collection of 2D Elliptic Problems for
@@ -932,15 +1253,18 @@ Testing Adaptive Algorithms, NISTIR 7668, 2010 (available online).
 W. Mitchell: A Survey of hp-Adaptive Strategies for Elliptic Partial Differential Equations,
 Annals of the European Academy of Sciences, to appear (available online).
 
-\bibitem{nagumo}
-J. Nagumo, S. Arimoto, S. Yoshizawa:
-An Active Pulse Transmission Line Simulating Nerve Axon. Proc. IRE 50, 2061–2070 (1962).
+\bibitem{demkowicz-1}
+L. Demkowicz: One and Two Dimensional Elliptic and Maxwell Problems,
+Chapman \& Hall \/ CRC Press, Taylor \& Francis, 2006.
+
+%\bibitem{nagumo}
+%J. Nagumo, S. Arimoto, S. Yoshizawa:
+%An Active Pulse Transmission Line Simulating Nerve Axon. Proc. IRE 50, 2061–2070 (1962).
 
 \bibitem{label2}
 P. Solin, D. Andrs, J. Cerveny, M. Simko:
 PDE-Independent Adaptive $hp$-FEM Based on Hierarchic Extension of Finite Element Spaces.
 J. Comput. Appl. Math. 233 (2010) 3086-3094.
-
 
 \bibitem{thermoel}
 P. Solin, J. Cerveny, L. Dubcova, D. Andrs:
@@ -950,27 +1274,12 @@ via Adaptive Multimesh $hp$-FEM, J. Comput. Appl. Math 234 (2010) 2350 - 2357.
 \bibitem{sosedo}
 P. Solin. K. Segeth, I. Dolezel: Higher-Order Finite Element Methods, Chapman \& Hall
 / CRC Press, Boca Raton, 2003.
-
-% Contributed Works
-%\bibitem[Mey89]{contribution} Meyer, P.A.: A short presentation of
-%stochastic calculus. In: Emery, M. (ed) Stochastic Calculus in
-%Manifolds. Springer, Berlin Heidelberg New York (1989)
-%
-% Journal
-%\bibitem[MR97]{journal} Miller, B.M., Runggaldier, W.J.: Kalman
-%filtering for linear systems with coefficients driven by a hidden Markov
-%jump process. Syst. Control Lett., \textbf{31}, 93--102 (1997)
-%
-% Theses
-%\bibitem[Ros77]{thesis} Ross, D.W.: Lysosomes and storage diseases. MA
-%Thesis, Columbia University, New York (1977)
-
 \end{thebibliography}
 
 \vbox{}
 \vspace{6mm}
 We also include online references to the FEM codes mentioned in this paper.
-All these URLs were active on September 30, 2010:
+All these URLs were active on January 1, 2011:
 
 \begin{thebibliography}{[codes]}
 
@@ -1002,6 +1311,33 @@ PHG (Parallel Hierarchical Grid) http://lsec.cc.ac.cn/phg/
 2dhp90: http://users.ices.utexas.edu/\~{}leszek/2dhp90.html
 
 \end{thebibliography}
+
+\section{Appendix 1 - Automatic hp-adaptivity with the open source library Hermes}
+
+\paragraph{Mature hp-adaptivity algorithms}
+Hermes puts a major emphasis on error control and automatic adaptivity. Practitioners know well how painful it is to use automatic adaptivity in conjunction with standard lower-order approximations such as linear or quadratic elements - the error decreases somehow during a few initial adaptivity steps, but then it slows down and it does not help to invest more unknowns or CPU time. This is typical for low-order methods. In contrast to this, the exponentially-convergent adaptive hp-FEM and hp-DG do not have this problem - the error drops steadily and fast during adaptivity all the way to the desired accuracy.
+
+\paragraph{Wide applicability}
+Hermes is PDE-independent. Standard FEM codes are designed to solve some narrow class(es) of PDE problems (such as elliptic equations, fluid dynamics, electromagnetics etc.). Hermes does not employ any technique or algorithm that would limit its applicability to some particular class(es) of PDE problems. Automatic adaptivity is guided by a universal computational a-posteriori error estimate that works in the same way for any PDE. Visit the hp-FEM group home page and especially the gallery to see numerous examples.
+
+\paragraph{Arbitrary-level hanging nodes}
+Hermes has a unique original methodology for handling irregular meshes with arbitrary-level hanging nodes. This means that extremely small elements can be adjacent to very large ones. When an element is refined, its neighbors are never split forcefully as in conventional adaptivity algorithms. It is well known that approximations with one-level hanging nodes are more efficient compared to regular meshes. However, the technique of arbitrary-level hanging nodes brings this to a perfection.
+
+\paragraph{Multimesh hp-FEM}
+Various physical fields or solution components in multiphysics problems can be approximated on individual meshes, combining quality $H^1, H(curl), H(div), and L^2$ conforming higher-order elements. Due to a unique original methodology, no error is caused by operator splitting, transferring data between different meshes, and the like. The following figure illustrates a coupled problem of heat and moisture transfer in massive concrete walls of a nuclear reactor vessel.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[height=5cm]{img/hermes_hm_sol.png}
+\hspace{10mm}
+\includegraphics[height=5cm]{img/hermes_hm_mesh.png}
+\caption{Illustration of multimesh hp-FEM.}
+\label{fig:hermes_hm}
+\end{figure}
+\noindent
+
+\paragraph{Dynamical meshes for time-dependent problems}
+In time-dependent problems, different physical fields or solution components can be approximated on individual meshes that evolve in time independently of each other. Due to a unique original methodology, no error is caused by transfering solution data between different meshes and time levels. No such transfer takes place in the multimesh hp-FEM - the discretization of the time-dependent PDE system is monolithic.
 
 
 %% Authors are advised to submit their bibtex database files. They are

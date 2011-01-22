@@ -9,7 +9,7 @@ stressed due to prescribed loading conditions.
 In this benchmark, we present a standard system of two
 coupled equations with mixed derivative for linear elasticity
 in the coupling term. This example employs the adaptive multimesh $hp$-FEM
-to solve the equations. 
+to solve the equations.
 
 \begin{equation}\label{crack}
 \left\{
@@ -19,7 +19,7 @@ to solve the equations.
 -E \frac{1-\nu^2}{(1-2\nu)(2-2\nu)} \frac{\partial^{2} v}{\partial x \partial y} = F_{x} \\
 \displaystyle
 -E \frac{1-\nu^2}{2-2\nu} \frac{\partial^{2} v}{\partial x^{2}} - E\frac{1-\nu^2}{1-2\nu} \frac{\partial^{2} v}{\partial y^{2}}
--E \frac{1-\nu^2}{(1-2\nu)(2-2\nu)} \frac{\partial^{2} u}{\partial x \partial y} = F_{y},
+-E \frac{1-\nu^2}{(1-2\nu)(2-2\nu)} \frac{\partial^{2} u}{\partial x \partial y} = F_{y} 
 \end{array}
 \right.
 \end{equation}
@@ -38,7 +38,7 @@ exact solution. The exact solution of (\ref{crack}) in polar coordinates is give
 \displaystyle
 u(x, y) = \frac{1}{2G} r^{\lambda}[(k - Q(\lambda + 1))cos(\lambda \theta) - \lambda cos((\lambda - 2) \theta)] \\
 \displaystyle
-v(x, y) = \frac{1}{2G} r^{\lambda}[(k + Q(\lambda + 1))sin(\lambda \theta) + \lambda sin((\lambda - 2) \theta)].
+v(x, y) = \frac{1}{2G} r^{\lambda}[(k + Q(\lambda + 1))sin(\lambda \theta) + \lambda sin((\lambda - 2) \theta)]
 \end{array}
 \right.
 \end{equation}

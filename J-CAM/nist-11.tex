@@ -1,14 +1,14 @@
 \section{Benchmark NIST-11 "Intersecting Interfaces"}
 \label{sec:bench-11}
 
-This is a Poisson's problem with intersecting interfaces, 
-dividing the plane into four regions. 
+This is a Poisson's problem with intersecting interfaces,
+dividing the plane into four regions.
 The solution to this problem contains a severe
 singularity that poses a challenge to adaptive methods.
-The equation solved is given by 
+The equation solved is given by
 
 \begin{equation} \label{intersecting}
--\nabla \cdot (a(x,y) \nabla u) = 0,
+-\nabla \cdot (a(x,y) \nabla u) = 0 
 \end{equation}
 
 where the parameter $a$ is piecewise-constant,
@@ -19,7 +19,7 @@ Dirichlet boundary conditions given by the exact solution.
 The exact solution:
 
 \begin{equation}\label{exact-nist-11}
-u(x,y) = r^{a_1} \mu (\theta),
+u(x,y) = r^{a_1} \mu (\theta) 
 \end{equation}
 
 where $a_1$ and $\mu (\theta)$ is given in \cite{mitchell-1}.

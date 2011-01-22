@@ -11,7 +11,7 @@ The equation solved is given by
 
 \begin{equation} \label{heat-conduction}
 -\frac{\partial }{\partial x}\left(p(x, y)\frac{\partial u}{\partial x}\right)
--\frac{\partial }{\partial y}\left(q(x, y)\frac{\partial u}{\partial y}\right) = f,
+-\frac{\partial }{\partial y}\left(q(x, y)\frac{\partial u}{\partial y}\right) = f 
 \end{equation}
 
 in the domain $\Omega = (0, 8.4) \times (0, 24)$. Boundary conditions are zero Neumann on left edge, Newton on the rest of the boundary:
@@ -22,7 +22,7 @@ in the domain $\Omega = (0, 8.4) \times (0, 24)$. Boundary conditions are zero N
 \displaystyle p(x, y)\frac{\partial u}{\partial x}\nu_1 + q(x, y)\frac{\partial u}{\partial y}\nu_2 = g_{left}(x, y) \ \mbox{on} \  \Gamma_{left} \\
 \displaystyle p(x, y)\frac{\partial u}{\partial x}\nu_1 + q(x, y)\frac{\partial u}{\partial y}\nu_2 + c(x, y)u = g_{right}(x, y) \ \mbox{on} \ \Gamma_{right} \\
 \displaystyle p(x, y)\frac{\partial u}{\partial x}\nu_1 + q(x, y)\frac{\partial u}{\partial y}\nu_2 + c(x, y)u = g_{top}(x, y) \ \mbox{on} \ \Gamma_{top} \\
-\displaystyle p(x, y)\frac{\partial u}{\partial x}\nu_1 + q(x, y)\frac{\partial u}{\partial y}\nu_2 + c(x, y)u = g_{bottom}(x, y) \ \mbox{on} \ \Gamma_{bottom},
+\displaystyle p(x, y)\frac{\partial u}{\partial x}\nu_1 + q(x, y)\frac{\partial u}{\partial y}\nu_2 + c(x, y)u = g_{bottom}(x, y) \ \mbox{on} \ \Gamma_{bottom} 
 \end{array}
 \right.
 \end{equation}
@@ -49,7 +49,6 @@ in Fig. \ref{fig:nist-5-hp-aniso} (right).
 \centering
 \includegraphics[height=5cm]{nist/nist-5/mesh_hp_aniso_init.png}\ \
 \includegraphics[height=5cm]{nist/nist-5/mesh_hp_aniso.png}
-\vspace{-2mm}
 \caption{Initial mesh (left) and final mesh (right) for $hp$-FEM with anisotropic refinements.}
 \label{fig:nist-5-hp-aniso}
 \end{figure}
