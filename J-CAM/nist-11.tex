@@ -34,38 +34,23 @@ The solution of NIST-11 is shown in Fig. \ref{fig:sln-nist11}.
 \label{fig:sln-nist11}
 \end{figure}
 
-The goal of the benchmark is to reach a relative error below
-$0.5$~\% in the $H^1$-norm with as few DOFs as possible.
-We begin with adaptive $hp$-FEM,
-the initial mesh is shown in Fig. \ref{fig:nist-11-hp-aniso} (left).
-After 46 adaptivity steps, the resulting mesh with 591 DOF is shown
-in Fig. \ref{fig:nist-11-hp-aniso} (right).
-
 \begin{figure}[!ht]
 \centering
 \includegraphics[height=5cm]{nist/nist-11/mesh_hp_aniso_init.png}\ \
 \includegraphics[height=5cm]{nist/nist-11/mesh_hp_aniso.png}
-\caption{Initial mesh (left) and final mesh (right) for $hp$-FEM with anisotropic refinements.}
+\caption{Initial mesh (left) and final mesh (right) with 591 DOF and the resulting relative error estimate in $H^1$-norm of 4.7087e-01 \% for $hp$-FEM with anisotropic refinements.}
 \label{fig:nist-11-hp-aniso}
 \end{figure}
-
-The final relative error estimate in $H^1$-norm was 4.7087e-01 \%,
-and it was identical to the exact error in all printed digits.
-We also solved this benchmark with adaptive $h$-FEM
-with linear (left) and quadratic (right)
-elements, with anisotropic refinements enabled.
-Final meshes for the $h$-FEM computations are shown
-in Fig. \ref{fig:nist-11-h-aniso}.
 
 \begin{figure}[!ht]
 \centering
 \includegraphics[height=5cm]{nist/nist-11/mesh_h1_aniso.png}\ \
 \includegraphics[height=5cm]{nist/nist-11/mesh_h2_aniso.png}
-\caption{Final mesh for $h$-FEM anisotropic refinements with linear and quadratic elements.}
+\caption{Final mesh for $h$-FEM with linear and quadratic elements.}
 \label{fig:nist-11-h-aniso}
 \end{figure}
 
-Finally, Figs. \ref{fig:nist-11-conv} compare all
+Figs. \ref{fig:nist-11-conv} compare all
 three approaches to automatic adaptivity from the point
 of view of DOF and CPU convergence.
 

@@ -1,9 +1,7 @@
 \section{Benchmark NIST-1 "Analytic Solution"}
 \label{sec:bench-1}
 
-This is the first benchmark problem with a smooth solution
-that is used for testing adaptive algorithms performance
-where adaptivity isn't really needed.
+This is the first benchmark problem. Its solution is smooth.
 The equation solved is the Poisson's equation.
 
 \begin{equation} \label{poisson}
@@ -22,39 +20,25 @@ Here $p$ is a parameter, determining the polynomial degree of the exact solution
 \label{fig:sln-nist01}
 \end{figure}
 
-The goal of the benchmark is to reach a relative error below
-$10^{-2}$~\% in the $H^1$-norm with as few DOFs as possible.
-We begin with the adaptive $hp$-FEM with possible anisotropic refinements (adaptivity mode
-HP\_ANISO\_H in {\sc Hermes}). The initial mesh is shown in Fig. \ref{fig:nist-1-hp-aniso} (left).
-After 11 adaptivity steps, the resulting mesh with 769 DOF is shown in Fig. \ref{fig:nist-1-hp-aniso} (right).
-
 \begin{figure}[!ht]
 \centering
 \includegraphics[height=5cm]{nist/nist-1/mesh_hp_aniso_init.png}\ \
 \includegraphics[height=5cm]{nist/nist-1/mesh_hp_aniso.png}
 %\vspace{-2mm}
-\caption{Initial mesh (left) and final mesh (right) for $hp$-FEM with anisotropic refinements.}
+\caption{Initial mesh (left) and final mesh (right) with 769 DOF and the resulting relative error estimate in $H^1$-norm of 4.69543e-03 \% for $hp$-FEM with anisotropic refinements.}
 \label{fig:nist-1-hp-aniso}
 \end{figure}
-
-The final relative error estimate in $H^1$-norm was 4.69543e-03 \%,
-and it was identical to the exact error in all printed digits.
-We also solved this benchmark with adaptive $h$-FEM
-with linear (left) and quadratic (right)
-elements, with anisotropic refinements enabled.
-Final meshes for the $h$-FEM computations are shown
-in Fig. \ref{fig:nist-1-h-aniso}.
 
 \begin{figure}[!ht]
 \centering
 \includegraphics[height=5cm]{nist/nist-1/mesh_h1_aniso.png}\ \
 \includegraphics[height=5cm]{nist/nist-1/mesh_h2_aniso.png}
 %\vspace{-2mm}
-\caption{Final mesh for $h$-FEM anisotropic refinements with linear and quadratic elements.}
+\caption{Final mesh for $h$-FEM with linear and quadratic elements.}
 \label{fig:nist-1-h-aniso}
 \end{figure}
 
-Finally, Figs. \ref{fig:nist-1-conv} compare all
+Figs. \ref{fig:nist-1-conv} compare all
 three approaches to automatic adaptivity from the point
 of view of DOF and CPU convergence.
 
