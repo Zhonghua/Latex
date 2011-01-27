@@ -6,18 +6,14 @@ a boundary layer along the right and top sides of the domain.
 It is a convection-diffusion equation with first order terms.
 
 \begin{equation} \label{boundary-layer}
--\epsilon \nabla^{2} u + 2\frac{\partial u}{\partial x} + \frac{\partial u}{\partial y} = f 
+-\epsilon \nabla^{2} u + 2\frac{\partial u}{\partial x} + \frac{\partial u}{\partial y} = f
 \end{equation}
 
 in the domain $\Omega = (-1, 1)^2$, equipped with Dirichlet boundary condition
-given by the exact solution. The exact solution:
-
-\begin{equation}\label{exact-nist-6}
-u(x,y) = (1 - e^{-(1 - x) / \epsilon})(1 - e^{-(1 - y) / \epsilon})cos(\pi (x + y)) 
-\end{equation}
-
+given by the exact solution. The exact solution is 
+$u(x,y) = (1 - e^{-(1 - x) / \epsilon})(1 - e^{-(1 - y) / \epsilon})cos(\pi (x + y))$, 
 where $\epsilon$ determines the strength of the boundary layer.
-The right-hand side $f$ is calculated by inserting (\ref{exact-nist-6}) into (\ref{boundary-layer}).
+The right-hand side $f$ is calculated by inserting exact solution into (\ref{boundary-layer}).
 The solution of NIST-6 containing a boundary layer
 with $\epsilon = 10^{-1}$ is shown in Fig. \ref{fig:sln-nist06}.
 

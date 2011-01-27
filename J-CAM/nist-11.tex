@@ -8,7 +8,7 @@ singularity that poses a challenge to adaptive methods.
 The equation solved is given by
 
 \begin{equation} \label{intersecting}
--\nabla \cdot (a(x,y) \nabla u) = 0 
+-\nabla \cdot (a(x,y) \nabla u) = 0
 \end{equation}
 
 where the parameter $a$ is piecewise-constant,
@@ -16,15 +16,10 @@ $a(x,y) = 161.4476387975881$ in the first and third quadrants,
 and $a(x,y) = 1$ in the remaining two quadrants.
 The domain of this problem is $\Omega = (-1, 1)^2$, equipped with
 Dirichlet boundary conditions given by the exact solution.
-The exact solution:
-
-\begin{equation}\label{exact-nist-11}
-u(x,y) = r^{a_1} \mu (\theta) 
-\end{equation}
-
+The exact solution is 
+$u(x,y) = r^{a_1} \mu (\theta)$,  
 where $a_1$ and $\mu (\theta)$ is given in \cite{mitchell-1}.
-The right-hand side $f$ is calculated by inserting
-(\ref{exact-nist-11}) into (\ref{intersecting}).
+The right-hand side $f$ is calculated by inserting exact solution into (\ref{intersecting}).
 The solution of NIST-11 is shown in Fig. \ref{fig:sln-nist11}.
 
 \begin{figure}[!ht]

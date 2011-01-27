@@ -19,7 +19,7 @@ to solve the equations.
 -E \frac{1-\nu^2}{(1-2\nu)(2-2\nu)} \frac{\partial^{2} v}{\partial x \partial y} = F_{x} \\
 \displaystyle
 -E \frac{1-\nu^2}{2-2\nu} \frac{\partial^{2} v}{\partial x^{2}} - E\frac{1-\nu^2}{1-2\nu} \frac{\partial^{2} v}{\partial y^{2}}
--E \frac{1-\nu^2}{(1-2\nu)(2-2\nu)} \frac{\partial^{2} u}{\partial x \partial y} = F_{y} 
+-E \frac{1-\nu^2}{(1-2\nu)(2-2\nu)} \frac{\partial^{2} u}{\partial x \partial y} = F_{y}
 \end{array}
 \right.
 \end{equation}
@@ -30,20 +30,20 @@ and $\nu$ is Poisson's ratio.
 
 The domain in the example is $\Omega = (-1, 1)^2$ with a slit,
 equipped with Dirichlet boundary conditions given by the
-exact solution. The exact solution of (\ref{crack}) in polar coordinates is given by
-
-\begin{equation}\label{exact-nist-3}
-\left\{
-\begin{array}{l}
-\displaystyle
-u(x, y) = \frac{1}{2G} r^{\lambda}[(k - Q(\lambda + 1))cos(\lambda \theta) - \lambda cos((\lambda - 2) \theta)] \\
-\displaystyle
-v(x, y) = \frac{1}{2G} r^{\lambda}[(k + Q(\lambda + 1))sin(\lambda \theta) + \lambda sin((\lambda - 2) \theta)]
-\end{array}
-\right.
-\end{equation}
-
-Here $\lambda = 0.5444837367825$, $Q = 0.5430755788367$,
+exact solution. The exact solution of (\ref{crack}) in polar coordinates is 
+%\begin{equation}\label{exact-nist-3}
+%$
+%\left\{
+%\begin{array}{l}
+%\displaystyle
+$u(x, y) = \frac{1}{2G} r^{\lambda}[(k - Q(\lambda + 1))cos(\lambda \theta) - \lambda cos((\lambda - 2) \theta)]$ and
+%\displaystyle
+$v(x, y) = \frac{1}{2G} r^{\lambda}[(k + Q(\lambda + 1))sin(\lambda \theta) + \lambda sin((\lambda - 2) \theta)]$, 
+%\end{array}
+%\right.
+%$
+%\end{equation}
+where $\lambda = 0.5444837367825$, $Q = 0.5430755788367$,
 $k = 3 - 4 \nu$ and $G = E / (2(1 + \nu))$.
 The solution of NIST-3 is shown in Fig. \ref{fig:sln-nist03}.
 
