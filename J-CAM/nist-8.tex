@@ -17,26 +17,33 @@ The solution of NIST-8 with $\alpha = 1 / 10 \pi$ is shown in Fig. \ref{fig:sln-
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[height=6cm]{nist/nist-8/solution.png}
+\includegraphics[height=5cm]{nist/nist-8/solution.png}
 \caption{The solution to NIST-8 benchmark problem.}
 \label{fig:sln-nist08}
 \end{figure}
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[height=5cm]{nist/nist-8/mesh_hp_aniso_init.png}\ \
-\includegraphics[height=5cm]{nist/nist-8/mesh_hp_aniso.png}
-\caption{Initial mesh (left) and final mesh (right) with 1160 DOF and the resulting relative error estimate in $H^1$-norm of 9.09848e-02 \% for $hp$-FEM with anisotropic refinements.}
+\includegraphics[height=3.7cm]{nist/nist-8/mesh_h1_aniso.png}
+\includegraphics[height=3.7cm]{nist/nist-8/mesh_h2_aniso.png}
+\includegraphics[height=3.7cm]{nist/nist-8/mesh_hp_aniso.png}
+\caption{
+Final mesh (left) with 55731 DOF and the resulting
+relative error estimate in $H^1$-norm of 1.24198 \% for $h$-FEM with linear elements.
+Final mesh (middle) with 3413 DOF and the resulting
+relative error estimate in $H^1$-norm of 6.64833e-01 1.49585 \% for $h$-FEM with quadratic elements.
+Final mesh (right) with 1160 DOF and the resulting
+relative error estimate in $H^1$-norm of 9.09848e-02 \% for $hp$-FEM with anisotropic refinements.}
 \label{fig:nist-8-hp-aniso}
 \end{figure}
 
-\begin{figure}[!ht]
-\centering
-\includegraphics[height=5cm]{nist/nist-8/mesh_h1_aniso.png}\ \
-\includegraphics[height=5cm]{nist/nist-8/mesh_h2_aniso.png}
-\caption{Final mesh for $h$-FEM with linear and quadratic elements.}
-\label{fig:nist-8-h-aniso}
-\end{figure}
+%\begin{figure}[!ht]
+%\centering
+%\includegraphics[height=5cm]{nist/nist-8/mesh_h1_aniso.png}\ \
+%\includegraphics[height=5cm]{nist/nist-8/mesh_h2_aniso.png}
+%\caption{Final mesh for $h$-FEM with linear and quadratic elements.}
+%\label{fig:nist-8-h-aniso}
+%\end{figure}
 
 Figs. \ref{fig:nist-8-conv} compare all
 three approaches to automatic adaptivity from the point

@@ -16,26 +16,33 @@ The solution of NIST-7 with $\alpha = 0.6$ is shown in Fig. \ref{fig:sln-nist07}
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[height=6cm]{nist/nist-7/solution.png}
+\includegraphics[height=5cm]{nist/nist-7/solution.png}
 \caption{The solution to NIST-7 benchmark problem.}
 \label{fig:sln-nist07}
 \end{figure}
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[height=5cm]{nist/nist-7/mesh_hp_aniso_init.png}\ \
-\includegraphics[height=5cm]{nist/nist-7/mesh_hp_aniso.png}
-\caption{Initial mesh (left) and final mesh (right) with 88 DOF and the resulting relative error estimate in $H^1$-norm of 1.46348 \% for $hp$-FEM with anisotropic refinements.}
+\includegraphics[height=3.7cm]{nist/nist-7/mesh_h1_aniso.png}
+\includegraphics[height=3.7cm]{nist/nist-7/mesh_h2_aniso.png}
+\includegraphics[height=3.7cm]{nist/nist-7/mesh_hp_aniso.png}
+\caption{
+Final mesh (left) with 684 DOF and the resulting
+relative error estimate in $H^1$-norm of 1.45724 \% for $h$-FEM with linear elements.
+Final mesh (middle) with 267 DOF and the resulting
+relative error estimate in $H^1$-norm of 1.49585 \% for $h$-FEM with quadratic elements.
+Final mesh (right) with 88 DOF and the resulting
+relative error estimate in $H^1$-norm of 1.46348 \% for $hp$-FEM with anisotropic refinements.}
 \label{fig:nist-7-hp-aniso}
 \end{figure}
 
-\begin{figure}[!ht]
-\centering
-\includegraphics[height=5cm]{nist/nist-7/mesh_h1_aniso.png}\ \
-\includegraphics[height=5cm]{nist/nist-7/mesh_h2_aniso.png}
-\caption{Final mesh for $h$-FEM with linear and quadratic elements.}
-\label{fig:nist-7-h-aniso}
-\end{figure}
+%\begin{figure}[!ht]
+%\centering
+%\includegraphics[height=5cm]{nist/nist-7/mesh_h1_aniso.png}\ \
+%\includegraphics[height=5cm]{nist/nist-7/mesh_h2_aniso.png}
+%\caption{Final mesh for $h$-FEM with linear and quadratic elements.}
+%\label{fig:nist-7-h-aniso}
+%\end{figure}
 
 Figs. \ref{fig:nist-7-conv} compare all
 three approaches to automatic adaptivity from the point

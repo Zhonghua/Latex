@@ -13,10 +13,13 @@ The equation solved is the Poisson's equation.
 in the L-shaped domain, equipped with Dirichlet boundary conditions
 given by the exact solution.
 The exact solution is
-$u(x,y) =  r^{\alpha_{C} }\sin(\alpha_{C} \theta)
+
+\[
+u(x,y) =  r^{\alpha_{C} }\sin(\alpha_{C} \theta)
 + e^{-\alpha_{P} ((x - x_{P})^{2} + (y - y_{P})^{2})}
-+ tan^{-1}(\alpha_{W} (r_{W} - r_{0}))
-+ e^{-(1 - y) / \epsilon}$,
++ tan^{-1}(\alpha_{W} (r_{W} - r_{0})) \\
++ e^{-(1 - y) / \epsilon}
+\]
 where $\alpha_C = \pi / \omega_C$, $r = \sqrt{x^2+y^2}$
 and $\theta = tan^{-1}(y/x)$, here $\omega_C$ determines
 the angle of the re-entrant corner.
@@ -44,19 +47,26 @@ $\epsilon = 1/100$ is shown in Fig. \ref{fig:sln-nist12}.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[height=5cm]{nist/nist-12/mesh_hp_aniso_init.png}\ \
-\includegraphics[height=5cm]{nist/nist-12/mesh_hp_aniso.png}
-\caption{Initial mesh (left) and final mesh (right) with 4438 DOF and the resulting relative error estimate in $H^1$-norm of 9.85118e-01 \% for $hp$-FEM with anisotropic refinements.}
+\includegraphics[height=3.7cm]{nist/nist-12/mesh_h1_aniso.png}
+\includegraphics[height=3.7cm]{nist/nist-12/mesh_h2_aniso.png}
+\includegraphics[height=3.7cm]{nist/nist-12/mesh_hp_aniso.png}
+\caption{
+Final mesh (left) with 45533 DOF and the resulting
+relative error estimate in $H^1$-norm of 2.05698 \% for $h$-FEM with linear elements.
+Final mesh (middle) with 10495 DOF and the resulting
+relative error estimate in $H^1$-norm of 9.04458e-01 \% for $h$-FEM with quadratic elements.
+Final mesh (right) with 4438 DOF and the resulting
+relative error estimate in $H^1$-norm of 9.85118e-01 \% for $hp$-FEM with anisotropic refinements.}
 \label{fig:nist-12-hp-aniso}
 \end{figure}
 
-\begin{figure}[!ht]
-\centering
-\includegraphics[height=5cm]{nist/nist-12/mesh_h1_aniso.png}\ \
-\includegraphics[height=5cm]{nist/nist-12/mesh_h2_aniso.png}
-\caption{Final mesh for $h$-FEM with linear and quadratic elements.}
-\label{fig:nist-12-h-aniso}
-\end{figure}
+%\begin{figure}[!ht]
+%\centering
+%\includegraphics[height=5cm]{nist/nist-12/mesh_h1_aniso.png}\ \
+%\includegraphics[height=5cm]{nist/nist-12/mesh_h2_aniso.png}
+%\caption{Final mesh for $h$-FEM with linear and quadratic elements.}
+%\label{fig:nist-12-h-aniso}
+%\end{figure}
 
 Figs. \ref{fig:nist-12-conv} compare all
 three approaches to automatic adaptivity from the point
