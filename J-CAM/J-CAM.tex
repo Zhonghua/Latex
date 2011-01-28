@@ -43,6 +43,7 @@
 %% \usepackage{graphics}
 %% or use the graphicx package for more complicated commands
 \usepackage{graphicx}
+\usepackage{float}
 %% or use the epsfig package if you prefer to use the old commands
 %% \usepackage{epsfig}
 
@@ -381,14 +382,14 @@ The solution of NIST-3 is shown in Fig. \ref{fig:sln-nist03}.
 \label{fig:sln-nist03}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[H]
 \centering
-\includegraphics[height=3.7cm]{nist/nist-3/mesh_u_h1_aniso.png}
-\includegraphics[height=3.7cm]{nist/nist-3/mesh_u_h2_aniso.png}
-\includegraphics[height=3.7cm]{nist/nist-3/mesh_u_hp_anisoh.png}\ \
-\includegraphics[height=3.7cm]{nist/nist-3/mesh_v_h1_aniso.png}
-\includegraphics[height=3.7cm]{nist/nist-3/mesh_v_h2_aniso.png}
-\includegraphics[height=3.7cm]{nist/nist-3/mesh_v_hp_anisoh.png}
+\includegraphics[height=3.3cm]{nist/nist-3/mesh_u_h1_aniso.png}
+\includegraphics[height=3.3cm]{nist/nist-3/mesh_u_h2_aniso.png}
+\includegraphics[height=3.3cm]{nist/nist-3/mesh_u_hp_anisoh.png}\ \
+\includegraphics[height=3.3cm]{nist/nist-3/mesh_v_h1_aniso.png}
+\includegraphics[height=3.3cm]{nist/nist-3/mesh_v_h2_aniso.png}
+\includegraphics[height=3.3cm]{nist/nist-3/mesh_v_hp_anisoh.png}
 \caption{
 Final mesh (left) with 39779 DOF and the resulting
 relative error estimate in $H^1$-norm of 3.84929e-01 \% for $h$-FEM with linear elements.
@@ -426,7 +427,7 @@ Figs. \ref{fig:nist-3-conv} compare all
 three approaches to automatic adaptivity from the point
 of view of DOF and CPU convergence.
 
-\begin{figure}[!ht]
+\begin{figure}[H]
 \centering
 \includegraphics[height=4cm]{nist/nist-3/conv_dof_aniso.png}\ \
 \includegraphics[height=4cm]{nist/nist-3/conv_cpu_aniso.png}
