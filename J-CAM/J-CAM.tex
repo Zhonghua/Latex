@@ -202,22 +202,25 @@ The equation solved is the Poisson's equation.
 in the domain $\Omega = (0, 1)^2$, equipped with Dirichlet
 boundary condition given by the exact solution.
 The exact solution is $u(x, y) = 2^{4p}x^{p}(1-x)^{p}y^{p}(1-y)^{p}$.
-%The right-hand side $f$ is calculated by inserting exact solution into (\ref{poisson}).
 The solution of NIST-1 is shown in Fig. \ref{fig:sln-nist01}.
 Here $p$ is a parameter, determining the polynomial degree of the exact solution.
 
 \begin{figure}[H]
 \centering
+\vspace{-3mm}
 \includegraphics[height=4cm]{nist/nist-1/solution.png}
+\vspace{-3mm}
 \caption{The solution to NIST-1 benchmark problem.}
 \label{fig:sln-nist01}
 \end{figure}
 
 \begin{figure}[H]
 \centering
+\vspace{-6mm}
 \includegraphics[height=3.7cm]{nist/nist-1/mesh_h1_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-1/mesh_h2_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-1/mesh_hp_aniso.png}
+\vspace{-3mm}
 \caption{
 Final mesh (left) with 51365 DOF and the resulting
 relative error estimate in $H^1$-norm of 5.87223e-01 \% for $h$-FEM with linear elements.
@@ -228,17 +231,19 @@ relative error estimate in $H^1$-norm of 4.69543e-03 \% for $hp$-FEM with anisot
 \label{fig:nist-1-hp-aniso}
 \end{figure}
 
+\vspace{-2mm}
 Figs. \ref{fig:nist-1-conv} compare all
 three approaches to automatic adaptivity from the point
 of view of DOF and CPU convergence.
 
 \begin{figure}[H]
 \centering
+\vspace{-3mm}
 \includegraphics[height=4cm]{nist/nist-1/conv_dof_aniso.png}\ \
 \includegraphics[height=4cm]{nist/nist-1/conv_cpu_aniso.png}
-%\vspace{-5mm}
+\vspace{-3mm}
 \caption{DOF and CPU time convergence graphs.}
-%\vspace{-5mm}
+\vspace{-5mm}
 \label{fig:nist-1-conv}
 \end{figure}
 
@@ -268,21 +273,21 @@ is shown in Fig. \ref{fig:sln-nist02}.
 
 \begin{figure}[H]
 \centering
-%\vspace{-5mm}
+\vspace{-3mm}
 \includegraphics[height=4.5cm]{nist/nist-2/solution.png}
 %\vspace{-5mm}
 \caption{The solution to NIST-2 benchmark problem.}
-%\vspace{-5mm}
+\vspace{-3mm}
 \label{fig:sln-nist02}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-%\vspace{-5mm}
+\vspace{-3mm}
 \includegraphics[height=3.7cm]{nist/nist-2/mesh_h1_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-2/mesh_h2_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-2/mesh_hp_aniso.png}
-%\vspace{-5mm}
+\vspace{-3mm}
 \caption{
 Final mesh (left) with 46097 DOF and the resulting
 relative error estimate in $H^1$-norm of 1.30193e-01 \% for $h$-FEM with linear elements.
@@ -290,7 +295,7 @@ Final mesh (middle) with 1289 DOF and the resulting
 relative error estimate in $H^1$-norm of 8.26847e-02 \% for $h$-FEM with quadratic elements.
 Final mesh (right) with 622 DOF and the resulting
 relative error estimate in $H^1$-norm of 8.15289e-02 \% for $hp$-FEM with anisotropic refinements.}
-%\vspace{-5mm}
+\vspace{-5mm}
 \label{fig:nist-2-hp-aniso}
 \end{figure}
 
@@ -300,7 +305,7 @@ of view of DOF and CPU convergence.
 
 \begin{figure}[H]
 \centering
-%\vspace{-5mm}
+\vspace{-3mm}
 \includegraphics[height=4cm]{nist/nist-2/conv_dof_aniso.png}\ \
 \includegraphics[height=4cm]{nist/nist-2/conv_cpu_aniso.png}
 %\vspace{-5mm}
@@ -360,25 +365,25 @@ The solution of NIST-3 is shown in Fig. \ref{fig:sln-nist03}.
 
 \begin{figure}[H]
 \centering
-%\vspace{-5mm}
-\includegraphics[height=4.5cm]{nist/nist-3/solution-u.png}\ \
-\includegraphics[height=4.5cm]{nist/nist-3/solution-v.png}
-%\vspace{-2mm}
+\vspace{-5mm}
+\includegraphics[height=4.2cm]{nist/nist-3/solution-u.png}\ \
+\includegraphics[height=4.2cm]{nist/nist-3/solution-v.png}
+\vspace{-2mm}
 \caption{The $u$ (left) and $v$ (right) component to NIST-3 benchmark problem.}
-%\vspace{-5mm}
+\vspace{-3mm}
 \label{fig:sln-nist03}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-%\vspace{-5mm}
+\vspace{-3mm}
 \includegraphics[height=3.7cm]{nist/nist-3/mesh_u_h1_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-3/mesh_u_h2_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-3/mesh_u_hp_anisoh.png}\ \
 \includegraphics[height=3.7cm]{nist/nist-3/mesh_v_h1_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-3/mesh_v_h2_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-3/mesh_v_hp_anisoh.png}
-%\vspace{-5mm}
+\vspace{-3mm}
 \caption{
 Final mesh (left) with 39779 DOF and the resulting
 relative error estimate in $H^1$-norm of 3.84929e-01 \% for $h$-FEM with linear elements.
@@ -386,7 +391,7 @@ Final mesh (middle) with 9330 DOF and the resulting
 relative error estimate in $H^1$-norm of 9.56383e-02 \% for $h$-FEM with quadratic elements.
 Final mesh (right) with 3897 DOF and the resulting
 relative error estimate in $H^1$-norm of 8.05635e-02 \% for $hp$-FEM with anisotropic refinements.}
-%\vspace{-5mm}
+\vspace{-4mm}
 \label{fig:nist-3-hp-aniso}
 \end{figure}
 
@@ -396,12 +401,12 @@ of view of DOF and CPU convergence.
 
 \begin{figure}[H]
 \centering
-%\vspace{-5mm}
+\vspace{-5mm}
 \includegraphics[height=4cm]{nist/nist-3/conv_dof_aniso.png}\ \
 \includegraphics[height=4cm]{nist/nist-3/conv_cpu_aniso.png}
-%\vspace{-5mm}
+\vspace{-4mm}
 \caption{DOF and CPU time convergence graphs.}
-%\vspace{-5mm}
+\vspace{-5mm}
 \label{fig:nist-3-conv}
 \end{figure}
 
@@ -422,27 +427,26 @@ The exact solution is
 $u(x,y) = e^{-\alpha ((x - x_{loc})^{2} + (y - y_{loc})^{2})}$,
 where $(x_{loc}, y_{loc})$ is the location of the peak,
 and $\alpha$ determines the strength of the peak.
-%The right-hand side $f$ is calculated by inserting exact solution into (\ref{poisson-peak}).
 The solution of NIST-4 with $\alpha = 1000$,
 $(x_{loc}, y_{loc}) = (0.5, 0.5)$ is shown in Fig. \ref{fig:sln-nist04}.
 
 \begin{figure}[H]
 \centering
-%\vspace{-5mm}
+\vspace{-4mm}
 \includegraphics[height=4.5cm]{nist/nist-4/solution.png}
-%\vspace{-5mm}
+\vspace{-2mm}
 \caption{The solution to NIST-4 benchmark problem.}
-%\vspace{-2mm}
+\vspace{-3mm}
 \label{fig:sln-nist04}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-%\vspace{-5mm}
+\vspace{-3mm}
 \includegraphics[height=3.7cm]{nist/nist-4/mesh_h1_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-4/mesh_h2_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-4/mesh_hp_aniso.png}
-%\vspace{-5mm}
+\vspace{-3mm}
 \caption{
 Final mesh (left) with 58253 DOF and the resulting
 relative error estimate in $H^1$-norm of 5.72234e-01 \% for $h$-FEM with linear elements.
@@ -450,7 +454,7 @@ Final mesh (middle) with 51473 DOF and the resulting
 relative error estimate in $H^1$-norm of 1.39525e-02 \% for $h$-FEM with quadratic elements.
 Final mesh (right) with 1561 DOF and the resulting
 relative error estimate in $H^1$-norm of 7.02865e-03 \% for $hp$-FEM with anisotropic refinements.}
-%\vspace{-5mm}
+\vspace{-2mm}
 \label{fig:nist-4-hp-aniso}
 \end{figure}
 
@@ -501,11 +505,11 @@ The solution of NIST-5 is shown in Fig. \ref{fig:sln-nist05}.
 
 \begin{figure}[H]
 \centering
-%\vspace{-5mm}
+\vspace{-3mm}
 \includegraphics[height=5cm]{nist/nist-5/mesh_h1_aniso.png}
 \includegraphics[height=5cm]{nist/nist-5/mesh_h2_aniso.png}
 \includegraphics[height=5cm]{nist/nist-5/mesh_hp_aniso.png}
-%\vspace{-5mm}
+\vspace{-3mm}
 \caption{
 Final mesh (left) with 55577 DOF and the resulting
 relative error estimate in $H^1$-norm of 9.57345e-02 \% for $h$-FEM with linear elements.
@@ -523,7 +527,7 @@ of view of DOF and CPU convergence.
 
 \begin{figure}[H]
 \centering
-%\vspace{-5mm}
+\vspace{-3mm}
 \includegraphics[height=4cm]{nist/nist-5/conv_dof_aniso.png}\ \
 \includegraphics[height=4cm]{nist/nist-5/conv_cpu_aniso.png}
 %\vspace{-5mm}
@@ -548,24 +552,25 @@ in the domain $\Omega = (-1, 1)^2$, equipped with Dirichlet boundary condition
 given by the exact solution. The exact solution is
 $u(x,y) = (1 - e^{-(1 - x) / \epsilon})(1 - e^{-(1 - y) / \epsilon})cos(\pi (x + y))$,
 where $\epsilon$ determines the strength of the boundary layer.
-%The right-hand side $f$ is calculated by inserting exact solution into (\ref{boundary-layer}).
 The solution of NIST-6 containing a boundary layer
 with $\epsilon = 10^{-1}$ is shown in Fig. \ref{fig:sln-nist06}.
 
 \begin{figure}[H]
 \centering
+\vspace{-3mm}
 \includegraphics[height=4.5cm]{nist/nist-6/solution.png}
 \caption{The solution to NIST-6 benchmark problem.}
+\vspace{-3mm}
 \label{fig:sln-nist06}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-%\vspace{-5mm}
+\vspace{-3mm}
 \includegraphics[height=3.7cm]{nist/nist-6/mesh_h1_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-6/mesh_h2_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-6/mesh_hp_aniso.png}
-%\vspace{-5mm}
+\vspace{-3mm}
 \caption{
 Final mesh (left) with 55090 DOF and the resulting
 relative error estimate in $H^1$-norm of 8.74769e-01 \% for $h$-FEM with linear elements.
@@ -588,7 +593,7 @@ of view of DOF and CPU convergence.
 \includegraphics[height=4cm]{nist/nist-6/conv_cpu_aniso.png}
 %\vspace{-5mm}
 \caption{DOF and CPU time convergence graphs.}
-%\vspace{-5mm}
+\vspace{-5mm}
 \label{fig:nist-6-conv}
 \end{figure}
 
@@ -607,12 +612,11 @@ in the domain $\Omega = (0, 1)^2$, equipped with Dirichlet boundary conditions
 given by the exact solution. The exact solution is
 $u(x,y) = x^{\alpha}$,
 where $\alpha \geq 0.5$ determines the strength of the singularity.
-%The right-hand side $f$ is calculated by inserting exact solution into (\ref{boundary-line-singularity}).
 The solution of NIST-7 with $\alpha = 0.6$ is shown in Fig. \ref{fig:sln-nist07}.
 
 \begin{figure}[H]
 \centering
-%\vspace{-5mm}
+\vspace{-3mm}
 \includegraphics[height=4.5cm]{nist/nist-7/solution.png}
 %\vspace{-5mm}
 \caption{The solution to NIST-7 benchmark problem.}
@@ -622,11 +626,11 @@ The solution of NIST-7 with $\alpha = 0.6$ is shown in Fig. \ref{fig:sln-nist07}
 
 \begin{figure}[H]
 \centering
-%\vspace{-5mm}
+\vspace{-3mm}
 \includegraphics[height=3.7cm]{nist/nist-7/mesh_h1_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-7/mesh_h2_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-7/mesh_hp_aniso.png}
-%\vspace{-5mm}
+\vspace{-3mm}
 \caption{
 Final mesh (left) with 684 DOF and the resulting
 relative error estimate in $H^1$-norm of 1.45724 \% for $h$-FEM with linear elements.
@@ -669,7 +673,6 @@ in the domain $\Omega = (0, 1)^2$, equipped with Dirichlet boundary conditions
 given by the exact solution. The exact solution is
 $u(x,y) = sin(\frac{1}{\alpha + r})$,
 where $r = \sqrt{x^{2} + y^{2}}$, $\alpha = 1 / N \pi$ determines the number of oscillations.
-%The right-hand side $f$ is calculated by inserting exact solution into (\ref{oscillatory}).
 The solution of NIST-8 with $\alpha = 1 / 10 \pi$ is shown in Fig. \ref{fig:sln-nist08}.
 
 \begin{figure}[H]
@@ -682,13 +685,17 @@ The solution of NIST-8 with $\alpha = 1 / 10 \pi$ is shown in Fig. \ref{fig:sln-
 \label{fig:sln-nist08}
 \end{figure}
 
+Figs. \ref{fig:nist-8-conv} compare all
+three approaches to automatic adaptivity from the point
+of view of DOF and CPU convergence.
+
 \begin{figure}[H]
 \centering
 %\vspace{-5mm}
 \includegraphics[height=3.7cm]{nist/nist-8/mesh_h1_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-8/mesh_h2_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-8/mesh_hp_aniso.png}
-%\vspace{-5mm}
+\vspace{-3mm}
 \caption{
 Final mesh (left) with 55731 DOF and the resulting
 relative error estimate in $H^1$-norm of 1.24198 \% for $h$-FEM with linear elements.
@@ -700,16 +707,12 @@ relative error estimate in $H^1$-norm of 9.09848e-02 \% for $hp$-FEM with anisot
 \label{fig:nist-8-hp-aniso}
 \end{figure}
 
-Figs. \ref{fig:nist-8-conv} compare all
-three approaches to automatic adaptivity from the point
-of view of DOF and CPU convergence.
-
 \begin{figure}[H]
 \centering
-%\vspace{-5mm}
+\vspace{-3mm}
 \includegraphics[height=4cm]{nist/nist-8/conv_dof_aniso.png}\ \
 \includegraphics[height=4cm]{nist/nist-8/conv_cpu_aniso.png}
-%\vspace{-5mm}
+\vspace{-3mm}
 \caption{DOF and CPU time convergence graphs.}
 %\vspace{-5mm}
 \label{fig:nist-8-conv}
@@ -737,7 +740,6 @@ where $r = \sqrt{(x - x_{loc})^{2} + (y - y_{loc})^{2}}$.
 Here $(x_{loc}, y_{loc})$ is the center of the circular wave front,
 $r_{0}$ is the distance from the wave front to the center of the circle,
 and $\alpha$ gives the steepness of the wave front.
-%The right-hand side $f$ is calculated by inserting exact solution into (\ref{wave-front}).
 The solution of NIST-9 with $\alpha = 50$, $(x_{loc}, y_{loc}) = (0.5, 0.5)$,
 $r_{0} = 0.25$ is shown in Fig. \ref{fig:sln-nist09}.
 
@@ -801,7 +803,6 @@ conditions given by the exact solution on the rest of the boundary.
 The exact solution is
 $u(x,y) = \cos(Ky)\ (x \le 0)$ and $u(x,y) = \cos(Ky) + x^{\alpha}\ (x > 0)$,
 where $K$ and $\alpha$ are constants.
-%The right-hand side $f$ is calculated by inserting exact solution into (\ref{interior}).
 The solution of NIST-10 containing a line singularity with $K = \pi/2$ and
 $\alpha = 2.01$ is shown in Fig. \ref{fig:sln-nist10}.
 
@@ -870,7 +871,6 @@ Dirichlet boundary conditions given by the exact solution.
 The exact solution is
 $u(x,y) = r^{a_1} \mu (\theta)$,
 where $a_1$ and $\mu (\theta)$ is given in \cite{mitchell-1}.
-%The right-hand side $f$ is calculated by inserting exact solution into (\ref{intersecting}).
 The solution of NIST-11 is shown in Fig. \ref{fig:sln-nist11}.
 
 \begin{figure}[H]
@@ -885,11 +885,11 @@ The solution of NIST-11 is shown in Fig. \ref{fig:sln-nist11}.
 
 \begin{figure}[H]
 \centering
-%\vspace{-5mm}
+%\vspace{-2mm}
 \includegraphics[height=3.7cm]{nist/nist-11/mesh_h1_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-11/mesh_h2_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-11/mesh_hp_aniso.png}
-%\vspace{-5mm}
+\vspace{-3mm}
 \caption{
 Final mesh (left) with 46905 DOF and the resulting
 relative error estimate in $H^1$-norm of 1.25659 \% for $h$-FEM with linear elements.
@@ -897,7 +897,7 @@ Final mesh (middle) with 7777 DOF and the resulting
 relative error estimate in $H^1$-norm of 4.73604e-01 \% for $h$-FEM with quadratic elements.
 Final mesh (right) with 3459 DOF and the resulting
 relative error estimate in $H^1$-norm of 4.7087e-01 \% for $hp$-FEM with anisotropic refinements.}
-%\vspace{-5mm}
+\vspace{-2mm}
 \label{fig:nist-11-hp-aniso}
 \end{figure}
 
@@ -907,10 +907,10 @@ of view of DOF and CPU convergence.
 
 \begin{figure}[H]
 \centering
-%\vspace{-5mm}
+\vspace{-3mm}
 \includegraphics[height=4cm]{nist/nist-11/conv_dof_aniso.png}\ \
 \includegraphics[height=4cm]{nist/nist-11/conv_cpu_aniso.png}
-%\vspace{-5mm}
+\vspace{-3mm}
 \caption{DOF and CPU time convergence graphs.}
 %\vspace{-5mm}
 \label{fig:nist-11-conv}
@@ -952,7 +952,6 @@ $r_{0}$ is the distance from the wave front to the
 center of the circle, and $\alpha_W$ gives
 the steepness of the wave front. The parameter $\epsilon$ determines the
 strength of the boundary layer, the boundary layer was placed on $y = -1$.
-%The right-hand side $f$ is calculated by inserting exact solution into (\ref{multiple}).
 The solution of NIST-12 with $\omega_C = 3 \pi /2$,
 $(x_{W}, y_{W}) = (0, -3/4)$, $r_{0} = 3/4$, $\alpha_{W} = 200$,
 $(x_{P}, y_{P}) = (\sqrt{5} / 4, -1/4)$,
@@ -970,11 +969,11 @@ $\epsilon = 1/100$ is shown in Fig. \ref{fig:sln-nist12}.
 
 \begin{figure}[H]
 \centering
-%\vspace{-5mm}
+\vspace{-3mm}
 \includegraphics[height=3.7cm]{nist/nist-12/mesh_h1_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-12/mesh_h2_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-12/mesh_hp_aniso.png}
-%\vspace{-5mm}
+\vspace{-3mm}
 \caption{
 Final mesh (left) with 45533 DOF and the resulting
 relative error estimate in $H^1$-norm of 2.05698 \% for $h$-FEM with linear elements.
