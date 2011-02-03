@@ -610,12 +610,9 @@ with $\epsilon = 10^{-1}$ is shown in Fig. \ref{fig:sln-nist06}.
 \includegraphics[height=3.7cm]{nist/nist-6/mesh_hp_aniso.png}
 \vspace{-3mm}
 \caption{
-Final mesh (left) with 55090 DOF and the resulting
-relative error estimate in $H^1$-norm of 8.74769e-01 \% for $h$-FEM with linear elements.
-Final mesh (middle) with 63145 DOF and the resulting
-relative error estimate in $H^1$-norm of 1.46642e-02 \% for $h$-FEM with quadratic elements.
-Final mesh (right) with 591 DOF and the resulting
-relative error estimate in $H^1$-norm of 6.23458e-04 \% for $hp$-FEM with anisotropic refinements.}
+Final mesh (left) with 55090 DOF and the relative error is 8.74769e-01 \% for $h$-FEM with linear elements.
+Final mesh (middle) with 63145 DOF and the relative error is 1.46642e-02 \% for $h$-FEM with quadratic elements.
+Final mesh (right) with 591 DOF and the relative error is 6.23458e-04 \% for $hp$-FEM with anisotropic refinements.}
 \vspace{-2mm}
 \label{fig:nist-6-hp-aniso}
 \end{figure}
@@ -634,6 +631,7 @@ of view of DOF and CPU convergence.
 \includegraphics[width=7.5cm]{nist/nist-6/conv_cpu_aniso.png}
 \hspace{-50mm}
 \caption{DOF and CPU time convergence graphs.}
+\vspace{-2mm}
 \label{fig:nist-6-conv}
 \end{figure}
 
@@ -656,11 +654,11 @@ The solution of NIST-7 with $\alpha = 0.6$ is shown in Fig. \ref{fig:sln-nist07}
 
 \begin{figure}[H]
 \centering
-\vspace{-3mm}
-\includegraphics[height=4.7cm]{nist/nist-7/solution.png}
+%\vspace{-3mm}
+\includegraphics[height=5cm]{nist/nist-7/solution.png}
 \vspace{-3mm}
 \caption{The solution to NIST-7 benchmark problem.}
-\vspace{-2mm}
+%\vspace{-2mm}
 \label{fig:sln-nist07}
 \end{figure}
 
@@ -675,14 +673,14 @@ The solution of NIST-7 with $\alpha = 0.6$ is shown in Fig. \ref{fig:sln-nist07}
 Final mesh (left) with 684 DOF and the relative error is 1.45724 \% for $h$-FEM with linear elements.
 Final mesh (middle) with 267 DOF and the relative error is 1.49585 \% for $h$-FEM with quadratic elements.
 Final mesh (right) with 88 DOF and the relative error is 1.46348 \% for $hp$-FEM with anisotropic refinements.}
-\vspace{-5mm}
+\vspace{-3mm}
 \label{fig:nist-7-hp-aniso}
 \end{figure}
 
 Figs. \ref{fig:nist-7-conv} compare all
 three approaches to automatic adaptivity from the point
 of view of DOF and CPU convergence.
-\vspace{-5mm}
+\vspace{-3mm}
 
 \begin{figure}[H]
 \centering
@@ -693,7 +691,7 @@ of view of DOF and CPU convergence.
 \hspace{-50mm}
 \caption{DOF and CPU time convergence graphs.}
 \label{fig:nist-7-conv}
-\vspace{-13mm}
+\vspace{-3mm}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
