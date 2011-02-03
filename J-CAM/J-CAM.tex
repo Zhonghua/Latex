@@ -201,56 +201,54 @@ Here $p$ is a parameter, determining the polynomial degree of the exact solution
 \begin{figure}[H]
 \centering
 \vspace{-3mm}
-\includegraphics[height=6cm]{nist/nist-1/solution.png}
+\includegraphics[height=5cm]{nist/nist-1/solution.png}
 \vspace{-3mm}
 \caption{The solution to NIST-1 benchmark problem.}
 \label{fig:sln-nist01}
 \end{figure}
 
-\begin{figure}[H]
+%\begin{figure}[H]
+%\centering
+%\vspace{-8mm}
+%\includegraphics[height=4.7cm]{nist/nist-1/mesh_h1_aniso.png}\ \
+%\includegraphics[height=4.7cm]{nist/nist-1/mesh_h2_aniso.png}
+%\vspace{-3mm}
+%\caption{
+%Final mesh (left) with 51365 DOF and the relative error is 5.87223e-01 \% for $h$-FEM with linear elements.
+%Final mesh (right) with 43401 DOF and the relative error is 1.37127e-02 \% for $h$-FEM with quadratic elements.}
+%\label{fig:nist-1-h-aniso}
+%\end{figure}
+
+\begin{figure}[!ht]
 \centering
-\vspace{-8mm}
-\includegraphics[height=4.7cm]{nist/nist-1/mesh_h1_aniso.png}\ \
-\includegraphics[height=4.7cm]{nist/nist-1/mesh_h2_aniso.png}
+\vspace{-7mm}
+\includegraphics[height=3.7cm]{nist/nist-1/mesh_h1_aniso.png}
+\includegraphics[height=3.7cm]{nist/nist-1/mesh_h2_aniso.png}
+\includegraphics[height=3.7cm]{nist/nist-1/mesh_hp_aniso.png}
 \vspace{-3mm}
 \caption{
 Final mesh (left) with 51365 DOF and the relative error is 5.87223e-01 \% for $h$-FEM with linear elements.
-Final mesh (right) with 43401 DOF and the relative error is 1.37127e-02 \% for $h$-FEM with quadratic elements.}
-\label{fig:nist-1-h-aniso}
-\end{figure}
-
-\begin{figure}[!ht]
-\centering
-\vspace{-8mm}
-\includegraphics[height=4.7cm]{nist/nist-1/mesh_hp_aniso_init.png}\ \
-\includegraphics[height=4.7cm]{nist/nist-1/mesh_hp_aniso.png}
-\vspace{-3mm}
-\caption{Initial mesh (left) and final mesh (right) with 769 DOF and the
-relative error is 4.69543e-03 \% for $hp$-FEM with anisotropic refinements.}
+Final mesh (middle) with 43401 DOF and the relative error is 1.37127e-02 \% for $h$-FEM with quadratic elements. Final mesh (right) with 769 DOF and the relative error is 4.69543e-03 \% for $hp$-FEM with anisotropic refinements.}
 \label{fig:nist-1-hp-aniso}
-\vspace{-10mm}
+\vspace{-3mm}
 \end{figure}
 
-Figs. \ref{fig:nist-1-conv-dof} and \ref{fig:nist-1-conv-cpu} compare all
+Figs. \ref{fig:nist-1-conv} compare all
 three approaches to automatic adaptivity from the point
 of view of DOF and CPU convergence.
 
-\begin{figure}[!ht]
+\begin{figure}[H]
 \centering
 \vspace{-3mm}
-\includegraphics[height=7cm]{nist/nist-1/conv_dof_aniso.png}
-\vspace{-3mm}
-\caption{DOF convergence graphs. }
-\label{fig:nist-1-conv-dof}
-\end{figure}
-
-\begin{figure}[!ht]
-\centering
-\vspace{-3mm}
-\includegraphics[height=7cm]{nist/nist-1/conv_cpu_aniso.png}
-\vspace{-3mm}
-\caption{CPU time convergence graphs.}
-\label{fig:nist-1-conv-cpu}
+\hspace{-50mm}
+\includegraphics[width=7.5cm]{nist/nist-1/conv_dof_aniso.png}\ \
+\hspace{-8mm}
+\includegraphics[width=7.5cm]{nist/nist-1/conv_cpu_aniso.png}
+\hspace{-50mm}
+\vspace{-2mm}
+\caption{DOF and CPU time convergence graphs.}
+\vspace{-5mm}
+\label{fig:nist-1-conv}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -280,47 +278,51 @@ is shown in Fig. \ref{fig:sln-nist02}.
 \begin{figure}[H]
 \centering
 \vspace{-3mm}
-\includegraphics[height=6cm]{nist/nist-2/solution.png}
+\includegraphics[height=5cm]{nist/nist-2/solution.png}
 \vspace{-3mm}
 \caption{The solution to NIST-2 benchmark problem.}
 \label{fig:sln-nist02}
 \end{figure}
 
+%\begin{figure}[H]
+%\centering
+%\includegraphics[height=5cm]{nist/nist-2/mesh_h1_aniso.png}
+%\includegraphics[height=5cm]{nist/nist-2/mesh_h2_aniso.png}
+%\caption{
+%Final mesh (left) with 46097 DOF and the relative error is 1.30193e-01 \% for $h$-FEM with linear elements.
+%Final mesh (right) with 1289 DOF and the relative error is 8.26847e-02 \% for $h$-FEM with quadratic elements.}
+%\label{fig:nist-2-h-aniso}
+%\end{figure}
+
 \begin{figure}[H]
 \centering
-\includegraphics[height=5cm]{nist/nist-2/mesh_h1_aniso.png}
-\includegraphics[height=5cm]{nist/nist-2/mesh_h2_aniso.png}
+\vspace{-5mm}
+\includegraphics[height=3.7cm]{nist/nist-2/mesh_h1_aniso.png}
+\includegraphics[height=3.7cm]{nist/nist-2/mesh_h2_aniso.png}
+\includegraphics[height=3.7cm]{nist/nist-2/mesh_hp_aniso.png}
+\vspace{-3mm}
 \caption{
 Final mesh (left) with 46097 DOF and the relative error is 1.30193e-01 \% for $h$-FEM with linear elements.
-Final mesh (right) with 1289 DOF and the relative error is 8.26847e-02 \% for $h$-FEM with quadratic elements.}
-\label{fig:nist-2-h-aniso}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[height=5cm]{nist/nist-2/mesh_hp_aniso_init.png}\ \
-\includegraphics[height=5cm]{nist/nist-2/mesh_hp_aniso.png}
-\caption{Initial mesh (left) and final mesh (right) with 622 DOF and the
-relative error is 8.15289e-02 \% for $hp$-FEM with anisotropic refinements.}
+Final mesh (middle) with 1289 DOF and the relative error is 8.26847e-02 \% for $h$-FEM with quadratic elements.
+Final mesh (right) with 622 DOF and the relative error is 8.15289e-02 \% for $hp$-FEM with anisotropic refinements.}
 \label{fig:nist-2-hp-aniso}
+\vspace{-3mm}
 \end{figure}
 
-Figs. \ref{fig:nist-2-conv-dof} and \ref{fig:nist-2-conv-cpu} compare all
+Figs. \ref{fig:nist-2-conv} compare all
 three approaches to automatic adaptivity from the point
 of view of DOF and CPU convergence.
+%\vspace{-5mm}
 
 \begin{figure}[H]
 \centering
-\includegraphics[height=7cm]{nist/nist-2/conv_dof_aniso.png}
-\caption{DOF convergence graphs.}
-\label{fig:nist-2-conv-dof}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[height=7cm]{nist/nist-2/conv_cpu_aniso.png}
-\caption{CPU time convergence graphs.}
-\label{fig:nist-2-conv-cpu}
+\hspace{-50mm}
+\includegraphics[width=7.5cm]{nist/nist-2/conv_dof_aniso.png}\ \
+\hspace{-10mm}
+\includegraphics[width=7.5cm]{nist/nist-2/conv_cpu_aniso.png}
+\hspace{-50mm}
+\caption{DOF and CPU time convergence graphs.}
+\label{fig:nist-2-conv}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -337,6 +339,7 @@ In this benchmark, we present a standard system of two
 coupled equations with mixed derivative for linear elasticity
 in the coupling term. This example employs the adaptive multimesh $hp$-FEM
 to solve the equations.
+%\vspace{-4mm}
 
 \begin{equation}\label{crack}
 \left\{
@@ -370,6 +373,7 @@ v(x, y) = \frac{1}{2G} r^{\lambda}[(k + Q(\lambda + 1))sin(\lambda \theta) + \la
 where $\lambda = 0.5444837367825$, $Q = 0.5430755788367$,
 $k = 3 - 4 \nu$ and $G = E / (2(1 + \nu))$.
 The solution of NIST-3 is shown in Fig. \ref{fig:sln-nist03}.
+%\vspace{-4mm}
 
 \begin{figure}[H]
 \centering
@@ -382,49 +386,53 @@ The solution of NIST-3 is shown in Fig. \ref{fig:sln-nist03}.
 \label{fig:sln-nist03}
 \end{figure}
 
-\begin{figure}[H]
-\centering
-\vspace{-3mm}
-\includegraphics[height=5cm]{nist/nist-3/mesh_u_h1_aniso.png}
-\includegraphics[height=5cm]{nist/nist-3/mesh_u_h2_aniso.png}\ \
-\includegraphics[height=5cm]{nist/nist-3/mesh_v_h1_aniso.png}
-\includegraphics[height=5cm]{nist/nist-3/mesh_v_h2_aniso.png}
-\vspace{-3mm}
-\caption{
-Final mesh (left) with 39779 DOF and the resulting
-relative error estimate in $H^1$-norm of 3.84929e-01 \% for $h$-FEM with linear elements.
-Final mesh (right) with 9330 DOF and the resulting
-relative error estimate in $H^1$-norm of 9.56383e-02 \% for $h$-FEM with quadratic elements.}
-\vspace{-4mm}
-\label{fig:nist-3-h-aniso}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%\vspace{-3mm}
+%\includegraphics[height=5cm]{nist/nist-3/mesh_u_h1_aniso.png}
+%\includegraphics[height=5cm]{nist/nist-3/mesh_u_h2_aniso.png}
+%\includegraphics[height=5cm]{nist/nist-3/mesh_u_hp_anisoh.png}\ \
+%\includegraphics[height=5cm]{nist/nist-3/mesh_v_h1_aniso.png}
+%\includegraphics[height=5cm]{nist/nist-3/mesh_v_h2_aniso.png}
+%\includegraphics[height=5cm]{nist/nist-3/mesh_v_hp_anisoh.png}
+%\vspace{-3mm}
+%\caption{
+%Final mesh (left) with 39779 DOF and the resulting
+%relative error estimate in $H^1$-norm of 3.84929e-01 \% for $h$-FEM with linear elements.
+%Final mesh (right) with 9330 DOF and the resulting
+%relative error estimate in $H^1$-norm of 9.56383e-02 \% for $h$-FEM with quadratic elements.}
+%\vspace{-4mm}
+%\label{fig:nist-3-h-aniso}
+%\end{figure}
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[height=5cm]{nist/nist-3/mesh_u_hp_anisoh.png}\ \
-\includegraphics[height=5cm]{nist/nist-3/mesh_v_hp_anisoh.png}
-\caption{Final mesh of $u$ (left) and $v$ (right) component with 3897 DOF and the
-relative error is 8.05635e-02 \% for $hp$-FEM with anisotropic refinements.}
+\includegraphics[height=3.7cm]{nist/nist-3/mesh_u_h1_aniso.png}
+\includegraphics[height=3.7cm]{nist/nist-3/mesh_u_h2_aniso.png}
+\includegraphics[height=3.7cm]{nist/nist-3/mesh_u_hp_anisoh.png}\ \
+\includegraphics[height=3.7cm]{nist/nist-3/mesh_v_h1_aniso.png}
+\includegraphics[height=3.7cm]{nist/nist-3/mesh_v_h2_aniso.png}
+\includegraphics[height=3.7cm]{nist/nist-3/mesh_v_hp_anisoh.png}
+\caption{
+Final mesh (left) with 39779 DOF and the relative error is 3.84929e-01 \% for $h$-FEM with linear elements.
+Final mesh (middle) with 9330 DOF and the relative error is 9.56383e-02 \% for $h$-FEM with quadratic elements.
+Final mesh (right) with 3897 DOF and the relative error is 8.05635e-02 \% for $hp$-FEM with anisotropic refinements.}
 \label{fig:nist-3-hp-aniso}
 \end{figure}
 
-Figs. \ref{fig:nist-3-conv-dof} and \ref{fig:nist-3-conv-cpu} compare all
+Figs. \ref{fig:nist-3-conv} compare all
 three approaches to automatic adaptivity from the point
 of view of DOF and CPU convergence.
 
 \begin{figure}[H]
 \centering
-\includegraphics[height=7cm]{nist/nist-3/conv_dof_aniso.png}
-\caption{DOF convergence graphs.}
-\label{fig:nist-3-conv-dof}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[height=7cm]{nist/nist-3/conv_cpu_aniso.png}
-\caption{CPU time convergence graphs.}
-%\vspace{-3mm}
-\label{fig:nist-3-conv-cpu}
+\hspace{-50mm}
+\includegraphics[width=7.5cm]{nist/nist-3/conv_dof_aniso.png}\ \
+\hspace{-10mm}
+\includegraphics[width=7.5cm]{nist/nist-3/conv_cpu_aniso.png}
+\hspace{-50mm}
+\caption{DOF and CPU time convergence graphs.}
+\label{fig:nist-3-conv}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -442,17 +450,6 @@ in the domain $\Omega = (0, 1)^2$, equipped with Dirichlet
 boundary conditions given by the exact solution.
 The exact solution is
 $u(x,y) = e^{-\alpha ((x - x_{loc})^{2} + (y - y_{loc})^{2})}$,
-
-\begin{figure}[H]
-\centering
-\vspace{-3mm}
-\includegraphics[height=6cm]{nist/nist-4/solution.png}
-\vspace{-3mm}
-\caption{The solution to NIST-4 benchmark problem.}
-\vspace{-3mm}
-\label{fig:sln-nist04}
-\end{figure}
-\noindent
 where $(x_{loc}, y_{loc})$ is the location of the peak,
 and $\alpha$ determines the strength of the peak.
 The solution of NIST-4 with $\alpha = 1000$,
@@ -460,40 +457,54 @@ $(x_{loc}, y_{loc}) = (0.5, 0.5)$ is shown in Fig. \ref{fig:sln-nist04}.
 
 \begin{figure}[H]
 \centering
-\includegraphics[height=5cm]{nist/nist-4/mesh_h1_aniso.png}
-\includegraphics[height=5cm]{nist/nist-4/mesh_h2_aniso.png}
-\caption{
-Final mesh (left) with 58253 DOF and the relative error is 5.72234e-01 \% for $h$-FEM with linear elements.
-Final mesh (right) with 51473 DOF and the relative error is 1.39525e-02 \% for $h$-FEM with quadratic elements.}
-\label{fig:nist-4-h-aniso}
+%\vspace{-3mm}
+\includegraphics[height=5cm]{nist/nist-4/solution.png}
+%\vspace{-3mm}
+\caption{The solution to NIST-4 benchmark problem.}
+\vspace{-3mm}
+\label{fig:sln-nist04}
 \end{figure}
+%\noindent
+%where $(x_{loc}, y_{loc})$ is the location of the peak,
+%and $\alpha$ determines the strength of the peak.
+%The solution of NIST-4 with $\alpha = 1000$,
+%$(x_{loc}, y_{loc}) = (0.5, 0.5)$ is shown in Fig. \ref{fig:sln-nist04}.
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[height=5cm]{nist/nist-4/mesh_h1_aniso.png}
+%\includegraphics[height=5cm]{nist/nist-4/mesh_h2_aniso.png}
+%\caption{
+%Final mesh (left) with 58253 DOF and the relative error is 5.72234e-01 \% for $h$-FEM with linear elements.
+%Final mesh (right) with 51473 DOF and the relative error is 1.39525e-02 \% for $h$-FEM with quadratic elements.}
+%\label{fig:nist-4-h-aniso}
+%\end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[height=5cm]{nist/nist-4/mesh_hp_aniso_init.png}\ \
-\includegraphics[height=5cm]{nist/nist-4/mesh_hp_aniso.png}
-\caption{Initial mesh (left) and final mesh (right) with 1561 DOF and the
-relative error is 7.02865e-03 \% for $hp$-FEM with anisotropic refinements.}
+\includegraphics[height=3.7cm]{nist/nist-4/mesh_h1_aniso.png}
+\includegraphics[height=3.7cm]{nist/nist-4/mesh_h2_aniso.png}
+\includegraphics[height=3.7cm]{nist/nist-4/mesh_hp_aniso.png}
+\caption{
+Final mesh (left) with 58253 DOF and the relative error is 5.72234e-01 \% for $h$-FEM with linear elements.
+Final mesh (middle) with 51473 DOF and the relative error is 1.39525e-02 \% for $h$-FEM with quadratic elements.
+Final mesh (right) with 1561 DOF and the relative error is 7.02865e-03 \% for $hp$-FEM with anisotropic refinements.}
 \label{fig:nist-4-hp-aniso}
 \end{figure}
 
-Figs. \ref{fig:nist-4-conv-dof} and \ref{fig:nist-4-conv-cpu} compare all
+Figs. \ref{fig:nist-4-conv} compare all
 three approaches to automatic adaptivity from the point
 of view of DOF and CPU convergence.
 
 \begin{figure}[H]
 \centering
-\includegraphics[height=7cm]{nist/nist-4/conv_dof_aniso.png}
-\caption{DOF convergence graphs.}
-\label{fig:nist-4-conv-dof}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\vspace{-8mm}
-\includegraphics[height=7cm]{nist/nist-4/conv_cpu_aniso.png}
-\caption{CPU time convergence graphs.}
-\label{fig:nist-4-conv-cpu}
+\hspace{-50mm}
+\includegraphics[width=7.5cm]{nist/nist-4/conv_dof_aniso.png}\ \
+\hspace{-10mm}
+\includegraphics[width=7.5cm]{nist/nist-4/conv_cpu_aniso.png}
+\hspace{-50mm}
+\caption{DOF and CPU time convergence graphs.}
+\label{fig:nist-4-conv}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -520,47 +531,47 @@ The solution of NIST-5 is shown in Fig. \ref{fig:sln-nist05}.
 \begin{figure}[H]
 \centering
 \vspace{-3mm}
-\includegraphics[height=6cm]{nist/nist-5/solution.png}
+\includegraphics[height=5cm]{nist/nist-5/solution.png}
 \vspace{-3mm}
 \caption{The solution to NIST-5 benchmark problem.}
 \label{fig:sln-nist05}
 \end{figure}
 
-\begin{figure}[H]
-\centering
-\includegraphics[height=5.5cm]{nist/nist-5/mesh_h1_aniso.png}
-\includegraphics[height=5.5cm]{nist/nist-5/mesh_h2_aniso.png}
-\caption{
-Final mesh (left) with 55577 DOF and the relative error is 9.57345e-02 \% for $h$-FEM with linear elements.
-Final mesh (right) with 12483 DOF and the relative error is 1.34925e-02 \% for $h$-FEM with quadratic elements.}
-\label{fig:nist-5-h-aniso}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%\includegraphics[height=5.5cm]{nist/nist-5/mesh_h1_aniso.png}
+%\includegraphics[height=5.5cm]{nist/nist-5/mesh_h2_aniso.png}
+%\caption{
+%Final mesh (left) with 55577 DOF and the relative error is 9.57345e-02 \% for $h$-FEM with linear elements.
+%Final mesh (right) with 12483 DOF and the relative error is 1.34925e-02 \% for $h$-FEM with quadratic elements.}
+%\label{fig:nist-5-h-aniso}
+%\end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[height=6cm]{nist/nist-5/mesh_hp_aniso_init.png}\ \
-\includegraphics[height=6cm]{nist/nist-5/mesh_hp_aniso.png}
-\caption{Initial mesh (left) and final mesh (right) with 7450 DOF and the relative error is 1.46775e-02 \% for $hp$-FEM with anisotropic refinements.}
+\includegraphics[height=5cm]{nist/nist-5/mesh_h1_aniso.png}
+\includegraphics[height=5cm]{nist/nist-5/mesh_h2_aniso.png}
+\includegraphics[height=5cm]{nist/nist-5/mesh_hp_aniso.png}
+\caption{
+Final mesh (left) with 55577 DOF and the relative error is 9.57345e-02 \% for $h$-FEM with linear elements.
+Final mesh (middle) with 12483 DOF and the relative error is 1.34925e-02 \% for $h$-FEM with quadratic elements.
+Final mesh (right) with 7450 DOF and the relative error is 1.46775e-02 \% for $hp$-FEM with anisotropic refinements.}
 \label{fig:nist-5-hp-aniso}
 \end{figure}
 
-Figs. \ref{fig:nist-5-conv-dof} and \ref{fig:nist-5-conv-cpu} compare all
+Figs. \ref{fig:nist-5-conv} compare all
 three approaches to automatic adaptivity from the point
 of view of DOF and CPU convergence.
 
 \begin{figure}[H]
 \centering
-\includegraphics[height=7cm]{nist/nist-5/conv_dof_aniso.png}
-\caption{DOF convergence graphs.}
-\label{fig:nist-5-conv-dof}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\vspace{-8mm}
-\includegraphics[height=7cm]{nist/nist-5/conv_cpu_aniso.png}
-\caption{CPU time convergence graphs.}
-\label{fig:nist-5-conv-cpu}
+\hspace{-50mm}
+\includegraphics[width=7.5cm]{nist/nist-5/conv_dof_aniso.png}\ \
+\hspace{-10mm}
+\includegraphics[width=7.5cm]{nist/nist-5/conv_cpu_aniso.png}
+\hspace{-50mm}
+\caption{DOF and CPU time convergence graphs.}
+\label{fig:nist-5-conv}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -585,7 +596,7 @@ with $\epsilon = 10^{-1}$ is shown in Fig. \ref{fig:sln-nist06}.
 \begin{figure}[H]
 \centering
 \vspace{-3mm}
-\includegraphics[height=4.5cm]{nist/nist-6/solution.png}
+\includegraphics[height=5cm]{nist/nist-6/solution.png}
 \caption{The solution to NIST-6 benchmark problem.}
 \vspace{-3mm}
 \label{fig:sln-nist06}
@@ -593,7 +604,7 @@ with $\epsilon = 10^{-1}$ is shown in Fig. \ref{fig:sln-nist06}.
 
 \begin{figure}[H]
 \centering
-\vspace{-3mm}
+%\vspace{-3mm}
 \includegraphics[height=3.7cm]{nist/nist-6/mesh_h1_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-6/mesh_h2_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-6/mesh_hp_aniso.png}
@@ -605,22 +616,24 @@ Final mesh (middle) with 63145 DOF and the resulting
 relative error estimate in $H^1$-norm of 1.46642e-02 \% for $h$-FEM with quadratic elements.
 Final mesh (right) with 591 DOF and the resulting
 relative error estimate in $H^1$-norm of 6.23458e-04 \% for $hp$-FEM with anisotropic refinements.}
-%\vspace{-5mm}
+\vspace{-2mm}
 \label{fig:nist-6-hp-aniso}
 \end{figure}
 
 Figs. \ref{fig:nist-6-conv} compare all
 three approaches to automatic adaptivity from the point
 of view of DOF and CPU convergence.
+\vspace{-2mm}
 
 \begin{figure}[H]
 \centering
-%\vspace{-5mm}
-\includegraphics[height=4cm]{nist/nist-6/conv_dof_aniso.png}\ \
-\includegraphics[height=4cm]{nist/nist-6/conv_cpu_aniso.png}
-%\vspace{-5mm}
+\vspace{-2mm}
+\hspace{-50mm}
+\includegraphics[width=7.5cm]{nist/nist-6/conv_dof_aniso.png}\ \
+\hspace{-10mm}
+\includegraphics[width=7.5cm]{nist/nist-6/conv_cpu_aniso.png}
+\hspace{-50mm}
 \caption{DOF and CPU time convergence graphs.}
-\vspace{-5mm}
 \label{fig:nist-6-conv}
 \end{figure}
 
@@ -644,44 +657,43 @@ The solution of NIST-7 with $\alpha = 0.6$ is shown in Fig. \ref{fig:sln-nist07}
 \begin{figure}[H]
 \centering
 \vspace{-3mm}
-\includegraphics[height=4.5cm]{nist/nist-7/solution.png}
-%\vspace{-5mm}
+\includegraphics[height=4.7cm]{nist/nist-7/solution.png}
+\vspace{-3mm}
 \caption{The solution to NIST-7 benchmark problem.}
-%\vspace{-2mm}
+\vspace{-2mm}
 \label{fig:sln-nist07}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\vspace{-3mm}
+\vspace{-5mm}
 \includegraphics[height=3.7cm]{nist/nist-7/mesh_h1_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-7/mesh_h2_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-7/mesh_hp_aniso.png}
 \vspace{-3mm}
 \caption{
-Final mesh (left) with 684 DOF and the resulting
-relative error estimate in $H^1$-norm of 1.45724 \% for $h$-FEM with linear elements.
-Final mesh (middle) with 267 DOF and the resulting
-relative error estimate in $H^1$-norm of 1.49585 \% for $h$-FEM with quadratic elements.
-Final mesh (right) with 88 DOF and the resulting
-relative error estimate in $H^1$-norm of 1.46348 \% for $hp$-FEM with anisotropic refinements.}
-%\vspace{-5mm}
+Final mesh (left) with 684 DOF and the relative error is 1.45724 \% for $h$-FEM with linear elements.
+Final mesh (middle) with 267 DOF and the relative error is 1.49585 \% for $h$-FEM with quadratic elements.
+Final mesh (right) with 88 DOF and the relative error is 1.46348 \% for $hp$-FEM with anisotropic refinements.}
+\vspace{-5mm}
 \label{fig:nist-7-hp-aniso}
 \end{figure}
 
 Figs. \ref{fig:nist-7-conv} compare all
 three approaches to automatic adaptivity from the point
 of view of DOF and CPU convergence.
+\vspace{-5mm}
 
 \begin{figure}[H]
 \centering
-%\vspace{-5mm}
-\includegraphics[height=4cm]{nist/nist-7/conv_dof_aniso.png}\ \
-\includegraphics[height=4cm]{nist/nist-7/conv_cpu_aniso.png}
-%\vspace{-5mm}
+\hspace{-50mm}
+\includegraphics[width=7.5cm]{nist/nist-7/conv_dof_aniso.png}\ \
+\hspace{-10mm}
+\includegraphics[width=7.5cm]{nist/nist-7/conv_cpu_aniso.png}
+\hspace{-50mm}
 \caption{DOF and CPU time convergence graphs.}
-%\vspace{-5mm}
 \label{fig:nist-7-conv}
+\vspace{-13mm}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -704,17 +716,14 @@ The solution of NIST-8 with $\alpha = 1 / 10 \pi$ is shown in Fig. \ref{fig:sln-
 
 \begin{figure}[H]
 \centering
-%\vspace{-5mm}
-\includegraphics[height=4.5cm]{nist/nist-8/solution.png}
-%\vspace{-5mm}
+\vspace{-3mm}
+\includegraphics[height=5cm]{nist/nist-8/solution.png}
+\vspace{-3mm}
 \caption{The solution to NIST-8 benchmark problem.}
-%\vspace{-2mm}
+\vspace{-4mm}
 \label{fig:sln-nist08}
 \end{figure}
 
-Figs. \ref{fig:nist-8-conv} compare all
-three approaches to automatic adaptivity from the point
-of view of DOF and CPU convergence.
 
 \begin{figure}[H]
 \centering
@@ -722,28 +731,31 @@ of view of DOF and CPU convergence.
 \includegraphics[height=3.7cm]{nist/nist-8/mesh_h1_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-8/mesh_h2_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-8/mesh_hp_aniso.png}
-\vspace{-3mm}
+%\vspace{-3mm}
 \caption{
-Final mesh (left) with 55731 DOF and the resulting
-relative error estimate in $H^1$-norm of 1.24198 \% for $h$-FEM with linear elements.
-Final mesh (middle) with 3413 DOF and the resulting
-relative error estimate in $H^1$-norm of 6.64833e-01 1.49585 \% for $h$-FEM with quadratic elements.
-Final mesh (right) with 1160 DOF and the resulting
-relative error estimate in $H^1$-norm of 9.09848e-02 \% for $hp$-FEM with anisotropic refinements.}
+Final mesh (left) with 55731 DOF and the relative error is 1.24198 \% for $h$-FEM with linear elements.
+Final mesh (middle) with 3413 DOF and the relative error is 6.64833e-01 1.49585 \% for $h$-FEM with quadratic elements.
+Final mesh (right) with 1160 DOF and the relative error is 9.09848e-02 \% for $hp$-FEM with anisotropic refinements.}
 %\vspace{-5mm}
 \label{fig:nist-8-hp-aniso}
 \end{figure}
 
+Figs. \ref{fig:nist-8-conv} compare all
+three approaches to automatic adaptivity from the point
+of view of DOF and CPU convergence.
+\vspace{-5mm}
+
 \begin{figure}[H]
 \centering
-\vspace{-3mm}
-\includegraphics[height=4cm]{nist/nist-8/conv_dof_aniso.png}\ \
-\includegraphics[height=4cm]{nist/nist-8/conv_cpu_aniso.png}
-\vspace{-3mm}
+%\vspace{-4mm}
+\hspace{-50mm}
+\includegraphics[width=7.5cm]{nist/nist-8/conv_dof_aniso.png}\ \
+\hspace{-10mm}
+\includegraphics[width=7.5cm]{nist/nist-8/conv_cpu_aniso.png}
+\hspace{-50mm}
 \caption{DOF and CPU time convergence graphs.}
-%\vspace{-5mm}
+\vspace{-3mm}
 \label{fig:nist-8-conv}
-%\vspace{-2mm}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -772,11 +784,11 @@ $r_{0} = 0.25$ is shown in Fig. \ref{fig:sln-nist09}.
 
 \begin{figure}[H]
 \centering
-%\vspace{-5mm}
-\includegraphics[height=4.5cm]{nist/nist-9/solution.png}
-%\vspace{-5mm}
+\vspace{-3mm}
+\includegraphics[height=5cm]{nist/nist-9/solution.png}
+\vspace{-3mm}
 \caption{The solution to NIST-9 benchmark problem.}
-%\vspace{-5mm}
+\vspace{-3mm}
 \label{fig:sln-nist09}
 \end{figure}
 
@@ -788,12 +800,9 @@ $r_{0} = 0.25$ is shown in Fig. \ref{fig:sln-nist09}.
 \includegraphics[height=3.7cm]{nist/nist-9/mesh_hp_aniso.png}
 %\vspace{-5mm}
 \caption{
-Final mesh (left) with 46093 DOF and the resulting
-relative error estimate in $H^1$-norm of 1.23973 \% for $h$-FEM with linear elements.
-Final mesh (middle) with 4489 DOF and the resulting
-relative error estimate in $H^1$-norm of 7.19928e-01 \% for $h$-FEM with quadratic elements.
-Final mesh (right) with 1465 DOF and the resulting
-relative error estimate in $H^1$-norm of 8.67667e-01 \% for $hp$-FEM with anisotropic refinements.}
+Final mesh (left) with 46093 DOF and the relative error is 1.23973 \% for $h$-FEM with linear elements.
+Final mesh (middle) with 4489 DOF and the relative error is 7.19928e-01 \% for $h$-FEM with quadratic elements.
+Final mesh (right) with 1465 DOF and the relative error is 8.67667e-01 \% for $hp$-FEM with anisotropic refinements.}
 %\vspace{-5mm}
 \label{fig:nist-9-hp-aniso}
 \end{figure}
@@ -801,15 +810,18 @@ relative error estimate in $H^1$-norm of 8.67667e-01 \% for $hp$-FEM with anisot
 Figs. \ref{fig:nist-9-conv} compare all
 three approaches to automatic adaptivity from the point
 of view of DOF and CPU convergence.
+%\vspace{-4mm}
 
 \begin{figure}[H]
 \centering
-%\vspace{-5mm}
-\includegraphics[height=4cm]{nist/nist-9/conv_dof_aniso.png}\ \
-\includegraphics[height=4cm]{nist/nist-9/conv_cpu_aniso.png}
-%\vspace{-5mm}
+%\vspace{-4mm}
+\hspace{-50mm}
+\includegraphics[width=7.5cm]{nist/nist-9/conv_dof_aniso.png}\ \
+\hspace{-10mm}
+\includegraphics[width=7.5cm]{nist/nist-9/conv_cpu_aniso.png}
+\hspace{-50mm}
 \caption{DOF and CPU time convergence graphs.}
-%\vspace{-5mm}
+%\vspace{-4mm}
 \label{fig:nist-9-conv}
 \end{figure}
 
@@ -836,7 +848,7 @@ $\alpha = 2.01$ is shown in Fig. \ref{fig:sln-nist10}.
 \begin{figure}[H]
 \centering
 %\vspace{-5mm}
-\includegraphics[height=4cm]{nist/nist-10/solution.png}
+\includegraphics[height=5cm]{nist/nist-10/solution.png}
 %\vspace{-5mm}
 \caption{The solution to NIST-10 benchmark problem.}
 %\vspace{-5mm}
@@ -851,12 +863,9 @@ $\alpha = 2.01$ is shown in Fig. \ref{fig:sln-nist10}.
 \includegraphics[height=3.7cm]{nist/nist-10/mesh_hp_aniso.png}
 %\vspace{-5mm}
 \caption{
-Final mesh (left) with 27999 DOF and the resulting
-relative error estimate in $H^1$-norm of 2.87268e-01 \% for $h$-FEM with linear elements.
-Final mesh (middle) with 60144 DOF and the resulting
-relative error estimate in $H^1$-norm of 2.59816e-04 \% for $h$-FEM with quadratic elements.
-Final mesh (right) with 381 DOF and the resulting
-relative error estimate in $H^1$-norm of 8.68994e-05 \% for $hp$-FEM with anisotropic refinements.}
+Final mesh (left) with 27999 DOF and the relative error is 2.87268e-01 \% for $h$-FEM with linear elements.
+Final mesh (middle) with 60144 DOF and the relative error is 2.59816e-04 \% for $h$-FEM with quadratic elements.
+Final mesh (right) with 381 DOF and the relative error is 8.68994e-05 \% for $hp$-FEM with anisotropic refinements.}
 %\vspace{-5mm}
 \label{fig:nist-10-hp-aniso}
 \end{figure}
@@ -867,12 +876,13 @@ of view of DOF and CPU convergence.
 
 \begin{figure}[H]
 \centering
-%\vspace{-5mm}
-\includegraphics[height=4cm]{nist/nist-10/conv_dof_aniso.png}\ \
-\includegraphics[height=4cm]{nist/nist-10/conv_cpu_aniso.png}
-%\vspace{-5mm}
+\hspace{-50mm}
+\includegraphics[width=7.5cm]{nist/nist-10/conv_dof_aniso.png}\ \
+\hspace{-10mm}
+\includegraphics[width=7.5cm]{nist/nist-10/conv_cpu_aniso.png}
+\hspace{-50mm}
+\vspace{-2mm}
 \caption{DOF and CPU time convergence graphs.}
-%\vspace{-5mm}
 \label{fig:nist-10-conv}
 \end{figure}
 
@@ -903,10 +913,10 @@ The solution of NIST-11 is shown in Fig. \ref{fig:sln-nist11}.
 \begin{figure}[H]
 \centering
 %\vspace{-5mm}
-\includegraphics[height=4cm]{nist/nist-11/solution.png}
+\includegraphics[height=4.7cm]{nist/nist-11/solution.png}
 %\vspace{-2mm}
 \caption{The solution to NIST-11 benchmark problem.}
-%\vspace{-4mm}
+\vspace{-8mm}
 \label{fig:sln-nist11}
 \end{figure}
 
@@ -918,12 +928,9 @@ The solution of NIST-11 is shown in Fig. \ref{fig:sln-nist11}.
 \includegraphics[height=3.7cm]{nist/nist-11/mesh_hp_aniso.png}
 \vspace{-3mm}
 \caption{
-Final mesh (left) with 46905 DOF and the resulting
-relative error estimate in $H^1$-norm of 1.25659 \% for $h$-FEM with linear elements.
-Final mesh (middle) with 7777 DOF and the resulting
-relative error estimate in $H^1$-norm of 4.73604e-01 \% for $h$-FEM with quadratic elements.
-Final mesh (right) with 3459 DOF and the resulting
-relative error estimate in $H^1$-norm of 4.7087e-01 \% for $hp$-FEM with anisotropic refinements.}
+Final mesh (left) with 46905 DOF and the relative error is 1.25659 \% for $h$-FEM with linear elements.
+Final mesh (middle) with 7777 DOF and the relative error is 4.73604e-01 \% for $h$-FEM with quadratic elements.
+Final mesh (right) with 3459 DOF and the relative error is 4.7087e-01 \% for $hp$-FEM with anisotropic refinements.}
 \vspace{-2mm}
 \label{fig:nist-11-hp-aniso}
 \end{figure}
@@ -934,14 +941,13 @@ of view of DOF and CPU convergence.
 
 \begin{figure}[H]
 \centering
-\vspace{-3mm}
-\includegraphics[height=4cm]{nist/nist-11/conv_dof_aniso.png}\ \
-\includegraphics[height=4cm]{nist/nist-11/conv_cpu_aniso.png}
-\vspace{-3mm}
+\hspace{-50mm}
+\includegraphics[width=7.5cm]{nist/nist-11/conv_dof_aniso.png}\ \
+\hspace{-10mm}
+\includegraphics[width=7.5cm]{nist/nist-11/conv_cpu_aniso.png}
+\hspace{-50mm}
 \caption{DOF and CPU time convergence graphs.}
-%\vspace{-5mm}
 \label{fig:nist-11-conv}
-%\vspace{-2mm}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -996,18 +1002,15 @@ $\epsilon = 1/100$ is shown in Fig. \ref{fig:sln-nist12}.
 
 \begin{figure}[H]
 \centering
-\vspace{-3mm}
+%\vspace{-3mm}
 \includegraphics[height=3.7cm]{nist/nist-12/mesh_h1_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-12/mesh_h2_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-12/mesh_hp_aniso.png}
-\vspace{-3mm}
+%\vspace{-3mm}
 \caption{
-Final mesh (left) with 45533 DOF and the resulting
-relative error estimate in $H^1$-norm of 2.05698 \% for $h$-FEM with linear elements.
-Final mesh (middle) with 10495 DOF and the resulting
-relative error estimate in $H^1$-norm of 9.04458e-01 \% for $h$-FEM with quadratic elements.
-Final mesh (right) with 4438 DOF and the resulting
-relative error estimate in $H^1$-norm of 9.85118e-01 \% for $hp$-FEM with anisotropic refinements.}
+Final mesh (left) with 45533 DOF and the relative error is 2.05698 \% for $h$-FEM with linear elements.
+Final mesh (middle) with 10495 DOF and the relative error is 9.04458e-01 \% for $h$-FEM with quadratic elements.
+Final mesh (right) with 4438 DOF and the relative error is 9.85118e-01 \% for $hp$-FEM with anisotropic refinements.}
 %\vspace{-5mm}
 \label{fig:nist-12-hp-aniso}
 \end{figure}
@@ -1018,12 +1021,12 @@ of view of DOF and CPU convergence.
 
 \begin{figure}[H]
 \centering
-%\vspace{-5mm}
-\includegraphics[height=4cm]{nist/nist-12/conv_dof_aniso.png}\ \
-\includegraphics[height=4cm]{nist/nist-12/conv_cpu_aniso.png}
-%\vspace{-5mm}
+\hspace{-50mm}
+\includegraphics[width=7.5cm]{nist/nist-12/conv_dof_aniso.png}\ \
+\hspace{-10mm}
+\includegraphics[width=7.5cm]{nist/nist-12/conv_cpu_aniso.png}
+\hspace{-50mm}
 \caption{DOF and CPU time convergence graphs.}
-%\vspace{-5mm}
 \label{fig:nist-12-conv}
 \end{figure}
 
@@ -1050,6 +1053,40 @@ Grant No. IAA100760702 of the Grant Agency of the Academy
 of Sciences of the Czech Republic. The first autor was partly
 supported by the National Natural Science Foundation
 of China under Projects No. 41074099.
+
+\section{Appendix 1 - Automatic hp-adaptivity with the open source library Hermes}
+
+Hermes uses exponentially-convergent adaptive $hp$-FEM and $hp$-DG algorithms where the error drops steadily and fast to the desired accuracy.
+Hermes is PDE-independent. Hermes does not employ any technique or algorithm that would limit its applicability to some particular class(es) of PDE problems. Automatic adaptivity is guided by a universal computational a-posteriori error estimate that works in the same way for any PDE.
+Hermes has a unique original methodology for handling irregular meshes with arbitrary-level hanging nodes, also various physical fields or solution components in multiphysics problems can be approximated on individual meshes, combining quality $H^1, H(curl), H(div), and L^2$ conforming higher-order elements. The following figure illustrates a coupled problem of heat and moisture transfer in massive concrete walls of a nuclear reactor vessel where all the above features are employed.
+
+For more information about Hermes visit {http://hpfem.org/hermes}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=5cm]{img/hermes_hm_sol.png}
+\hspace{10mm}
+\includegraphics[height=5cm]{img/hermes_hm_mesh.png}
+\caption{Illustration of multimesh hp-FEM.}
+\label{fig:hermes_hm}
+\end{figure}
+%\noindent
+
+%% Authors are advised to submit their bibtex database files. They are
+%% requested to list a bibtex style file in the manuscript if they do
+%% not want to use elsarticle-num.bst.
+
+%% References without bibTeX database:
+
+% \begin{thebibliography}{00}	
+
+%% \bibitem must have the following form:
+%%   \bibitem{key}...
+%%
+
+% \bibitem{}
+
+% \end{thebibliography}
 
 \begin{thebibliography}{[KLR73]}
 
@@ -1081,41 +1118,7 @@ Chapman \& Hall \/ CRC Press, Taylor \& Francis, 2006.
 %/ CRC Press, Boca Raton, 2003.
 \end{thebibliography}
 
-\newpage
-
-\section{Appendix 1 - Automatic hp-adaptivity with the open source library Hermes}
-
-Hermes uses exponentially-convergent adaptive $hp$-FEM and $hp$-DG algorithms where the error drops steadily and fast to the desired accuracy.
-Hermes is PDE-independent. Hermes does not employ any technique or algorithm that would limit its applicability to some particular class(es) of PDE problems. Automatic adaptivity is guided by a universal computational a-posteriori error estimate that works in the same way for any PDE.
-Hermes has a unique original methodology for handling irregular meshes with arbitrary-level hanging nodes, also various physical fields or solution components in multiphysics problems can be approximated on individual meshes, combining quality $H^1, H(curl), H(div), and L^2$ conforming higher-order elements. The following figure illustrates a coupled problem of heat and moisture transfer in massive concrete walls of a nuclear reactor vessel where all the above features are employed.
-
-For more information about Hermes visit {http://hpfem.org/hermes}.
-
-\begin{figure}[H]
-\centering
-\includegraphics[height=5cm]{img/hermes_hm_sol.png}
-\hspace{10mm}
-\includegraphics[height=5cm]{img/hermes_hm_mesh.png}
-\caption{Illustration of multimesh hp-FEM.}
-\label{fig:hermes_hm}
-\end{figure}
-\noindent
-
-%% Authors are advised to submit their bibtex database files. They are
-%% requested to list a bibtex style file in the manuscript if they do
-%% not want to use elsarticle-num.bst.
-
-%% References without bibTeX database:
-
-% \begin{thebibliography}{00}	
-
-%% \bibitem must have the following form:
-%%   \bibitem{key}...
-%%
-
-% \bibitem{}
-
-% \end{thebibliography}
+%\newpage
 
 \end{document}
 
