@@ -830,7 +830,7 @@ of view of DOF and CPU convergence.
 
 This is another example with anisotropic solution that is suitable for testing
 anisotropic element refinements. The equation solved is the Poisson's equation.
-
+\vspace{-3mm}
 \begin{equation} \label{interior}
 -\Delta u = f
 \end{equation}
@@ -845,45 +845,46 @@ $\alpha = 2.01$ is shown in Fig. \ref{fig:sln-nist10}.
 
 \begin{figure}[H]
 \centering
-%\vspace{-5mm}
+\vspace{-6mm}
 \includegraphics[height=5cm]{nist/nist-10/solution.png}
-%\vspace{-5mm}
+\vspace{-3mm}
 \caption{The solution to NIST-10 benchmark problem.}
-%\vspace{-5mm}
+\vspace{-3mm}
 \label{fig:sln-nist10}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-%\vspace{-5mm}
+\vspace{-3mm}
 \includegraphics[height=3.7cm]{nist/nist-10/mesh_h1_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-10/mesh_h2_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-10/mesh_hp_aniso.png}
-%\vspace{-5mm}
+\vspace{-3mm}
 \caption{
 Final mesh (left) with 27999 DOF and the relative error is 2.87268e-01 \% for $h$-FEM with linear elements.
 Final mesh (middle) with 60144 DOF and the relative error is 2.59816e-04 \% for $h$-FEM with quadratic elements.
 Final mesh (right) with 381 DOF and the relative error is 8.68994e-05 \% for $hp$-FEM with anisotropic refinements.}
-%\vspace{-5mm}
+\vspace{-3mm}
 \label{fig:nist-10-hp-aniso}
 \end{figure}
 
-Figs. \ref{fig:nist-10-conv} compare all
-three approaches to automatic adaptivity from the point
-of view of DOF and CPU convergence.
 
 \begin{figure}[H]
 \centering
+\vspace{-3mm}
 \hspace{-50mm}
 \includegraphics[width=7.5cm]{nist/nist-10/conv_dof_aniso.png}\ \
 \hspace{-10mm}
 \includegraphics[width=7.5cm]{nist/nist-10/conv_cpu_aniso.png}
 \hspace{-50mm}
-\vspace{-2mm}
+\vspace{-3mm}
 \caption{DOF and CPU time convergence graphs.}
 \label{fig:nist-10-conv}
 \end{figure}
 
+Figs. \ref{fig:nist-10-conv} compare all
+three approaches to automatic adaptivity from the point
+of view of DOF and CPU convergence.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Benchmark NIST-11 "Intersecting Interfaces"}
@@ -958,7 +959,7 @@ seen in previous sections (nist-2, nist-4, nist-6 and nist-9) into one problem.
 The wave front intersects the boundary
 layer and corner singularity, and the peak is centered on the wave front.
 The equation solved is the Poisson's equation.
-
+\vspace{-3mm}
 \begin{equation} \label{multiple}
 -\Delta u = f
 \end{equation}
@@ -1027,7 +1028,7 @@ of view of DOF and CPU convergence.
 \caption{DOF and CPU time convergence graphs.}
 \label{fig:nist-12-conv}
 \end{figure}
-
+\vspace{-8mm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Conclusion and Outlook}
@@ -1059,15 +1060,16 @@ Hermes is PDE-independent. Hermes does not employ any technique or algorithm tha
 Hermes has a unique original methodology for handling irregular meshes with arbitrary-level hanging nodes, also various physical fields or solution components in multiphysics problems can be approximated on individual meshes, combining quality $H^1, H(curl), H(div), and L^2$ conforming higher-order elements. The following figure illustrates a coupled problem of heat and moisture transfer in massive concrete walls of a nuclear reactor vessel where all the above features are employed.
 
 For more information about Hermes visit {http://hpfem.org/hermes}.
-
+\vspace{-2mm}
 \begin{figure}[H]
 \centering
-\includegraphics[height=5cm]{img/hermes_hm_sol.png}
-\hspace{10mm}
-\includegraphics[height=5cm]{img/hermes_hm_mesh.png}
+\includegraphics[height=4.7cm]{img/hermes_hm_sol.png}
+\hspace{20mm}
+\includegraphics[height=4.7cm]{img/hermes_hm_mesh.png}
 \caption{Illustration of multimesh hp-FEM.}
 \label{fig:hermes_hm}
 \end{figure}
+\vspace{-9mm}
 %\noindent
 
 %% Authors are advised to submit their bibtex database files. They are
@@ -1091,11 +1093,11 @@ For more information about Hermes visit {http://hpfem.org/hermes}.
 \bibitem{mitchell-1}
 W. Mitchell: A Collection of 2D Elliptic Problems for
 Testing Adaptive Algorithms, NISTIR 7668, 2010 (available online).
-
+\vspace{-2mm}
 \bibitem{mitchell-2}
 W. Mitchell: A Survey of hp-Adaptive Strategies for Elliptic Partial Differential Equations,
 Annals of the European Academy of Sciences, to appear (available online).
-
+\vspace{-2mm}
 \bibitem{demkowicz-1}
 L. Demkowicz: One and Two Dimensional Elliptic and Maxwell Problems,
 Chapman \& Hall \/ CRC Press, Taylor \& Francis, 2006.
