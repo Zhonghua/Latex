@@ -812,7 +812,7 @@ of view of DOF and CPU convergence.
 
 \begin{figure}[H]
 \centering
-%\vspace{-4mm}
+\vspace{-3mm}
 \hspace{-50mm}
 \includegraphics[width=7.5cm]{nist/nist-9/conv_dof_aniso.png}\ \
 \hspace{-10mm}
@@ -830,7 +830,7 @@ of view of DOF and CPU convergence.
 
 This is another example with anisotropic solution that is suitable for testing
 anisotropic element refinements. The equation solved is the Poisson's equation.
-\vspace{-3mm}
+%\vspace{-2mm}
 \begin{equation} \label{interior}
 -\Delta u = f
 \end{equation}
@@ -993,30 +993,31 @@ $\epsilon = 1/100$ is shown in Fig. \ref{fig:sln-nist12}.
 \centering
 %\vspace{-5mm}
 \includegraphics[height=5cm]{nist/nist-12/solution.png}
-%\vspace{-5mm}
+\vspace{-3mm}
 \caption{The solution to NIST-12 benchmark problem.}
-%\vspace{-4mm}
+\vspace{-4mm}
 \label{fig:sln-nist12}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-%\vspace{-3mm}
+\vspace{-3mm}
 \includegraphics[height=3.7cm]{nist/nist-12/mesh_h1_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-12/mesh_h2_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-12/mesh_hp_aniso.png}
-%\vspace{-3mm}
+\vspace{-3mm}
 \caption{
 Final mesh (left) with 45533 DOF and the relative error is 2.05698 \% for $h$-FEM with linear elements.
 Final mesh (middle) with 10495 DOF and the relative error is 9.04458e-01 \% for $h$-FEM with quadratic elements.
 Final mesh (right) with 4438 DOF and the relative error is 9.85118e-01 \% for $hp$-FEM with anisotropic refinements.}
-%\vspace{-5mm}
+\vspace{-3mm}
 \label{fig:nist-12-hp-aniso}
 \end{figure}
 
 Figs. \ref{fig:nist-12-conv} compare all
 three approaches to automatic adaptivity from the point
 of view of DOF and CPU convergence.
+\vspace{-2mm}
 
 \begin{figure}[H]
 \centering
