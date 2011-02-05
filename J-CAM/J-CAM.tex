@@ -110,19 +110,19 @@
 \address[label3]{University of Nevada, Reno, USA}
 
 \begin{abstract}
-Adaptive grid refinement is a critical component of algorithms for the numerical solution of partial differential equations (PDEs).
-The development of new algorithms and computer
-codes for the solution of PDEs usually involves the use of proof-of-concept test problems.
-It is common to compare different algorithms using a large test set, to evaluate the algorithm's overall quality, which lies in the ability to handle all kinds of problems, and also to determine the algorithm's strengths and weaknesses.
-In this paper we solve a set of benchmark problems devised by
-W. Mitchell at NIST \cite{mitchell-1}.
-The problems exhibit various types of singularities, disruptions, and oscillations.
-Each of the benchmark problem is introduced, together with its exact solution.
-Then the solution obtained with the use of the multi-platform open source
-C++ library for rapid development of adaptive $hp$-FEM and $hp$-DG solvers {\sc Hermes}\footnote{http://hpfem.org/hermes} is shown,
-complemented with convergence graphs and comparison of the fully anisotropic
-$hp$-FEM to low-order FEM in terms of convergence.
-Overview of Hermes is given in the appendix.
+%Adaptive grid refinement is a critical component of algorithms for the numerical solution of partial 
+%differential equations (PDEs). The development of new algorithms and computer
+%codes for the solution of PDEs usually involves the use of proof-of-concept test problems.
+%It is common to compare different algorithms using a large test set, to evaluate the algorithm's 
+%overall quality, which lies in the ability to handle all kinds of problems, and also to determine 
+%the algorithm's strengths and weaknesses.
+Recently, a new suite of 12 benchmark problems for adaptive finite element methods (FEM)
+was published at the U.S. National Institute for Standards and Technology (NIST).
+These test problems come with exact solutions, and they exhibit various difficulties 
+types of singularities, disruptions, and oscillations. They are a great basis for comparison 
+of performance of adaptive FEM codes. In this paper we present results obtained
+with the open source library Hermes (http://hpfem.org), and we hope that authors of 
+other adaptive FEM codes, both academic and commercial, will follow. 
 \end{abstract}
 
 \begin{keyword}
@@ -138,29 +138,13 @@ $hp$-FEM \sep FEM benchmark \sep anisotropic solution \sep test problems
 \section{Introduction}
 \label{sec:intro}
 
-The number of adaptive Finite Element codes is growing.
-There is no common approach to test adaptive
-Finite Element algorithms. The obstacle in developing such an approach is that
-the codes differ in application platforms, ways of loading the physical model,
-grid formats, boundary conditions handling, input/output formats and the list could go on.
-
-Moreover, some Finite Element codes are specifically designed to be used for
-a narrow profile of problems, which also limits the possibility of comparing
-their performance on a single problem.
-For instance, some of them are widely used in the aerospace industry, others are
-mostly used in civil engineering, and some e.g. in electronic and electrical engineering.
-Therefore, in order to compare efficiency and robustness of the Finite Element
-codes, various test problems are required.
-For some classical Finite Element problems, pre-processing
-needed for various codes differs greatly.
-As a result of the differences between the codes,
-the same algorithm may give different results and convergency
-behavior for the same problem.
-The criterion of performance for adaptive algorithms
-is the obtained accuracy as a function of the total number
-of DOFs (Degrees Of Freedom) and CPU time. However,
-this is quite difficult to establish for CPU time because
-differences in hardware and operating systems must be taken into account.
+The number of adaptive finite element (FEM) codes is growing very fast. 
+They differ in deployment operating systems and hardware platforms, 
+ways of loading the physical model, mesh formats, boundary conditions 
+handling, input/output formats, and other aspects. Some of them are 
+designed for a narrow class of problems while others are supposed to 
+cover several physical applications. These facts, and others not listed
+here, make it difficult to assess and compare their accuracy and performance.
 
 At this point we would like to acknowledge the work of
 Dr. William Mitchell (NIST) who collected a suite of
@@ -170,24 +154,22 @@ using a test set of problems with known exact solutions
 that are able to test various aspects of automatic
 adaptivity in the appropriate manner.
 
-In this paper, we solve the twelve benchmarks.
-The test problems and their exact solutions are
-formulated in Sections \ref{sec:bench-1} - \ref{sec:bench-12}.
-We also present solutions obtained by {\sc Hermes} library (http://hpfem.org/hermes).
-{\sc Hermes} is a multi-platform open source C++
+In this paper, we solve the twelve benchmarks using 
+Hermes, a multi-platform open source C++
 library for rapid development of adaptive $hp$-FEM
-and $hp$-DG solvers. Each section also contains a short
-description of the benchmark problem, then the numerical
-results are presented and discussed. Conclusion and outlooks
-are offered at the end of the paper.
+and $hp$-DG solvers (http://hpfem.org).
+In the following, each section contains a short description of the benchmark problem
+followed by results and convergence graphs in terms of degrees
+of freedom (DOF) and CPU time. Conclusion and outlooks
+are presented at the end of the paper.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Benchmark NIST-1 "Analytic Solution"}
 \label{sec:bench-1}
 
-This is the first benchmark problem. Its solution is smooth.
-The equation solved is the Poisson's equation.
+This benchmark problem has a smooth solution. 
+Solved it the Poisson's equation
 
 \begin{equation} \label{poisson}
 -\Delta u = f
