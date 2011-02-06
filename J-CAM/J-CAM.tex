@@ -96,7 +96,7 @@
 %% and the form \ead[url] for the home page:
 %%
 
-\title{Solving a Suite of NIST Benchmark \\Problems with Hermes}
+\title{Solving a Suite of NIST Benchmark Problems\\ for Adaptive FEM with the Hermes Library}
 
 %% use optional labels to link authors explicitly to addresses:
 \author[label1]{Zhonghua Ma}
@@ -119,14 +119,16 @@
 Recently, a new suite of 12 benchmark problems for adaptive finite element methods (FEM)
 was published at the U.S. National Institute for Standards and Technology (NIST).
 These test problems come with exact solutions, and they exhibit various difficulties 
-types of singularities, disruptions, and oscillations. They are a great basis for comparison 
+including singularities, disruptions, and oscillations. They are a great basis for comparison 
 of performance of adaptive FEM codes. In this paper we present results obtained
-with the open source library Hermes (http://hpfem.org), and we hope that authors of 
-other adaptive FEM codes, both academic and commercial, will follow. 
+with the open source library Hermes (http://hpfem.org). These results are reproducible --
+all of them are part of the Git repository of the Hermes project and the reader can experiment 
+with them at will. We hope that authors of other adaptive FEM codes, both academic and 
+commercial, will present their results for these test problems in a reproducible fashion as well. 
 \end{abstract}
 
 \begin{keyword}
-$hp$-FEM \sep FEM benchmark \sep anisotropic solution \sep test problems
+finite element method \sep automatic adaptivity \sep benchmark problem \sep exact solution
 %% keywords here, in the form: keyword \sep keyword
 %% MSC codes here, in the form: \MSC code \sep code
 %% or \MSC[2008] code \sep code (2000 is the default)
@@ -140,26 +142,35 @@ $hp$-FEM \sep FEM benchmark \sep anisotropic solution \sep test problems
 
 The number of adaptive finite element (FEM) codes is growing very fast. 
 They differ in deployment operating systems and hardware platforms, 
-ways of loading the physical model, mesh formats, boundary conditions 
+ways of loading the physical model, error estimation mechanisms, 
+algebraic solvers they use, mesh formats, boundary conditions 
 handling, input/output formats, and other aspects. Some of them are 
 designed for a narrow class of problems while others are supposed to 
 cover several physical applications. These facts, and others not listed
-here, make it difficult to assess and compare their accuracy and performance.
+here, make it extremely difficult to assess and compare their accuracy and performance.
 
-At this point we would like to acknowledge the work of
-Dr. William Mitchell (NIST) who collected a suite of
-twelve benchmarks for adaptive FEM \cite{mitchell-1}.
-The aim of these is to compare different algorithms
-using a test set of problems with known exact solutions
-that are able to test various aspects of automatic
-adaptivity in the appropriate manner.
+Recently, Dr. William Mitchell (NIST) collected a suite of
+twelve benchmark problems with known exact solution for adaptive 
+FEM \cite{mitchell-1}. The advantage of having an exact solution is that 
+the approximation error can be calculated very accurately, thus 
+enabling fair comparison of results calculated with different
+programs. All these examples are elliptic, and they are defined  
+in very simple geometries, to make their solution possible with 
+virtually any FEM code. 
 
 In this paper, we solve the twelve benchmarks using 
 Hermes, a multi-platform open source C++
 library for rapid development of adaptive $hp$-FEM
-and $hp$-DG solvers (http://hpfem.org).
-In the following, each section contains a short description of the benchmark problem
-followed by results and convergence graphs in terms of degrees
+and $hp$-DG solvers (http://hpfem.org). A few words
+and links to the Hermes library will be presented at the 
+end as this is not the major objective of the paper.
+Our goal is to show the results and make them available 
+to be reproduced and compared with other results.
+ 
+To make the paper reasonably self-contained, we must repeat some 
+material from \cite{mitchell-1}, but this is done in a minimalistic way.
+Each of the following sections contains a short description of 
+the benchmark problem followed by results and convergence graphs in terms of degrees
 of freedom (DOF) and CPU time. Conclusion and outlooks
 are presented at the end of the paper.
 
@@ -169,23 +180,23 @@ are presented at the end of the paper.
 \label{sec:bench-1}
 
 This benchmark problem has a smooth solution. 
-Solved it the Poisson's equation
+Solved is the Poisson equation
 
 \begin{equation} \label{poisson}
 -\Delta u = f
 \end{equation}
 in the domain $\Omega = (0, 1)^2$, equipped with Dirichlet
 boundary condition given by the exact solution.
-The exact solution is $u(x, y) = 2^{4p}x^{p}(1-x)^{p}y^{p}(1-y)^{p}$.
-The solution of NIST-1 is shown in Fig. \ref{fig:sln-nist01}.
-Here $p$ is a parameter, determining the polynomial degree of the exact solution.
+The exact solution is $u(x, y) = 2^{4p}x^{p}(1-x)^{p}y^{p}(1-y)^{p}$
+with $p = XXX$.
+The solution to NIST-1 is shown in Fig. \ref{fig:sln-nist01}.
 
 \begin{figure}[H]
 \centering
 \vspace{-3mm}
 \includegraphics[height=5cm]{nist/nist-1/solution.png}
 \vspace{-3mm}
-\caption{The solution to NIST-1 benchmark problem.}
+\caption{Solution to the NIST-1 benchmark problem.}
 \label{fig:sln-nist01}
 \end{figure}
 
@@ -201,23 +212,26 @@ Here $p$ is a parameter, determining the polynomial degree of the exact solution
 %\label{fig:nist-1-h-aniso}
 %\end{figure}
 
+Fig. \ref{fig:nist-1-hp-aniso} presents the final meshes corresponding to adaptive $h$-FEM with 
+linear elements, adaptive $h$-FEM with quadratic elements, and adaptive $hp$-FEM. Different 
+polynomial degrees of elements are represented by different colors. 
+
 \begin{figure}[!ht]
 \centering
-\vspace{-7mm}
+%\vspace{-7mm}
 \includegraphics[height=3.7cm]{nist/nist-1/mesh_h1_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-1/mesh_h2_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-1/mesh_hp_aniso.png}
 \vspace{-3mm}
 \caption{
-Final mesh (left) with 51365 DOF and the relative error is 5.87223e-01 \% for $h$-FEM with linear elements.
-Final mesh (middle) with 43401 DOF and the relative error is 1.37127e-02 \% for $h$-FEM with quadratic elements. Final mesh (right) with 769 DOF and the relative error is 4.69543e-03 \% for $hp$-FEM with anisotropic refinements.}
+Left: Final mesh with 51365 DOF and relative error 5.87223e-01~\% for $h$-FEM with linear elements.
+Middle: Final mesh with 43401 DOF and relative error 1.37127e-02~\% for $h$-FEM with quadratic elements. 
+Right: Final mesh with 769 DOF and relative error 4.69543e-03~\% for $hp$-FEM (adaptivity option HP\_ANISO\_H).}
 \label{fig:nist-1-hp-aniso}
 \vspace{-3mm}
 \end{figure}
 
-Figs. \ref{fig:nist-1-conv} compare all
-three approaches to automatic adaptivity from the point
-of view of DOF and CPU convergence.
+Fig. \ref{fig:nist-1-conv} shows the convergence of the adaptive methods in terms of DOF and CPU-time.
 
 \begin{figure}[H]
 \centering
@@ -238,10 +252,9 @@ of view of DOF and CPU convergence.
 \section{Benchmark NIST-2 "Reentrant Corner"}
 \label{sec:bench-2}
 
-This is a standard benchmark for adaptive FEM algorithms.
 The exact solution of this problem is smooth but it contains
-singular gradient in the reentrant corner.
-The equation solved is the Laplace's equation.
+singular gradient at the reentrant corner.
+Solved is the Laplace equation
 
 \begin{equation} \label{laplace}
 -\Delta u = 0
@@ -254,7 +267,7 @@ $u(x, y) = r^{\alpha}\sin(\alpha \theta)$,
 where $\alpha = \pi / \omega$, $r = \sqrt{x^2+y^2}$,
 and $\theta = tan^{-1}(y/x)$. Here $\omega $ determines
 the angle of the reentrant corner.
-The solution of NIST-2 with $\omega = 3 \pi / 2$
+The solution to NIST-2 with $\omega = 3 \pi / 2$
 is shown in Fig. \ref{fig:sln-nist02}.
 
 \begin{figure}[H]
@@ -262,7 +275,7 @@ is shown in Fig. \ref{fig:sln-nist02}.
 \vspace{-3mm}
 \includegraphics[height=5cm]{nist/nist-2/solution.png}
 \vspace{-3mm}
-\caption{The solution to NIST-2 benchmark problem.}
+\caption{Solution to the NIST-2 benchmark problem.}
 \label{fig:sln-nist02}
 \end{figure}
 
@@ -291,9 +304,8 @@ Final mesh (right) with 622 DOF and the relative error is 8.15289e-02 \% for $hp
 \vspace{-3mm}
 \end{figure}
 
-Figs. \ref{fig:nist-2-conv} compare all
-three approaches to automatic adaptivity from the point
-of view of DOF and CPU convergence.
+Fig. \ref{fig:nist-2-conv} shows the convergence of the adaptive methods in terms of DOF and CPU-time.
+
 %\vspace{-5mm}
 
 \begin{figure}[H]
@@ -312,32 +324,33 @@ of view of DOF and CPU convergence.
 \section{Benchmark NIST-3 "Linear Elasticity"}
 \label{sec:bench-3}
 
-Linear elasticity is used extensively in structural analysis
-and engineering. Linear elasticity is a simplification
-of the general nonlinear equations of elasticity and is the mathematical
-study of how solid objects deform and become internally
-stressed due to prescribed loading conditions.
-In this benchmark, we present a standard system of two
-coupled equations with mixed derivative for linear elasticity
-in the coupling term. This example employs the adaptive multimesh $hp$-FEM
-to solve the equations.
-%\vspace{-4mm}
+%Linear elasticity is used extensively in structural analysis
+%and engineering. Linear elasticity is a simplification
+%of the general nonlinear equations of elasticity and is the mathematical
+%study of how solid objects deform and become internally
+%stressed due to prescribed loading conditions.
+This benchmark deals with the Lam\'e equations of linear elasticity.
+Since the two resulting displacement components $u, v$ are very different, we use the 
+multimesh functionality of Hermes \cite{label2,thermoel} which makes it 
+possible to approximate them on different meshes that moreover 
+are locally refined independently of each other.
+The equations have the form
 
 \begin{equation}\label{crack}
 \left\{
 \begin{array}{l}
 \displaystyle
 -E \frac{1-\nu^2}{1-2\nu} \frac{\partial^{2} u}{\partial x^{2}} - E\frac{1-\nu^2}{2-2 \nu} \frac{\partial^{2} u}{\partial y^{2}}
--E \frac{1-\nu^2}{(1-2\nu)(2-2\nu)} \frac{\partial^{2} v}{\partial x \partial y} = 0 \\
+-E \frac{1-\nu^2}{(1-2\nu)(2-2\nu)} \frac{\partial^{2} v}{\partial x \partial y} = 0, \\[3mm]
 \displaystyle
 -E \frac{1-\nu^2}{2-2\nu} \frac{\partial^{2} v}{\partial x^{2}} - E\frac{1-\nu^2}{1-2\nu} \frac{\partial^{2} v}{\partial y^{2}}
--E \frac{1-\nu^2}{(1-2\nu)(2-2\nu)} \frac{\partial^{2} u}{\partial x \partial y} = 0
+-E \frac{1-\nu^2}{(1-2\nu)(2-2\nu)} \frac{\partial^{2} u}{\partial x \partial y} = 0,
 \end{array}
 \right.
 \end{equation}
 where $u$ and $v$ are the
 $x$ and $y$ displacements, $E$ is Young's Modulus,
-and $\nu$ is Poisson's ratio.
+and $\nu$ is Poisson ratio.
 The domain in the example is $\Omega = (-1, 1)^2$ with a slit,
 equipped with Dirichlet boundary conditions given by the
 exact solution in polar coordinates is
@@ -346,15 +359,15 @@ exact solution in polar coordinates is
 \left\{
 \begin{array}{l}
 \displaystyle
-u(x, y) = \frac{1}{2G} r^{\lambda}[(k - Q(\lambda + 1))cos(\lambda \theta) - \lambda cos((\lambda - 2) \theta)]  \\
+u(x, y) = \frac{1}{2G} r^{\lambda}[(k - Q(\lambda + 1))cos(\lambda \theta) - \lambda cos((\lambda - 2) \theta)],  \\[3mm]
 \displaystyle
-v(x, y) = \frac{1}{2G} r^{\lambda}[(k + Q(\lambda + 1))sin(\lambda \theta) + \lambda sin((\lambda - 2) \theta)]
+v(x, y) = \frac{1}{2G} r^{\lambda}[(k + Q(\lambda + 1))sin(\lambda \theta) + \lambda sin((\lambda - 2) \theta)],
 \end{array}
 \right.
 \]
 where $\lambda = 0.5444837367825$, $Q = 0.5430755788367$,
 $k = 3 - 4 \nu$ and $G = E / (2(1 + \nu))$.
-The solution of NIST-3 is shown in Fig. \ref{fig:sln-nist03}.
+The solution to NIST-3 is shown in Fig. \ref{fig:sln-nist03}.
 %\vspace{-4mm}
 
 \begin{figure}[H]
@@ -402,9 +415,7 @@ Final mesh (right) with 3897 DOF and the relative error is 8.05635e-02 \% for $h
 \label{fig:nist-3-hp-aniso}
 \end{figure}
 
-Figs. \ref{fig:nist-3-conv} compare all
-three approaches to automatic adaptivity from the point
-of view of DOF and CPU convergence.
+Fig. \ref{fig:nist-3-conv} shows the convergence of the adaptive methods in terms of DOF and CPU-time.
 
 \begin{figure}[H]
 \centering
@@ -422,8 +433,8 @@ of view of DOF and CPU convergence.
 \section{Benchmark NIST-4 "Peak"}
 \label{sec:bench-4}
 
-The solution of this problem exhibits an exponential peak in the interior of the domain.
-The equation solved in this benchmark problem is the Poisson's equation.
+The solution to this problem exhibits an exponential peak in the interior of the domain.
+The equation solved in this benchmark problem is the Poisson equation.
 
 \begin{equation} \label{poisson-peak}
 -\Delta u = f
@@ -434,7 +445,7 @@ The exact solution is
 $u(x,y) = e^{-\alpha ((x - x_{loc})^{2} + (y - y_{loc})^{2})}$,
 where $(x_{loc}, y_{loc})$ is the location of the peak,
 and $\alpha$ determines the strength of the peak.
-The solution of NIST-4 with $\alpha = 1000$,
+The solution to NIST-4 with $\alpha = 1000$,
 $(x_{loc}, y_{loc}) = (0.5, 0.5)$ is shown in Fig. \ref{fig:sln-nist04}.
 
 \begin{figure}[H]
@@ -442,7 +453,7 @@ $(x_{loc}, y_{loc}) = (0.5, 0.5)$ is shown in Fig. \ref{fig:sln-nist04}.
 %\vspace{-3mm}
 \includegraphics[height=5cm]{nist/nist-4/solution.png}
 %\vspace{-3mm}
-\caption{The solution to NIST-4 benchmark problem.}
+\caption{Solution to the NIST-4 benchmark problem.}
 \vspace{-3mm}
 \label{fig:sln-nist04}
 \end{figure}
@@ -474,9 +485,7 @@ Final mesh (right) with 1561 DOF and the relative error is 7.02865e-03 \% for $h
 \label{fig:nist-4-hp-aniso}
 \end{figure}
 
-Figs. \ref{fig:nist-4-conv} compare all
-three approaches to automatic adaptivity from the point
-of view of DOF and CPU convergence.
+Fig. \ref{fig:nist-4-conv} shows the convergence of the adaptive methods in terms of DOF and CPU-time.
 
 \begin{figure}[H]
 \centering
@@ -499,8 +508,7 @@ It comes with an anisotropic solution with strong internal disruption
 layers and singularities.
 The solution has multiple point singularities in the interior at which
 more than three different materials meet. These singularities are stronger than those
-corresponding to reentrant corners \cite{demkowicz-1}.
-The equation solved is given by
+corresponding to reentrant corners. The equation solved is
 
 \begin{equation} \label{heat-conduction}
 -\frac{\partial }{\partial x}\left(p(x, y)\frac{\partial u}{\partial x}\right)
@@ -508,14 +516,14 @@ The equation solved is given by
 \end{equation}
 in the domain $\Omega = (0, 8.4) \times (0, 24)$. Boundary conditions are zero Neumann on left edge, Newton on the rest of the boundary.
 The right-hand side $f$ are constant functions (different in respective materials).
-The solution of NIST-5 is shown in Fig. \ref{fig:sln-nist05}.
+The solution to NIST-5 is shown in Fig. \ref{fig:sln-nist05}.
 
 \begin{figure}[H]
 \centering
 \vspace{-3mm}
 \includegraphics[height=5cm]{nist/nist-5/solution.png}
 \vspace{-3mm}
-\caption{The solution to NIST-5 benchmark problem.}
+\caption{Solution to the NIST-5 benchmark problem.}
 \label{fig:sln-nist05}
 \end{figure}
 
@@ -541,9 +549,7 @@ Final mesh (right) with 7450 DOF and the relative error is 1.46775e-02 \% for $h
 \label{fig:nist-5-hp-aniso}
 \end{figure}
 
-Figs. \ref{fig:nist-5-conv} compare all
-three approaches to automatic adaptivity from the point
-of view of DOF and CPU convergence.
+Fig. \ref{fig:nist-5-conv} shows the convergence of the adaptive methods in terms of DOF and CPU-time.
 
 \begin{figure}[H]
 \centering
@@ -572,14 +578,14 @@ in the domain $\Omega = (-1, 1)^2$, equipped with Dirichlet boundary condition
 given by the exact solution. The exact solution is
 $u(x,y) = (1 - e^{-(1 - x) / \epsilon})(1 - e^{-(1 - y) / \epsilon})cos(\pi (x + y))$,
 where $\epsilon$ determines the strength of the boundary layer.
-The solution of NIST-6 containing a boundary layer
+The solution to NIST-6 containing a boundary layer
 with $\epsilon = 10^{-1}$ is shown in Fig. \ref{fig:sln-nist06}.
 
 \begin{figure}[H]
 \centering
 \vspace{-3mm}
 \includegraphics[height=5cm]{nist/nist-6/solution.png}
-\caption{The solution to NIST-6 benchmark problem.}
+\caption{Solution to the NIST-6 benchmark problem.}
 \vspace{-3mm}
 \label{fig:sln-nist06}
 \end{figure}
@@ -599,10 +605,7 @@ Final mesh (right) with 591 DOF and the relative error is 6.23458e-04 \% for $hp
 \label{fig:nist-6-hp-aniso}
 \end{figure}
 
-Figs. \ref{fig:nist-6-conv} compare all
-three approaches to automatic adaptivity from the point
-of view of DOF and CPU convergence.
-\vspace{-2mm}
+Fig. \ref{fig:nist-6-conv} shows the convergence of the adaptive methods in terms of DOF and CPU-time.
 
 \begin{figure}[H]
 \centering
@@ -623,7 +626,7 @@ of view of DOF and CPU convergence.
 \label{sec:bench-7}
 
 This is a singularity problem with the solution that is singular along the left part of the boundary.
-The equation solved in this problem is the Poisson's equation.
+The equation solved in this problem is the Poisson equation.
 
 \begin{equation} \label{boundary-line-singularity}
 -\Delta u = f
@@ -632,14 +635,14 @@ in the domain $\Omega = (0, 1)^2$, equipped with Dirichlet boundary conditions
 given by the exact solution. The exact solution is
 $u(x,y) = x^{\alpha}$,
 where $\alpha \geq 0.5$ determines the strength of the singularity.
-The solution of NIST-7 with $\alpha = 0.6$ is shown in Fig. \ref{fig:sln-nist07}.
+The solution to NIST-7 with $\alpha = 0.6$ is shown in Fig. \ref{fig:sln-nist07}.
 
 \begin{figure}[H]
 \centering
 %\vspace{-3mm}
 \includegraphics[height=5cm]{nist/nist-7/solution.png}
 \vspace{-3mm}
-\caption{The solution to NIST-7 benchmark problem.}
+\caption{Solution to the NIST-7 benchmark problem.}
 %\vspace{-2mm}
 \label{fig:sln-nist07}
 \end{figure}
@@ -659,10 +662,7 @@ Final mesh (right) with 88 DOF and the relative error is 1.46348 \% for $hp$-FEM
 \label{fig:nist-7-hp-aniso}
 \end{figure}
 
-Figs. \ref{fig:nist-7-conv} compare all
-three approaches to automatic adaptivity from the point
-of view of DOF and CPU convergence.
-\vspace{-3mm}
+Fig. \ref{fig:nist-7-conv} shows the convergence of the adaptive methods in terms of DOF and CPU-time.
 
 \begin{figure}[H]
 \centering
@@ -692,14 +692,14 @@ in the domain $\Omega = (0, 1)^2$, equipped with Dirichlet boundary conditions
 given by the exact solution. The exact solution is
 $u(x,y) = sin(\frac{1}{\alpha + r})$,
 where $r = \sqrt{x^{2} + y^{2}}$, $\alpha = 1 / N \pi$ determines the number of oscillations.
-The solution of NIST-8 with $\alpha = 1 / 10 \pi$ is shown in Fig. \ref{fig:sln-nist08}.
+The solution to NIST-8 with $\alpha = 1 / 10 \pi$ is shown in Fig. \ref{fig:sln-nist08}.
 
 \begin{figure}[H]
 \centering
 \vspace{-3mm}
 \includegraphics[height=5cm]{nist/nist-8/solution.png}
 \vspace{-3mm}
-\caption{The solution to NIST-8 benchmark problem.}
+\caption{Solution to the NIST-8 benchmark problem.}
 \vspace{-4mm}
 \label{fig:sln-nist08}
 \end{figure}
@@ -720,10 +720,7 @@ Final mesh (right) with 1160 DOF and the relative error is 9.09848e-02 \% for $h
 \label{fig:nist-8-hp-aniso}
 \end{figure}
 
-Figs. \ref{fig:nist-8-conv} compare all
-three approaches to automatic adaptivity from the point
-of view of DOF and CPU convergence.
-\vspace{-5mm}
+Fig. \ref{fig:nist-8-conv} shows the convergence of the adaptive methods in terms of DOF and CPU-time.
 
 \begin{figure}[H]
 \centering
@@ -747,7 +744,7 @@ This is a commonly used example for testing the performance of
 adaptive refinement algorithms using a wave front and a singularity \cite{mitchell-1, mitchell-2}.
 The solution has a sharp circular wave front in the interior of the
 domain, with a singularity at the center of the circle.
-The equation solved is the Poisson's equation.
+The equation solved is the Poisson equation.
 
 \begin{equation} \label{wave-front}
 -\Delta u = f
@@ -759,7 +756,7 @@ where $r = \sqrt{(x - x_{loc})^{2} + (y - y_{loc})^{2}}$.
 Here $(x_{loc}, y_{loc})$ is the center of the circular wave front,
 $r_{0}$ is the distance from the wave front to the center of the circle,
 and $\alpha$ gives the steepness of the wave front.
-The solution of NIST-9 with $\alpha = 50$, $(x_{loc}, y_{loc}) = (0.5, 0.5)$,
+The solution to NIST-9 with $\alpha = 50$, $(x_{loc}, y_{loc}) = (0.5, 0.5)$,
 $r_{0} = 0.25$ is shown in Fig. \ref{fig:sln-nist09}.
 
 \begin{figure}[H]
@@ -767,7 +764,7 @@ $r_{0} = 0.25$ is shown in Fig. \ref{fig:sln-nist09}.
 \vspace{-3mm}
 \includegraphics[height=5cm]{nist/nist-9/solution.png}
 \vspace{-3mm}
-\caption{The solution to NIST-9 benchmark problem.}
+\caption{Solution to the NIST-9 benchmark problem.}
 \vspace{-3mm}
 \label{fig:sln-nist09}
 \end{figure}
@@ -787,10 +784,7 @@ Final mesh (right) with 1465 DOF and the relative error is 8.67667e-01 \% for $h
 \label{fig:nist-9-hp-aniso}
 \end{figure}
 
-Figs. \ref{fig:nist-9-conv} compare all
-three approaches to automatic adaptivity from the point
-of view of DOF and CPU convergence.
-%\vspace{-4mm}
+Fig. \ref{fig:nist-9-conv} shows the convergence of the adaptive methods in terms of DOF and CPU-time.
 
 \begin{figure}[H]
 \centering
@@ -811,7 +805,7 @@ of view of DOF and CPU convergence.
 \label{sec:bench-10}
 
 This is another example with anisotropic solution that is suitable for testing
-anisotropic element refinements. The equation solved is the Poisson's equation.
+anisotropic element refinements. The equation solved is the Poisson equation.
 %\vspace{-2mm}
 \begin{equation} \label{interior}
 -\Delta u = f
@@ -822,7 +816,7 @@ conditions given by the exact solution on the rest of the boundary.
 The exact solution is
 $u(x,y) = \cos(Ky)\ (x \le 0)$ and $u(x,y) = \cos(Ky) + x^{\alpha}\ (x > 0)$,
 where $K$ and $\alpha$ are constants.
-The solution of NIST-10 containing a line singularity with $K = \pi/2$ and
+The solution to NIST-10 containing a line singularity with $K = \pi/2$ and
 $\alpha = 2.01$ is shown in Fig. \ref{fig:sln-nist10}.
 
 \begin{figure}[H]
@@ -830,7 +824,7 @@ $\alpha = 2.01$ is shown in Fig. \ref{fig:sln-nist10}.
 \vspace{-6mm}
 \includegraphics[height=5cm]{nist/nist-10/solution.png}
 \vspace{-3mm}
-\caption{The solution to NIST-10 benchmark problem.}
+\caption{Solution to the NIST-10 benchmark problem.}
 \vspace{-3mm}
 \label{fig:sln-nist10}
 \end{figure}
@@ -864,15 +858,14 @@ Final mesh (right) with 381 DOF and the relative error is 8.68994e-05 \% for $hp
 \label{fig:nist-10-conv}
 \end{figure}
 
-Figs. \ref{fig:nist-10-conv} compare all
-three approaches to automatic adaptivity from the point
-of view of DOF and CPU convergence.
+Fig. \ref{fig:nist-10-conv} shows the convergence of the adaptive methods in terms of DOF and CPU-time.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Benchmark NIST-11 "Intersecting Interfaces"}
 \label{sec:bench-11}
 
-This is a Poisson's problem with intersecting interfaces,
+This is a Poisson problem with intersecting interfaces,
 dividing the plane into four regions.
 The solution to this problem contains a severe
 singularity that poses a challenge to adaptive methods.
@@ -889,14 +882,14 @@ Dirichlet boundary conditions given by the exact solution.
 The exact solution is
 $u(x,y) = r^{a_1} \mu (\theta)$,
 where $a_1$ and $\mu (\theta)$ is given in \cite{mitchell-1}.
-The solution of NIST-11 is shown in Fig. \ref{fig:sln-nist11}.
+The solution to NIST-11 is shown in Fig. \ref{fig:sln-nist11}.
 
 \begin{figure}[H]
 \centering
 %\vspace{-5mm}
 \includegraphics[height=4.7cm]{nist/nist-11/solution.png}
 %\vspace{-2mm}
-\caption{The solution to NIST-11 benchmark problem.}
+\caption{Solution to the NIST-11 benchmark problem.}
 \vspace{-8mm}
 \label{fig:sln-nist11}
 \end{figure}
@@ -916,9 +909,7 @@ Final mesh (right) with 3459 DOF and the relative error is 4.7087e-01 \% for $hp
 \label{fig:nist-11-hp-aniso}
 \end{figure}
 
-Figs. \ref{fig:nist-11-conv} compare all
-three approaches to automatic adaptivity from the point
-of view of DOF and CPU convergence.
+Fig. \ref{fig:nist-11-conv} shows the convergence of the adaptive methods in terms of DOF and CPU-time.
 
 \begin{figure}[H]
 \centering
@@ -940,7 +931,7 @@ This problem combines four aspects of benchmarks
 seen in previous sections (nist-2, nist-4, nist-6 and nist-9) into one problem.
 The wave front intersects the boundary
 layer and corner singularity, and the peak is centered on the wave front.
-The equation solved is the Poisson's equation.
+The equation solved is the Poisson equation.
 \vspace{-3mm}
 \begin{equation} \label{multiple}
 -\Delta u = f
@@ -966,7 +957,7 @@ $r_{0}$ is the distance from the wave front to the
 center of the circle, and $\alpha_W$ gives
 the steepness of the wave front. The parameter $\epsilon$ determines the
 strength of the boundary layer, the boundary layer was placed on $y = -1$.
-The solution of NIST-12 with $\omega_C = 3 \pi /2$,
+The solution to NIST-12 with $\omega_C = 3 \pi /2$,
 $(x_{W}, y_{W}) = (0, -3/4)$, $r_{0} = 3/4$, $\alpha_{W} = 200$,
 $(x_{P}, y_{P}) = (\sqrt{5} / 4, -1/4)$,
 $\epsilon = 1/100$ is shown in Fig. \ref{fig:sln-nist12}.
@@ -976,7 +967,7 @@ $\epsilon = 1/100$ is shown in Fig. \ref{fig:sln-nist12}.
 %\vspace{-5mm}
 \includegraphics[height=5cm]{nist/nist-12/solution.png}
 \vspace{-3mm}
-\caption{The solution to NIST-12 benchmark problem.}
+\caption{Solution to the NIST-12 benchmark problem.}
 \vspace{-4mm}
 \label{fig:sln-nist12}
 \end{figure}
@@ -996,10 +987,7 @@ Final mesh (right) with 4438 DOF and the relative error is 9.85118e-01 \% for $h
 \label{fig:nist-12-hp-aniso}
 \end{figure}
 
-Figs. \ref{fig:nist-12-conv} compare all
-three approaches to automatic adaptivity from the point
-of view of DOF and CPU convergence.
-\vspace{-2mm}
+Fig. \ref{fig:nist-12-conv} shows the convergence of the adaptive methods in terms of DOF and CPU-time.
 
 \begin{figure}[H]
 \centering
@@ -1076,29 +1064,37 @@ For more information about Hermes visit {http://hpfem.org/hermes}.
 \bibitem{mitchell-1}
 W. Mitchell: A Collection of 2D Elliptic Problems for
 Testing Adaptive Algorithms, NISTIR 7668, 2010 (available online).
+
 \vspace{-2mm}
+
 \bibitem{mitchell-2}
 W. Mitchell: A Survey of hp-Adaptive Strategies for Elliptic Partial Differential Equations,
 Annals of the European Academy of Sciences, to appear (available online).
-\vspace{-2mm}
-\bibitem{demkowicz-1}
-L. Demkowicz: One and Two Dimensional Elliptic and Maxwell Problems,
-Chapman \& Hall \/ CRC Press, Taylor \& Francis, 2006.
 
-%
-%\bibitem{label2}
-%P. Solin, D. Andrs, J. Cerveny, M. Simko:
-%PDE-Independent Adaptive $hp$-FEM Based on Hierarchic Extension of Finite Element Spaces.
-%J. Comput. Appl. Math. 233 (2010) 3086-3094.
-%
-%\bibitem{thermoel}
-%P. Solin, J. Cerveny, L. Dubcova, D. Andrs:
-%Monolithic Discretization of Linear Thermoelasticity Problems
-%via Adaptive Multimesh $hp$-FEM, J. Comput. Appl. Math 234 (2010) 2350 - 2357.
-%
-%\bibitem{sosedo}
-%P. Solin. K. Segeth, I. Dolezel: Higher-Order Finite Element Methods, Chapman \& Hall
-%/ CRC Press, Boca Raton, 2003.
+\vspace{-2mm}
+
+%\bibitem{demkowicz-1}
+%L. Demkowicz: One and Two Dimensional Elliptic and Maxwell Problems,
+%Chapman \& Hall \/ CRC Press, Taylor \& Francis, 2006.
+
+
+\bibitem{label2}
+P. Solin, D. Andrs, J. Cerveny, M. Simko:
+PDE-Independent Adaptive $hp$-FEM Based on Hierarchic Extension of Finite Element Spaces.
+J. Comput. Appl. Math. 233 (2010) 3086-3094.
+
+\vspace{-2mm}
+
+\bibitem{thermoel}
+P. Solin, J. Cerveny, L. Dubcova, D. Andrs:
+Monolithic Discretization of Linear Thermoelasticity Problems
+via Adaptive Multimesh $hp$-FEM, J. Comput. Appl. Math 234 (2010) 2350 - 2357.
+
+\vspace{-2mm}
+
+\bibitem{sosedo}
+P. Solin. K. Segeth, I. Dolezel: Higher-Order Finite Element Methods, Chapman \& Hall
+/ CRC Press, Boca Raton, 2003.
 \end{thebibliography}
 
 %\newpage
