@@ -289,6 +289,10 @@ is shown in Fig. \ref{fig:sln-nist02}.
 %\label{fig:nist-2-h-aniso}
 %\end{figure}
 
+Fig. \ref{fig:nist-2-hp-aniso} presents the final meshes corresponding to adaptive $h$-FEM with 
+linear elements, adaptive $h$-FEM with quadratic elements, and adaptive $hp$-FEM. Different 
+polynomial degrees of elements are represented by different colors. 
+
 \begin{figure}[H]
 \centering
 \vspace{-5mm}
@@ -297,9 +301,9 @@ is shown in Fig. \ref{fig:sln-nist02}.
 \includegraphics[height=3.7cm]{nist/nist-2/mesh_hp_aniso.png}
 \vspace{-3mm}
 \caption{
-Final mesh (left) with 46097 DOF and the relative error is 1.30193e-01 \% for $h$-FEM with linear elements.
-Final mesh (middle) with 1289 DOF and the relative error is 8.26847e-02 \% for $h$-FEM with quadratic elements.
-Final mesh (right) with 622 DOF and the relative error is 8.15289e-02 \% for $hp$-FEM with anisotropic refinements.}
+Left: Final mesh with 46097 DOF and relative error 1.30193e-01~\% for $h$-FEM with linear elements.
+Middle: Final mesh with 1289 DOF and relative error 8.26847e-02~\% for $h$-FEM with quadratic elements. 
+Right: Final mesh with 622 DOF and relative error 8.15289e-02~\% for $hp$-FEM (adaptivity option HP\_ANISO\_H).}
 \label{fig:nist-2-hp-aniso}
 \vspace{-3mm}
 \end{figure}
@@ -351,9 +355,9 @@ The equations have the form
 where $u$ and $v$ are the
 $x$ and $y$ displacements, $E$ is Young's Modulus,
 and $\nu$ is Poisson ratio.
-The domain in the example is $\Omega = (-1, 1)^2$ with a slit,
+The domain in the example is $\Omega = (-1, 1)^2$ with a slit $([0,0], [1,0])$,
 equipped with Dirichlet boundary conditions given by the
-exact solution in polar coordinates is
+exact solution in polar coordinates as
 
 \[
 \left\{
@@ -400,6 +404,10 @@ The solution to NIST-3 is shown in Fig. \ref{fig:sln-nist03}.
 %\label{fig:nist-3-h-aniso}
 %\end{figure}
 
+Fig. \ref{fig:nist-3-hp-aniso} presents the final meshes corresponding to adaptive $h$-FEM with 
+linear elements, adaptive $h$-FEM with quadratic elements, and adaptive $hp$-FEM. Different 
+polynomial degrees of elements are represented by different colors. 
+
 \begin{figure}[!ht]
 \centering
 \includegraphics[height=3.7cm]{nist/nist-3/mesh_u_h1_aniso.png}
@@ -409,9 +417,9 @@ The solution to NIST-3 is shown in Fig. \ref{fig:sln-nist03}.
 \includegraphics[height=3.7cm]{nist/nist-3/mesh_v_h2_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-3/mesh_v_hp_anisoh.png}
 \caption{
-Final mesh (left) with 39779 DOF and the relative error is 3.84929e-01 \% for $h$-FEM with linear elements.
-Final mesh (middle) with 9330 DOF and the relative error is 9.56383e-02 \% for $h$-FEM with quadratic elements.
-Final mesh (right) with 3897 DOF and the relative error is 8.05635e-02 \% for $hp$-FEM with anisotropic refinements.}
+Left: Final mesh with 39779 DOF and relative error 3.84929e-01~\% for $h$-FEM with linear elements.
+Middle: Final mesh with 9330 DOF and relative error 9.56383e-02~\% for $h$-FEM with quadratic elements. 
+Right: Final mesh with 3897 DOF and relative error 8.05635e-02~\% for $hp$-FEM (adaptivity option HP\_ANISO\_H).}
 \label{fig:nist-3-hp-aniso}
 \end{figure}
 
@@ -473,15 +481,19 @@ $(x_{loc}, y_{loc}) = (0.5, 0.5)$ is shown in Fig. \ref{fig:sln-nist04}.
 %\label{fig:nist-4-h-aniso}
 %\end{figure}
 
+Fig. \ref{fig:nist-4-hp-aniso} presents the final meshes corresponding to adaptive $h$-FEM with 
+linear elements, adaptive $h$-FEM with quadratic elements, and adaptive $hp$-FEM. Different 
+polynomial degrees of elements are represented by different colors. 
+
 \begin{figure}[H]
 \centering
 \includegraphics[height=3.7cm]{nist/nist-4/mesh_h1_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-4/mesh_h2_aniso.png}
 \includegraphics[height=3.7cm]{nist/nist-4/mesh_hp_aniso.png}
 \caption{
-Final mesh (left) with 58253 DOF and the relative error is 5.72234e-01 \% for $h$-FEM with linear elements.
-Final mesh (middle) with 51473 DOF and the relative error is 1.39525e-02 \% for $h$-FEM with quadratic elements.
-Final mesh (right) with 1561 DOF and the relative error is 7.02865e-03 \% for $hp$-FEM with anisotropic refinements.}
+Left: Final mesh with 58253 DOF and relative error 5.72234e-01~\% for $h$-FEM with linear elements.
+Middle: Final mesh with 51473 DOF and relative error 1.39525e-02~\% for $h$-FEM with quadratic elements. 
+Right: Final mesh with 1561 DOF and relative error 7.02865e-03~\% for $hp$-FEM (adaptivity option HP\_ANISO\_H).}
 \label{fig:nist-4-hp-aniso}
 \end{figure}
 
@@ -527,15 +539,9 @@ The solution to NIST-5 is shown in Fig. \ref{fig:sln-nist05}.
 \label{fig:sln-nist05}
 \end{figure}
 
-%\begin{figure}[H]
-%\centering
-%\includegraphics[height=5.5cm]{nist/nist-5/mesh_h1_aniso.png}
-%\includegraphics[height=5.5cm]{nist/nist-5/mesh_h2_aniso.png}
-%\caption{
-%Final mesh (left) with 55577 DOF and the relative error is 9.57345e-02 \% for $h$-FEM with linear elements.
-%Final mesh (right) with 12483 DOF and the relative error is 1.34925e-02 \% for $h$-FEM with quadratic elements.}
-%\label{fig:nist-5-h-aniso}
-%\end{figure}
+Fig. \ref{fig:nist-5-hp-aniso} presents the final meshes corresponding to adaptive $h$-FEM with 
+linear elements, adaptive $h$-FEM with quadratic elements, and adaptive $hp$-FEM. Different 
+polynomial degrees of elements are represented by different colors. 
 
 \begin{figure}[H]
 \centering
@@ -543,9 +549,9 @@ The solution to NIST-5 is shown in Fig. \ref{fig:sln-nist05}.
 \includegraphics[height=5cm]{nist/nist-5/mesh_h2_aniso.png}
 \includegraphics[height=5cm]{nist/nist-5/mesh_hp_aniso.png}
 \caption{
-Final mesh (left) with 55577 DOF and the relative error is 9.57345e-02 \% for $h$-FEM with linear elements.
-Final mesh (middle) with 12483 DOF and the relative error is 1.34925e-02 \% for $h$-FEM with quadratic elements.
-Final mesh (right) with 7450 DOF and the relative error is 1.46775e-02 \% for $hp$-FEM with anisotropic refinements.}
+Left: Final mesh with 55577 DOF and relative error 9.57345e-02~\% for $h$-FEM with linear elements.
+Middle: Final mesh with 12483 DOF and relative error 1.34925e-02~\% for $h$-FEM with quadratic elements. 
+Right: Final mesh with 7450 DOF and relative error 1.46775e-02~\% for $hp$-FEM (adaptivity option HP\_ANISO\_H).}
 \label{fig:nist-5-hp-aniso}
 \end{figure}
 
@@ -590,6 +596,10 @@ with $\epsilon = 10^{-1}$ is shown in Fig. \ref{fig:sln-nist06}.
 \label{fig:sln-nist06}
 \end{figure}
 
+Fig. \ref{fig:nist-6-hp-aniso} presents the final meshes corresponding to adaptive $h$-FEM with 
+linear elements, adaptive $h$-FEM with quadratic elements, and adaptive $hp$-FEM. Different 
+polynomial degrees of elements are represented by different colors. 
+
 \begin{figure}[H]
 \centering
 %\vspace{-3mm}
@@ -598,9 +608,9 @@ with $\epsilon = 10^{-1}$ is shown in Fig. \ref{fig:sln-nist06}.
 \includegraphics[height=3.7cm]{nist/nist-6/mesh_hp_aniso.png}
 \vspace{-3mm}
 \caption{
-Final mesh (left) with 55090 DOF and the relative error is 8.74769e-01 \% for $h$-FEM with linear elements.
-Final mesh (middle) with 63145 DOF and the relative error is 1.46642e-02 \% for $h$-FEM with quadratic elements.
-Final mesh (right) with 591 DOF and the relative error is 6.23458e-04 \% for $hp$-FEM with anisotropic refinements.}
+Left: Final mesh with 55090 DOF and relative error 8.74769e-01~\% for $h$-FEM with linear elements.
+Middle: Final mesh with 63145 DOF and relative error 1.46642e-02~\% for $h$-FEM with quadratic elements. 
+Right: Final mesh with 591 DOF and relative error 6.23458e-04~\% for $hp$-FEM (adaptivity option HP\_ANISO\_H).}
 \vspace{-2mm}
 \label{fig:nist-6-hp-aniso}
 \end{figure}
@@ -647,6 +657,10 @@ The solution to NIST-7 with $\alpha = 0.6$ is shown in Fig. \ref{fig:sln-nist07}
 \label{fig:sln-nist07}
 \end{figure}
 
+Fig. \ref{fig:nist-7-hp-aniso} presents the final meshes corresponding to adaptive $h$-FEM with 
+linear elements, adaptive $h$-FEM with quadratic elements, and adaptive $hp$-FEM. Different 
+polynomial degrees of elements are represented by different colors. 
+
 \begin{figure}[H]
 \centering
 \vspace{-5mm}
@@ -655,9 +669,9 @@ The solution to NIST-7 with $\alpha = 0.6$ is shown in Fig. \ref{fig:sln-nist07}
 \includegraphics[height=3.7cm]{nist/nist-7/mesh_hp_aniso.png}
 \vspace{-3mm}
 \caption{
-Final mesh (left) with 684 DOF and the relative error is 1.45724 \% for $h$-FEM with linear elements.
-Final mesh (middle) with 267 DOF and the relative error is 1.49585 \% for $h$-FEM with quadratic elements.
-Final mesh (right) with 88 DOF and the relative error is 1.46348 \% for $hp$-FEM with anisotropic refinements.}
+Left: Final mesh with 684 DOF and relative error 1.45724~\% for $h$-FEM with linear elements.
+Middle: Final mesh with 267 DOF and relative error 1.49585~\% for $h$-FEM with quadratic elements. 
+Right: Final mesh with 88 DOF and relative error 1.46348~\% for $hp$-FEM (adaptivity option HP\_ANISO\_H).}
 \vspace{-3mm}
 \label{fig:nist-7-hp-aniso}
 \end{figure}
@@ -705,6 +719,10 @@ The solution to NIST-8 with $\alpha = 1 / 10 \pi$ is shown in Fig. \ref{fig:sln-
 \end{figure}
 
 
+Fig. \ref{fig:nist-8-hp-aniso} presents the final meshes corresponding to adaptive $h$-FEM with 
+linear elements, adaptive $h$-FEM with quadratic elements, and adaptive $hp$-FEM. Different 
+polynomial degrees of elements are represented by different colors. 
+
 \begin{figure}[H]
 \centering
 %\vspace{-5mm}
@@ -713,9 +731,9 @@ The solution to NIST-8 with $\alpha = 1 / 10 \pi$ is shown in Fig. \ref{fig:sln-
 \includegraphics[height=3.7cm]{nist/nist-8/mesh_hp_aniso.png}
 %\vspace{-3mm}
 \caption{
-Final mesh (left) with 55731 DOF and the relative error is 1.24198 \% for $h$-FEM with linear elements.
-Final mesh (middle) with 3413 DOF and the relative error is 6.64833e-01 1.49585 \% for $h$-FEM with quadratic elements.
-Final mesh (right) with 1160 DOF and the relative error is 9.09848e-02 \% for $hp$-FEM with anisotropic refinements.}
+Left: Final mesh with 55731 DOF and relative error 1.24198~\% for $h$-FEM with linear elements.
+Middle: Final mesh with 3413 DOF and relative error 6.64833e-01~\% for $h$-FEM with quadratic elements. 
+Right: Final mesh with 1160 DOF and relative error 9.09848e-02~\% for $hp$-FEM (adaptivity option HP\_ANISO\_H).}
 %\vspace{-5mm}
 \label{fig:nist-8-hp-aniso}
 \end{figure}
@@ -769,6 +787,10 @@ $r_{0} = 0.25$ is shown in Fig. \ref{fig:sln-nist09}.
 \label{fig:sln-nist09}
 \end{figure}
 
+Fig. \ref{fig:nist-9-hp-aniso} presents the final meshes corresponding to adaptive $h$-FEM with 
+linear elements, adaptive $h$-FEM with quadratic elements, and adaptive $hp$-FEM. Different 
+polynomial degrees of elements are represented by different colors. 
+
 \begin{figure}[H]
 \centering
 %\vspace{-5mm}
@@ -777,9 +799,9 @@ $r_{0} = 0.25$ is shown in Fig. \ref{fig:sln-nist09}.
 \includegraphics[height=3.7cm]{nist/nist-9/mesh_hp_aniso.png}
 %\vspace{-5mm}
 \caption{
-Final mesh (left) with 46093 DOF and the relative error is 1.23973 \% for $h$-FEM with linear elements.
-Final mesh (middle) with 4489 DOF and the relative error is 7.19928e-01 \% for $h$-FEM with quadratic elements.
-Final mesh (right) with 1465 DOF and the relative error is 8.67667e-01 \% for $hp$-FEM with anisotropic refinements.}
+Left: Final mesh with 46093 DOF and relative error 1.23973~\% for $h$-FEM with linear elements.
+Middle: Final mesh with 4489 DOF and relative error 7.19928e-01~\% for $h$-FEM with quadratic elements. 
+Right: Final mesh with 1465 DOF and relative error 8.67667e-01~\% for $hp$-FEM (adaptivity option HP\_ANISO\_H).}
 %\vspace{-5mm}
 \label{fig:nist-9-hp-aniso}
 \end{figure}
@@ -829,6 +851,10 @@ $\alpha = 2.01$ is shown in Fig. \ref{fig:sln-nist10}.
 \label{fig:sln-nist10}
 \end{figure}
 
+Fig. \ref{fig:nist-10-hp-aniso} presents the final meshes corresponding to adaptive $h$-FEM with 
+linear elements, adaptive $h$-FEM with quadratic elements, and adaptive $hp$-FEM. Different 
+polynomial degrees of elements are represented by different colors. 
+
 \begin{figure}[H]
 \centering
 \vspace{-3mm}
@@ -837,9 +863,9 @@ $\alpha = 2.01$ is shown in Fig. \ref{fig:sln-nist10}.
 \includegraphics[height=3.7cm]{nist/nist-10/mesh_hp_aniso.png}
 \vspace{-3mm}
 \caption{
-Final mesh (left) with 27999 DOF and the relative error is 2.87268e-01 \% for $h$-FEM with linear elements.
-Final mesh (middle) with 60144 DOF and the relative error is 2.59816e-04 \% for $h$-FEM with quadratic elements.
-Final mesh (right) with 381 DOF and the relative error is 8.68994e-05 \% for $hp$-FEM with anisotropic refinements.}
+Left: Final mesh with 27999 DOF and relative error 2.87268e-01~\% for $h$-FEM with linear elements.
+Middle: Final mesh with 60144 DOF and relative error 2.59816e-04~\% for $h$-FEM with quadratic elements. 
+Right: Final mesh with 381 DOF and relative error 8.68994e-05~\% for $hp$-FEM (adaptivity option HP\_ANISO\_H).}
 \vspace{-3mm}
 \label{fig:nist-10-hp-aniso}
 \end{figure}
@@ -890,9 +916,13 @@ The solution to NIST-11 is shown in Fig. \ref{fig:sln-nist11}.
 \includegraphics[height=4.7cm]{nist/nist-11/solution.png}
 %\vspace{-2mm}
 \caption{Solution to the NIST-11 benchmark problem.}
-\vspace{-8mm}
+\vspace{-3mm}
 \label{fig:sln-nist11}
 \end{figure}
+
+Fig. \ref{fig:nist-11-hp-aniso} presents the final meshes corresponding to adaptive $h$-FEM with 
+linear elements, adaptive $h$-FEM with quadratic elements, and adaptive $hp$-FEM. Different 
+polynomial degrees of elements are represented by different colors. 
 
 \begin{figure}[H]
 \centering
@@ -902,9 +932,9 @@ The solution to NIST-11 is shown in Fig. \ref{fig:sln-nist11}.
 \includegraphics[height=3.7cm]{nist/nist-11/mesh_hp_aniso.png}
 \vspace{-3mm}
 \caption{
-Final mesh (left) with 46905 DOF and the relative error is 1.25659 \% for $h$-FEM with linear elements.
-Final mesh (middle) with 7777 DOF and the relative error is 4.73604e-01 \% for $h$-FEM with quadratic elements.
-Final mesh (right) with 3459 DOF and the relative error is 4.7087e-01 \% for $hp$-FEM with anisotropic refinements.}
+Left: Final mesh with 46905 DOF and relative error 1.25659~\% for $h$-FEM with linear elements.
+Middle: Final mesh with 7777 DOF and relative error 4.73604e-01~\% for $h$-FEM with quadratic elements. 
+Right: Final mesh with 3459 DOF and relative error 4.7087e-01~\% for $hp$-FEM (adaptivity option HP\_ANISO\_H).}
 \vspace{-2mm}
 \label{fig:nist-11-hp-aniso}
 \end{figure}
@@ -972,6 +1002,10 @@ $\epsilon = 1/100$ is shown in Fig. \ref{fig:sln-nist12}.
 \label{fig:sln-nist12}
 \end{figure}
 
+Fig. \ref{fig:nist-12-hp-aniso} presents the final meshes corresponding to adaptive $h$-FEM with 
+linear elements, adaptive $h$-FEM with quadratic elements, and adaptive $hp$-FEM. Different 
+polynomial degrees of elements are represented by different colors. 
+
 \begin{figure}[H]
 \centering
 \vspace{-3mm}
@@ -980,9 +1014,9 @@ $\epsilon = 1/100$ is shown in Fig. \ref{fig:sln-nist12}.
 \includegraphics[height=3.7cm]{nist/nist-12/mesh_hp_aniso.png}
 \vspace{-3mm}
 \caption{
-Final mesh (left) with 45533 DOF and the relative error is 2.05698 \% for $h$-FEM with linear elements.
-Final mesh (middle) with 10495 DOF and the relative error is 9.04458e-01 \% for $h$-FEM with quadratic elements.
-Final mesh (right) with 4438 DOF and the relative error is 9.85118e-01 \% for $hp$-FEM with anisotropic refinements.}
+Left: Final mesh with 45533 DOF and relative error 2.05698~\% for $h$-FEM with linear elements.
+Middle: Final mesh with 10495 DOF and relative error 9.04458e-01~\% for $h$-FEM with quadratic elements. 
+Right: Final mesh with 4438 DOF and relative error 9.85118e-01~\% for $hp$-FEM (adaptivity option HP\_ANISO\_H).}
 \vspace{-3mm}
 \label{fig:nist-12-hp-aniso}
 \end{figure}
@@ -1005,15 +1039,11 @@ Fig. \ref{fig:nist-12-conv} shows the convergence of the adaptive methods in ter
 \section{Conclusion and Outlook}
 \label{sec:conclusion}
 
-A challenging set of benchmarks aimed at testing adaptive Finite Element Method implementations in terms of handling diverse problems, and diverse obstacles in their solution, has been presented in this paper.
+A challenging set of benchmarks aimed at testing adaptive Finite Element Method implementations in terms of handling diverse problems, as well as the solutions of these problems obtained by Hermes, have been presented in this paper.
 
-The solutions and convergence rates obtained by the use of Hermes exemplify that modern adaptive FEM codes can handle a wide range of problems with relative ease.
-
-Hermes also allowed for the comparison of anisotropic hp-FEM to low order (anisotropic) h-FEM. Results of this comparison furnish evidence that hp-FEM consistently outperforms simple h- adaptivity on all kinds of problems, and that hp-FEM can achieve truly exponential convergence.
+Hermes also allowed for the comparison of anisotropic hp-FEM to low order (anisotropic) h-FEM.
 
 The numerical results are given in such a way to make it possible to compare them to results obtained with another implementation of adaptive Finite Element Method.
-
-The computations were performed on a standard laptop, with average performance.
 
 \section{Acknowledgment}
 
@@ -1025,22 +1055,14 @@ supported by the National Natural Science Foundation
 of China under Projects No. 41074099.
 
 \section{Appendix 1 - Automatic hp-adaptivity with the open source library Hermes}
+Hermes is a free C++/Python library for rapid development of adaptive hp-FEM and hp-DG solvers for partial differential equations (PDE) and multiphysics PDE systems. Hermes has eight different adaptivity options P\_ISO, P\_ANISO, H\_ISO, H\_ANISO, HP\_ISO, HP\_ANISO\_P, HP\_ANISO\_H, HP\_ANISO. H here stands for h-adaptivity, P for p-adaptivity, ISO for only isotropic refinements, ANISO for anisotropic (ANISO\_H means anisotropic refinements made possible only in space, ANISO\_P only in the degree of polynomials). In this order, usually P\_ISO yields the worst results and HP\_ANISO the best. However, even P\_ISO can be very efficient with a good starting mesh. 
 
-Hermes uses exponentially-convergent adaptive $hp$-FEM and $hp$-DG algorithms where the error drops steadily and fast to the desired accuracy.
-Hermes is PDE-independent. Hermes does not employ any technique or algorithm that would limit its applicability to some particular class(es) of PDE problems. Automatic adaptivity is guided by a universal computational a-posteriori error estimate that works in the same way for any PDE.
-Hermes has a unique original methodology for handling irregular meshes with arbitrary-level hanging nodes, also various physical fields or solution components in multiphysics problems can be approximated on individual meshes, combining quality $H^1, H(curl), H(div), and L^2$ conforming higher-order elements. The following figure illustrates a coupled problem of heat and moisture transfer in massive concrete walls of a nuclear reactor vessel where all the above features are employed.
+You can try the benchmarks for yourself, the webpage address where you can download Hermes, and link to installation instructions are below. The benchmarks are located in\\
+/hermes2d/benchmarks/nist-01, ..., nist-12.
+\\ \\
+Main Hermes webpage: http://hpfem.org/hermes/\\
+Installation instructions: \small{http://hpfem.org/hermes/doc/index.html\#installation}
 
-For more information about Hermes visit {http://hpfem.org/hermes}.
-\vspace{-2mm}
-\begin{figure}[H]
-\centering
-\includegraphics[height=4.7cm]{img/hermes_hm_sol.png}
-\hspace{20mm}
-\includegraphics[height=4.7cm]{img/hermes_hm_mesh.png}
-\caption{Illustration of multimesh hp-FEM.}
-\label{fig:hermes_hm}
-\end{figure}
-\vspace{-9mm}
 %\noindent
 
 %% Authors are advised to submit their bibtex database files. They are
