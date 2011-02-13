@@ -116,19 +116,20 @@
 %It is common to compare different algorithms using a large test set, to evaluate the algorithm's
 %overall quality, which lies in the ability to handle all kinds of problems, and also to determine
 %the algorithm's strengths and weaknesses.
-Recently, a new suite of 12 benchmark problems for adaptive finite element methods (FEM)
+Recently, a new suite of twelve benchmark problems for adaptive finite element methods (FEM)
 was published at the U.S. National Institute for Standards and Technology (NIST).
-These test problems come with exact solutions, and they exhibit various difficulties
-including singularities, disruptions, and oscillations. They are a great basis for comparison
-of performance of adaptive FEM codes. In this paper we present results obtained
-with the open source library Hermes (http://hpfem.org). These results are reproducible --
-all of them are part of the Git repository of the Hermes project and the reader can experiment
-with them at will. We hope that authors of other adaptive FEM codes, both academic and
-commercial, will present their results for these test problems in a reproducible fashion as well.
+These test problems come with exact solutions, and they exhibit all typical difficulties
+associated with elliptic problems including singularities, steep internal layers, anisotropy, 
+and oscillations. In this paper we solve these benchmark problems using the open source 
+library Hermes (http://hpfem.org). All these results are reproducible -- they are part of 
+the Git repository of the open source Hermes project, and the reader can experiment
+with them by himself/herself. Instructions for this are provided. We hope that authors 
+of other adaptive FEM codes will make their results for these test problems available 
+in a reproducible fashion as well.
 \end{abstract}
 
 \begin{keyword}
-finite element method \sep automatic adaptivity \sep benchmark problem \sep exact solution
+finite element method \sep automatic adaptivity \sep benchmark problem \sep reproducible research
 %% keywords here, in the form: keyword \sep keyword
 %% MSC codes here, in the form: \MSC code \sep code
 %% or \MSC[2008] code \sep code (2000 is the default)
@@ -146,8 +147,9 @@ ways of loading the physical model, error estimation mechanisms,
 algebraic solvers they use, mesh formats, boundary conditions
 handling, input/output formats, and other aspects. Some of them are
 designed for a narrow class of problems while others are supposed to
-cover several physical applications. These facts, and others not listed
-here, make it extremely difficult to assess and compare their accuracy and performance.
+cover various types of physical applications. In summary, these facts 
+make it extremely difficult to assess and compare the accuracy and 
+performance of various adaptive FEM codes.
 
 Recently, Dr. William Mitchell (NIST) collected a suite of
 twelve benchmark problems with known exact solution for adaptive
@@ -163,16 +165,18 @@ Hermes, a multi-platform open source C++
 library for rapid development of adaptive $hp$-FEM
 and $hp$-DG solvers (http://hpfem.org). A few words
 and links to the Hermes library will be presented at the
-end as this is not the major objective of the paper.
-Our goal is to show the results and make them available
-to be reproduced and compared with other results.
+end of the paper, but only very briefly, as this is not 
+the major objective of the paper. Our main goal is to 
+respond to \cite{mitchell-1} by providing results by
+the Hermes library, and make them easily reproducible
+for anyone.
 
 To make the paper reasonably self-contained, we must repeat some
 material from \cite{mitchell-1}, but this is done in a minimalistic way.
 Each of the following sections contains a short description of
 the benchmark problem followed by results and convergence graphs in terms of degrees
-of freedom (DOF) and CPU time. Conclusion and outlooks
-are presented at the end of the paper.
+of freedom (DOF) and CPU time. Conclusion and outlook
+is presented at the end of the paper.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -231,7 +235,7 @@ Fig. \ref{fig:nist-1-conv} shows the convergence of the adaptive methods in term
 \hspace{-50mm}
 \vspace{-2mm}
 \caption{DOF and CPU time convergence graphs.}
-\vspace{-5mm}
+\vspace{-1mm}
 \label{fig:nist-1-conv}
 \end{figure}
 
@@ -1001,11 +1005,13 @@ Fig. \ref{fig:nist-12-conv} shows the convergence of the adaptive methods in ter
 \section{Conclusion and Outlook}
 \label{sec:conclusion}
 
-A challenging set of benchmarks aimed at testing adaptive Finite Element Method implementations in terms of handling diverse problems, as well as the solutions of these problems obtained by Hermes, have been presented in this paper.
-
-Hermes also allowed for the comparison of anisotropic hp-FEM to low order (anisotropic) h-FEM.
-
-The numerical results are given in such a way to make it possible to compare them to results obtained with another implementation of adaptive Finite Element Method.
+We solved a suite of twelve benchmark problems from \cite{mitchell-1}
+using an open-source finite library Hermes. The numerical results are 
+easily reproducible as they are part of the Git repository of the 
+open source project. More information about the Hermes library can be found 
+in an extensive User Documentation that is available on the project home 
+page http://hpfem.org/hermes/. In particular, these 12 examples are located
+in the directory hermes/hermes2d/ benchmarks/.
 
 \section{Acknowledgment}
 
@@ -1015,15 +1021,6 @@ Grant No. IAA100760702 of the Grant Agency of the Academy
 of Sciences of the Czech Republic. The first autor was partly
 supported by the National Natural Science Foundation
 of China under Projects No. 41074099.
-
-\section{Appendix 1 - Automatic hp-adaptivity with the open source library Hermes}
-Hermes is a free C++/Python library for rapid development of adaptive hp-FEM and hp-DG solvers for partial differential equations (PDE) and multiphysics PDE systems. Hermes has eight different adaptivity options P\_ISO, P\_ANISO, H\_ISO, H\_ANISO, HP\_ISO, HP\_ANISO\_P, HP\_ANISO\_H, HP\_ANISO. H here stands for h-adaptivity, P for p-adaptivity, ISO for only isotropic refinements, ANISO for anisotropic (ANISO\_H means anisotropic refinements made possible only in space, ANISO\_P only in the degree of polynomials). In this order, usually P\_ISO yields the worst results and HP\_ANISO the best. However, even P\_ISO can be very efficient with a good starting mesh.
-
-You can try the benchmarks for yourself, the webpage address where you can download Hermes, and link to installation instructions are below. The benchmarks are located in\\
-/hermes2d/benchmarks/nist-01, ..., nist-12.
-\\ \\
-Main Hermes webpage: http://hpfem.org/hermes/\\
-Installation instructions: \small{http://hpfem.org/hermes/doc/index.html\#installation}
 
 %\noindent
 
