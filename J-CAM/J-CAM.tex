@@ -112,7 +112,7 @@
 \begin{abstract}
 Recently, a new suite of twelve benchmark problems for adaptive finite element methods (FEM)
 was published at the U.S. National Institute for Standards and Technology (NIST).
-Most of these test problems come with exact solutions, and they exhibit all typical difficulties
+These benchmark problems come with exact solutions, and they exhibit all typical difficulties
 associated with elliptic problems including singularities, steep internal layers, anisotropy,
 and oscillations. In this paper we solve these benchmark problems using the open source
 library Hermes (http://hpfem.org). All these results are reproducible -- they are part of
@@ -146,7 +146,7 @@ make it extremely difficult to assess and compare the accuracy and
 performance of various adaptive FEM codes.
 
 Recently, Dr. William Mitchell (NIST) collected a suite of
-twelve benchmark problems, eleven of them with known exact solution for adaptive
+twelve benchmark problems with known exact solution for adaptive
 FEM \cite{mitchell-1}. The advantage of having an exact solution is that
 the approximation error can be calculated very accurately, thus
 enabling fair comparison of results calculated with different
@@ -174,7 +174,7 @@ To make the paper reasonably self-contained, we must repeat some
 material from \cite{mitchell-1}, but this is done in a minimalistic way.
 Each of the following sections contains a short description of
 the benchmark problem followed by results and convergence graphs in terms of degrees
-of freedom (DOF) and CPU time including adaptivity time and assembly time.
+of freedom (DOF) and CPU time. The CPU time is composed of adaptivity time and assembly time.
 Conclusion and outlook is presented at the end of the paper.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
